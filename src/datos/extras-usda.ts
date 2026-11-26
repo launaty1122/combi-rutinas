@@ -38,4 +38,23 @@ export const EXTRAS_USDA: Record<string, Extra> = {
   '171412': { alias: ['Aceite de coco'], categoria: 'grasas', porciones: [u('1 cucharada', 13.6), u('1 cucharadita', 4.5)] },
   '168910': { alias: ['Pasta integral cocida', 'macarrones integrales'], categoria: 'granos', porciones: [u('1 taza', 140)] },
   '174289': { alias: ['Hummus'], categoria: 'preparados', porciones: [u('1 cucharada', 15)] },
+
+  // Reemplazan a los de TACO, que no traen calorías ni macronutrientes de estos alimentos.
+  '171265': { alias: ['Leche entera', 'leche', 'leite integral'], categoria: 'lacteos', porciones: [u('1 taza', 240), u('1 vaso', 200)], liquido: true },
+  '171269': { alias: ['Leche descremada', 'leche desnatada', 'leite desnatado'], categoria: 'lacteos', porciones: [u('1 taza', 240), u('1 vaso', 200)], liquido: true },
+  '171411': { alias: ['Aceite de soya', 'aceite', 'óleo de soja'], categoria: 'grasas', porciones: [u('1 cucharada', 13), u('1 cucharadita', 4)], liquido: true },
+  '171413': { alias: ['Aceite de oliva', 'azeite de oliva'], categoria: 'grasas', porciones: [u('1 cucharada', 13), u('1 cucharadita', 4)], liquido: true },
+  '172336': { alias: ['Aceite de canola', 'óleo de canola'], categoria: 'grasas', porciones: [u('1 cucharada', 13)], liquido: true },
+  '171025': { alias: ['Aceite de girasol', 'óleo de girassol'], categoria: 'grasas', porciones: [u('1 cucharada', 13)], liquido: true },
+  '173468': { alias: ['Sal', 'sal de cocina', 'sal refinada'], categoria: 'otros', porciones: [u('1 cucharadita', 6), u('1 pizca', 0.5)] },
 }
+
+/**
+ * Alimentos de TACO que se ocultan porque el USDA trae la versión completa
+ * (TACO no analizó calorías ni macros de leches líquidas y aceites; la sal no tiene kcal).
+ */
+export const TACO_REEMPLAZADOS = new Set([
+  'taco-457', 'taco-458', // leches → usda-171269, usda-171265
+  'taco-260', 'taco-268', 'taco-269', 'taco-272', // aceites → usda-171413, 172336, 171025, 171411
+  'taco-516', 'taco-517', // sal → usda-173468
+])

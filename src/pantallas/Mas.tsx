@@ -4,13 +4,14 @@ import { Icono } from '../componentes/Icono'
 import { Pantalla } from '../componentes/Pantalla'
 import { nombreVisible } from '../datos/alimentos'
 import { useCatalogo } from '../datos/catalogo'
-import { alternarBasico, useBasicos } from '../db/ajustes'
+import { alternarBasico, guardarAjuste, useBasicos, useSinCalorias } from '../db/ajustes'
 import type { Tema } from '../tema'
 import { BuscarAlimento } from './alacena/BuscarAlimento'
 
 export function Mas({ tema, setTema, alAgregar }: { tema: Tema; setTema: (t: Tema) => void; alAgregar: () => void }) {
   const catalogo = useCatalogo()
   const basicos = useBasicos()
+  const sinCalorias = useSinCalorias()
   const [agregandoBasico, setAgregandoBasico] = useState(false)
   const listaBasicos = [...basicos]
     .map((id) => catalogo.porId.get(id))
@@ -38,6 +39,22 @@ export function Mas({ tema, setTema, alAgregar }: { tema: Tema; setTema: (t: Tem
               </button>
             ))}
           </div>
+        </section>
+
+        <section className="flex flex-col gap-3">
+          <h2 className="font-titulo text-xl font-semibold">Calorías</h2>
+          <label className="flex items-center gap-3 rounded-[20px] bg-pista px-4 py-3">
+            <input
+              type="checkbox"
+              checked={sinCalorias}
+              onChange={(e) => guardarAjuste('sinCalorias', e.target.checked)}
+              className="size-5 accent-finca"
+            />
+            <span className="text-sm">
+              <strong>Modo sin calorías</strong>
+              <span className="block text-tinta-suave">Oculta las calorías en toda la app. Proteína y fibra siguen al frente.</span>
+            </span>
+          </label>
         </section>
 
         <section className="flex flex-col gap-3">

@@ -2,7 +2,7 @@ import type { Alimento, CategoriaAlimento, Nutrientes } from '../logica/tipos'
 import taco from './alimentos-taco.json'
 import usda from './alimentos-usda.json'
 import { ALIAS_ES } from './alias-es'
-import { EXTRAS_USDA } from './extras-usda'
+import { EXTRAS_USDA, TACO_REEMPLAZADOS } from './extras-usda'
 import { LIQUIDOS, PORCIONES } from './porciones'
 
 interface Fila {
@@ -42,8 +42,14 @@ export const ALIMENTOS_USDA: Alimento[] = (usda as Fila[]).map((f) => {
   }
 })
 
-/** Todos los alimentos de base (sin contar los personalizados, que viven en el celular). */
-export const ALIMENTOS_BASE: Alimento[] = [...ALIMENTOS_TACO, ...ALIMENTOS_USDA]
+/**
+ * Todos los alimentos de base (sin contar los personalizados, que viven en el celular).
+ * Se ocultan los de TACO que el USDA reemplaza (ver TACO_REEMPLAZADOS).
+ */
+export const ALIMENTOS_BASE: Alimento[] = [
+  ...ALIMENTOS_TACO.filter((a) => !TACO_REEMPLAZADOS.has(a.id)),
+  ...ALIMENTOS_USDA,
+]
 
 /** Nombre para mostrar: el alias en español si existe; si no, el original. */
 export function nombreVisible(a: Pick<Alimento, 'nombre' | 'alias'>): string {

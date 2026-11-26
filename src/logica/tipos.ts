@@ -94,7 +94,13 @@ export interface Receta {
   pasos: string[]
   /** El textico cálido: qué es y qué aporta. */
   ficha: string
+  /** Etiquetas "grupo:valor" (cocina, momento, tipo, batido, dificultad). */
   etiquetas: string[]
+  /**
+   * Etiquetas de objetivo corregidas a mano. Si no existe, se usan las sugeridas
+   * automáticamente a partir de la ficha nutricional.
+   */
+  objetivo?: string[]
   fuente?: string
   favorita?: boolean
   notas?: string

@@ -39,6 +39,17 @@ export async function ajustarRapido(id: string, deltaGramos: number): Promise<It
   return null
 }
 
+/**
+ * Reemplaza la alacena completa por una nueva versión (por ejemplo, después de "Cociné esto").
+ * Todo o nada: si algo falla, la alacena queda como estaba.
+ */
+export async function reemplazarAlacena(nueva: ItemAlacena[]): Promise<void> {
+  await db.transaction('rw', db.alacena, async () => {
+    await db.alacena.clear()
+    await db.alacena.bulkPut(nueva)
+  })
+}
+
 /** Vuelve a poner un ítem borrado (para "Deshacer"). */
 export async function restaurarItem(item: ItemAlacena): Promise<void> {
   await db.alacena.put(item)

@@ -15,8 +15,8 @@ const porId = new Map(ALIMENTOS_TACO.map((a) => [a.id, a]))
 const HUEVO = 'taco-489'
 const ARROZ = 'taco-3'
 const FRIJOL = 'taco-561'
-const SAL = 'taco-517'
-const ACEITE = 'taco-272'
+const SAL = 'usda-173468'
+const ACEITE = 'usda-171411'
 
 describe('base de alimentos TACO', () => {
   it('trae los 597 alimentos con nombres en español donde los hay', () => {
@@ -36,8 +36,8 @@ describe('base de alimentos TACO', () => {
 })
 
 describe('alimentos extra del USDA', () => {
-  it('trae los 21 alimentos que faltan en TACO, con nombre en español y porciones', () => {
-    expect(ALIMENTOS_USDA).toHaveLength(21)
+  it('trae los 28 alimentos que faltan o están incompletos en TACO, con nombre en español y porciones', () => {
+    expect(ALIMENTOS_USDA).toHaveLength(28)
     for (const a of ALIMENTOS_USDA) {
       expect(a.alias.length).toBeGreaterThan(0)
       expect(a.porciones.length).toBeGreaterThan(0)

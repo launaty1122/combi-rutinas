@@ -7,12 +7,11 @@ import { db } from './db'
  * Sal, aceites, ajo y especias. Se pueden cambiar en la app.
  */
 export const BASICOS_POR_DEFECTO = [
-  'taco-517', // sal gruesa
-  'taco-516', // sal dietética
-  'taco-272', // aceite de soya
-  'taco-260', // aceite de oliva
-  'taco-268', // aceite de canola
-  'taco-269', // aceite de girasol
+  'usda-173468', // sal
+  'usda-171411', // aceite de soya
+  'usda-171413', // aceite de oliva
+  'usda-172336', // aceite de canola
+  'usda-171025', // aceite de girasol
   'usda-171320', // canela
 ]
 
@@ -39,6 +38,11 @@ export async function alternarBasico(alimentoId: string): Promise<void> {
   if (actual.has(alimentoId)) actual.delete(alimentoId)
   else actual.add(alimentoId)
   await guardarAjuste('basicos', [...actual])
+}
+
+/** "Modo sin calorías": oculta las calorías en toda la app. */
+export function useSinCalorias(): boolean {
+  return useLiveQuery(() => leerAjuste('sinCalorias', false), [], false)
 }
 
 export function useDiasAvisoVence(): number {

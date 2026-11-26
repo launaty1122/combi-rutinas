@@ -397,5 +397,138 @@
    "vitaminaC": 0,
    "grasaSaturada": 2.562
   }
+ },
+ {
+  "id": "usda-171265",
+  "nombre": "Milk, whole, 3.25% milkfat, with added vitamin D",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.15,
+   "grasa": 3.25,
+   "carbohidratos": 4.8,
+   "kcal": 61,
+   "fibra": 0,
+   "calcio": 113,
+   "hierro": 0.03,
+   "potasio": 132,
+   "sodio": 43,
+   "vitaminaA": 46,
+   "vitaminaC": 0,
+   "grasaSaturada": 1.865
+  }
+ },
+ {
+  "id": "usda-171269",
+  "nombre": "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.37,
+   "grasa": 0.08,
+   "carbohidratos": 4.96,
+   "kcal": 34,
+   "fibra": 0,
+   "calcio": 122,
+   "hierro": 0.03,
+   "potasio": 156,
+   "sodio": 42,
+   "vitaminaA": 61,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.056
+  }
+ },
+ {
+  "id": "usda-171411",
+  "nombre": "Oil, soybean, salad or cooking",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0.05,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 15.65
+  }
+ },
+ {
+  "id": "usda-171413",
+  "nombre": "Oil, olive, salad or cooking",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 1,
+   "hierro": 0.56,
+   "potasio": 1,
+   "sodio": 2,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 13.808
+  }
+ },
+ {
+  "id": "usda-172336",
+  "nombre": "Oil, canola",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 7.365
+  }
+ },
+ {
+  "id": "usda-171025",
+  "nombre": "Oil, sunflower, linoleic, (approx. 65%)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 10.3
+  }
+ },
+ {
+  "id": "usda-173468",
+  "nombre": "Salt, table",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 0,
+   "carbohidratos": 0,
+   "kcal": 0,
+   "fibra": 0,
+   "calcio": 24,
+   "hierro": 0.33,
+   "potasio": 8,
+   "sodio": 38758,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
  }
 ]

@@ -14,18 +14,31 @@ const RUTAS = {
   flecha: 'M5 12h14 M13 6l6 6-6 6',
   check: 'M5 12l5 5 9-10',
   basura: 'M4 7h16 M10 11v6 M14 11v6 M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12 M9 7V4h6v3',
-  sal: 'M8 3h8l1 4H7z M7 7h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z M10 12h.01 M14 12h.01 M12 15h.01',
+  corazon: 'M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z',
+  alerta: 'M12 6v7 M12 18h.01',
+  olla: 'M3 11h18a9 9 0 0 1-18 0z M8 7c0-2 2-2 2-4 M13 7c0-2 2-2 2-4',
+  sal:'M8 3h8l1 4H7z M7 7h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z M10 12h.01 M14 12h.01 M12 15h.01',
 } as const
 
 export type NombreIcono = keyof typeof RUTAS
 
-export function Icono({ nombre, tam = 22, className = '' }: { nombre: NombreIcono; tam?: number; className?: string }) {
+export function Icono({
+  nombre,
+  tam = 22,
+  className = '',
+  relleno = false,
+}: {
+  nombre: NombreIcono
+  tam?: number
+  className?: string
+  relleno?: boolean
+}) {
   return (
     <svg
       width={tam}
       height={tam}
       viewBox="0 0 24 24"
-      fill="none"
+      fill={relleno ? 'currentColor' : 'none'}
       stroke="currentColor"
       strokeWidth={2.3}
       strokeLinecap="round"
