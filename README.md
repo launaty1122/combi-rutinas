@@ -66,6 +66,15 @@ COMIDA APP/
 - **Fuse.js**: búsqueda tolerante a errores ("platano" encuentra "plátano").
 - Letras **Fredoka** y **Figtree**, incluidas en la app para que funcionen sin internet.
 
+## De dónde salen los valores nutricionales
+
+De la **tabla TACO** (Tabela Brasileira de Composição de Alimentos, 4ª ed., NEPA/UNICAMP, 2011), que permite reproducirla citando la fuente. Son 597 alimentos con valores por cada 100 g. Los detalles están en [datos-fuente/taco/FUENTE.md](datos-fuente/taco/FUENTE.md).
+
+- Los nombres originales están en portugués. Unos 270 alimentos comunes tienen también nombre en español (`src/datos/alias-es.ts`), y se puede buscar en cualquiera de los dos idiomas.
+- Las porciones caseras ("1 huevo = 50 g") están en `src/datos/porciones.ts`. Son aproximadas y se pueden editar.
+- Si TACO no tiene un dato, la app muestra **"sin dato"**, nunca 0.
+- Todos los valores son aproximados: sirven para orientarse, no son una medición exacta.
+
 ## Nota honesta
 
 `npm install` muestra 4 avisos de seguridad "moderados". Vienen de una herramienta que solo se usa en el computador, cuando se arma la app (la que prepara el modo sin internet). No llegan al celular. Se revisan de nuevo antes de publicar.
