@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fredoka";
+@import "@fontsource-variable/figtree";
+
+/* Modo oscuro: se activa con data-tema="oscuro" en <html>. */
+@custom-variant dark (&:where([data-tema=oscuro], [data-tema=oscuro] *));
+
+/*
+  Paleta "Huerta" de Combi Rutinas.
+  Los colores pastel llevan siempre texto oscuro (noche) encima, en claro y en oscuro.
+*/
+@theme {
+  --font-titulo: "Fredoka Variable", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Figtree Variable", system-ui, sans-serif;
+
+  --color-finca: #165F47;
+  --color-lechuga: #2DA049;
+  --color-limon-verde: #AED140;
+  --color-verde-claro: #E3EA98;
+  --color-limon: #F6C817;
+  --color-mantequilla: #F9DE7A;
+  --color-calabaza: #F2923B;
+  --color-chili: #B91F3F;
+  --color-rosa: #EE7A98;
+  --color-rosa-claro: #F7A8BC;
+  --color-lila: #C9C2F7;
+  --color-cielo: #9BD0EC;
+  --color-noche: #10251E;
+  --color-crema: #FFFDF6;
+
+  /* Colores que cambian con el tema (definidos abajo como variables). */
+  --color-hoja: var(--hoja);
+  --color-tinta: var(--tinta);
+  --color-tinta-suave: var(--tinta-suave);
+  --color-pista: var(--pista);
+  --color-tarjeta: var(--tarjeta);
+  --color-nav: var(--nav);
+  --color-nav-icono: var(--nav-icono);
+  --color-principal: var(--principal);
+  --color-fondo: var(--fondo);
+  --color-fondo-tinta: var(--fondo-tinta);
+
+  --radius-hoja: 36px;
+  --radius-tarjeta: 28px;
+}
+
+:root {
+  --hoja: #FFFDF6;
+  --tinta: #10251E;
+  --tinta-suave: #4A5C52;
+  --pista: #F1EDE4;
+  --tarjeta: #F4F2EA;
+  --nav: #10251E;
+  --nav-icono: #E3EA98;
+  --principal: #165F47;
+  /* Fondo de cada pantalla: cada una pone el suyo (ver .fondo-*). */
+  --fondo: #165F47;
+  --fondo-tinta: #F3F5E2;
+  color-scheme: light;
+}
+
+[data-tema="oscuro"] {
+  --hoja: #13211C;
+  --tinta: #F0F2DC;
+  --tinta-suave: #BFCCB8;
+  --pista: #2A3A33;
+  --tarjeta: #1C2C26;
+  --nav: #F0F2DC;
+  --nav-icono: #10251E;
+  --principal: #AED140;
+  color-scheme: dark;
+}
+
+/* Un color de fondo por pantalla, con su versión profunda en oscuro. */
+.fondo-hoy { --fondo: #165F47; --fondo-tinta: #F3F5E2; }
+.fondo-recetas { --fondo: #EE7A98; --fondo-tinta: #2A0F18; }
+.fondo-receta { --fondo: #F2923B; --fondo-tinta: #2A1606; }
+.fondo-alacena { --fondo: #AED140; --fondo-tinta: #10251E; }
+.fondo-mas { --fondo: #C9C2F7; --fondo-tinta: #10251E; }
+
+[data-tema="oscuro"] .fondo-hoy { --fondo: #0F3D2F; --fondo-tinta: #F0F2DC; }
+[data-tema="oscuro"] .fondo-recetas { --fondo: #5E2236; --fondo-tinta: #FBE3EA; }
+[data-tema="oscuro"] .fondo-receta { --fondo: #5A3014; --fondo-tinta: #FCE6D2; }
+[data-tema="oscuro"] .fondo-alacena { --fondo: #34421A; --fondo-tinta: #EEF5D6; }
+[data-tema="oscuro"] .fondo-mas { --fondo: #3A3360; --fondo-tinta: #EDEAFE; }
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--fondo);
+  color: var(--tinta);
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #AED140;
+  color: #10251E;
+}
+
+:focus-visible {
+  outline: 3px solid #F6C817;
+  outline-offset: 2px;
+}
+
+/* Si el celular pide menos movimiento, la app lo respeta. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
