@@ -257,6 +257,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   510: ['Panela', 'rapadura'],
   511: ['Café molido tostado'],
   513: ['Polvo de hornear', 'royal'],
+  516: ['Sal light (dietética)', 'sal light'],
   517: ['Sal gruesa', 'sal'],
   518: ['Salsa de soya', 'shoyu'],
   520: ['Aceitunas negras'],

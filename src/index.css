@@ -28,7 +28,16 @@
   --color-noche: #10251E;
   --color-crema: #FFFDF6;
 
-  /* Colores que cambian con el tema (definidos abajo como variables). */
+  --radius-hoja: 36px;
+  --radius-tarjeta: 28px;
+}
+
+/*
+  Colores que cambian con el tema o con la pantalla. "inline" hace que cada elemento
+  lea la variable donde está (si no, quedaría fijo el valor de la raíz y el fondo
+  de cada pantalla no cambiaría).
+*/
+@theme inline {
   --color-hoja: var(--hoja);
   --color-tinta: var(--tinta);
   --color-tinta-suave: var(--tinta-suave);
@@ -39,9 +48,6 @@
   --color-principal: var(--principal);
   --color-fondo: var(--fondo);
   --color-fondo-tinta: var(--fondo-tinta);
-
-  --radius-hoja: 36px;
-  --radius-tarjeta: 28px;
 }
 
 :root {
@@ -106,6 +112,40 @@ body {
 :focus-visible {
   outline: 3px solid #F6C817;
   outline-offset: 2px;
+}
+
+/* En los buscadores tipo píldora, el anillo de foco va en la píldora, no en el texto. */
+label:has(> input[type='search']) > input:focus-visible {
+  outline: none;
+}
+label:has(> input[type='search']:focus-visible) {
+  outline: 3px solid #F6C817;
+  outline-offset: 2px;
+}
+
+/* Hoja que sube desde abajo: entra con una curva suave y rápida. */
+dialog.hoja[open] {
+  animation: hoja-sube 280ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+dialog.hoja[open]::backdrop {
+  animation: velo-aparece 200ms ease-out;
+}
+@keyframes hoja-sube {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes velo-aparece {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Aviso flotante ("Quitaste… Deshacer"). */
+.aviso-entra {
+  animation: aviso-entra 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+@keyframes aviso-entra {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* Si el celular pide menos movimiento, la app lo respeta. */

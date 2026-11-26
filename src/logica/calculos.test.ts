@@ -8,7 +8,8 @@ import { sugerirEtiquetas } from './etiquetas'
 import { carbohidratosNetos, nutricionReceta, nutrientesDe, nutrientesVacios, sumarNutrientes } from './nutricion'
 import { normalizar } from './texto'
 import type { IngredienteReceta, ItemAlacena, Nutrientes } from './tipos'
-import { aGramos, enPorciones, formatearGramos } from './unidades'
+import { aGramos, describirCantidad, enPorciones, formatearGramos, nombrePorcion } from './unidades'
+import { diasHasta, textoVencimiento } from './fechas'
 
 const porId = new Map(ALIMENTOS_TACO.map((a) => [a.id, a]))
 const HUEVO = 'taco-489'
@@ -76,6 +77,22 @@ describe('conversión de unidades', () => {
     expect(formatearGramos(120)).toBe('120 g')
     expect(formatearGramos(1500)).toBe('1,5 kg')
     expect(formatearGramos(200, true)).toBe('200 ml')
+  })
+
+  it('nombra porciones en plural de forma natural', () => {
+    expect(nombrePorcion('1 huevo', 8)).toBe('8 huevos')
+    expect(nombrePorcion('1 cucharón', 10)).toBe('10 cucharones')
+    expect(nombrePorcion('1 banano mediano', 5)).toBe('5 bananos medianos')
+    expect(nombrePorcion('1 huevo de codorniz', 3)).toBe('3 huevos de codorniz')
+    expect(nombrePorcion('1 taza', 0.5)).toBe('½ taza')
+    expect(nombrePorcion('1 lata escurrida', 1)).toBe('1 lata escurrida')
+  })
+
+  it('describe la cantidad con porciones solo si es un número redondo y pequeño', () => {
+    const huevo = [{ nombre: '1 huevo', gramos: 50 }]
+    expect(describirCantidad(400, huevo)).toBe('8 huevos · 400 g')
+    expect(describirCantidad(2000, [{ nombre: '1 taza', gramos: 160 }])).toBe('2 kg')
+    expect(describirCantidad(130, huevo)).toBe('130 g')
   })
 
   it('reconoce cantidades redondas de una porción', () => {
@@ -265,8 +282,27 @@ describe('descuento de la alacena al cocinar', () => {
   })
 })
 
+describe('fechas de vencimiento', () => {
+  it('cuenta días entre fechas sin líos de horario', () => {
+    expect(diasHasta('2026-11-28', '2026-11-26')).toBe(2)
+    expect(diasHasta('2026-11-25', '2026-11-26')).toBe(-1)
+    expect(diasHasta('2027-01-01', '2026-12-31')).toBe(1)
+  })
+
+  it('dice el vencimiento con palabras amables', () => {
+    expect(textoVencimiento(0)).toBe('vence hoy')
+    expect(textoVencimiento(1)).toBe('mañana')
+    expect(textoVencimiento(3)).toBe('en 3 días')
+    expect(textoVencimiento(-2)).toBe('venció hace 2 días')
+  })
+})
+
 describe('búsqueda de alimentos', () => {
   const buscar = crearBuscador(ALIMENTOS_BASE)
+
+  it('pone primero el nombre más simple', () => {
+    expect(buscar('huevo')[0].id).toBe(HUEVO)
+  })
 
   it('encuentra los extras del USDA (chía, whey)', () => {
     expect(buscar('chia')[0].id).toBe('usda-170554')

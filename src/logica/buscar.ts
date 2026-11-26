@@ -22,9 +22,12 @@ export function crearBuscador(alimentos: Alimento[]) {
     const q = normalizar(consulta)
     if (!q) return []
     // Primero, coincidencias que empiezan igual (más naturales al escribir).
-    const empiezan = alimentos.filter(
-      (a) => a.alias.some((x) => normalizar(x).startsWith(q)) || normalizar(a.nombre).startsWith(q),
-    )
+    // Entre esas, primero los nombres más cortos ("Huevo crudo" antes que "Huevo de codorniz").
+    const largo = (a: Alimento) =>
+      Math.min(...[...a.alias, a.nombre].filter((x) => normalizar(x).startsWith(q)).map((x) => x.length))
+    const empiezan = alimentos
+      .filter((a) => a.alias.some((x) => normalizar(x).startsWith(q)) || normalizar(a.nombre).startsWith(q))
+      .sort((a, b) => largo(a) - largo(b))
     const resto = fuse
       .search(q, { limit: limite * 2 })
       .map((r) => r.item)
