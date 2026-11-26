@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ALIMENTOS_TACO } from '../datos/alimentos'
+import { ALIMENTOS_BASE, ALIMENTOS_TACO, ALIMENTOS_USDA } from '../datos/alimentos'
 import { descontarDeAlacena } from './alacena'
 import { crearBuscador } from './buscar'
 import { calcularDisponibilidad } from './disponibilidad'
@@ -31,6 +31,28 @@ describe('base de alimentos TACO', () => {
 
   it('pone fibra 0 en alimentos de origen animal (TACO la marca como "no aplica")', () => {
     expect(porId.get(HUEVO)?.n.fibra).toBe(0)
+  })
+})
+
+describe('alimentos extra del USDA', () => {
+  it('trae los 21 alimentos que faltan en TACO, con nombre en español y porciones', () => {
+    expect(ALIMENTOS_USDA).toHaveLength(21)
+    for (const a of ALIMENTOS_USDA) {
+      expect(a.alias.length).toBeGreaterThan(0)
+      expect(a.porciones.length).toBeGreaterThan(0)
+      expect(a.n.kcal).not.toBeNull()
+    }
+  })
+
+  it('la chía tiene sus valores del USDA', () => {
+    const chia = ALIMENTOS_USDA.find((a) => a.id === 'usda-170554')
+    expect(chia?.alias[0]).toBe('Chía')
+    expect(chia?.n.fibra).toBe(34.4)
+  })
+
+  it('no repite ids entre TACO y USDA', () => {
+    const ids = ALIMENTOS_BASE.map((a) => a.id)
+    expect(new Set(ids).size).toBe(ids.length)
   })
 })
 
@@ -244,7 +266,12 @@ describe('descuento de la alacena al cocinar', () => {
 })
 
 describe('búsqueda de alimentos', () => {
-  const buscar = crearBuscador(ALIMENTOS_TACO)
+  const buscar = crearBuscador(ALIMENTOS_BASE)
+
+  it('encuentra los extras del USDA (chía, whey)', () => {
+    expect(buscar('chia')[0].id).toBe('usda-170554')
+    expect(buscar('whey')[0].id).toBe('usda-173180')
+  })
 
   it('ignora tildes y mayúsculas', () => {
     expect(normalizar('Plátano')).toBe('platano')

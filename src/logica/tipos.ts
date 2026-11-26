@@ -60,7 +60,7 @@ export interface Alimento {
   /** Nombres en español: el primero se muestra, todos sirven para buscar. */
   alias: string[]
   categoria: CategoriaAlimento
-  fuente: 'TACO' | 'personal'
+  fuente: 'TACO' | 'USDA' | 'personal'
   /** Por cada 100 g o 100 ml. */
   n: Nutrientes
   porciones: Porcion[]

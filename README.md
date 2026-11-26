@@ -70,7 +70,8 @@ COMIDA APP/
 
 De la **tabla TACO** (Tabela Brasileira de Composição de Alimentos, 4ª ed., NEPA/UNICAMP, 2011), que permite reproducirla citando la fuente. Son 597 alimentos con valores por cada 100 g. Los detalles están en [datos-fuente/taco/FUENTE.md](datos-fuente/taco/FUENTE.md).
 
-- Los nombres originales están en portugués. Unos 270 alimentos comunes tienen también nombre en español (`src/datos/alias-es.ts`), y se puede buscar en cualquiera de los dos idiomas.
+- 21 alimentos que TACO no trae (chía, whey, quinoa, yogur griego, mantequilla de maní…) vienen del **USDA FoodData Central** (dominio público). Ver [datos-fuente/usda/FUENTE.md](datos-fuente/usda/FUENTE.md).
+- Los nombres originales están en portugués (TACO) o inglés (USDA). Unos 270 alimentos comunes tienen también nombre en español (`src/datos/alias-es.ts`), y se puede buscar en cualquiera de los dos idiomas.
 - Las porciones caseras ("1 huevo = 50 g") están en `src/datos/porciones.ts`. Son aproximadas y se pueden editar.
 - Si TACO no tiene un dato, la app muestra **"sin dato"**, nunca 0.
 - Todos los valores son aproximados: sirven para orientarse, no son una medición exacta.

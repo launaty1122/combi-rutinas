@@ -1,0 +1,401 @@
+[
+ {
+  "id": "usda-170554",
+  "nombre": "Seeds, chia seeds, dried",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 16.54,
+   "grasa": 30.74,
+   "carbohidratos": 42.12,
+   "kcal": 486,
+   "fibra": 34.4,
+   "calcio": 631,
+   "hierro": 7.72,
+   "potasio": 407,
+   "sodio": 16,
+   "vitaminaA": null,
+   "vitaminaC": 1.6,
+   "grasaSaturada": 3.33
+  }
+ },
+ {
+  "id": "usda-173180",
+  "nombre": "Beverages, Protein powder whey based",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 78.13,
+   "grasa": 1.56,
+   "carbohidratos": 6.25,
+   "kcal": 352,
+   "fibra": 3.1,
+   "calcio": 469,
+   "hierro": 1.13,
+   "potasio": 500,
+   "sodio": 156,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.781
+  }
+ },
+ {
+  "id": "usda-168917",
+  "nombre": "Quinoa, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 4.4,
+   "grasa": 1.92,
+   "carbohidratos": 21.3,
+   "kcal": 120,
+   "fibra": 2.8,
+   "calcio": 17,
+   "hierro": 1.49,
+   "potasio": 172,
+   "sodio": 7,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.231
+  }
+ },
+ {
+  "id": "usda-168874",
+  "nombre": "Quinoa, uncooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 14.12,
+   "grasa": 6.07,
+   "carbohidratos": 64.16,
+   "kcal": 368,
+   "fibra": 7,
+   "calcio": 47,
+   "hierro": 4.57,
+   "potasio": 563,
+   "sodio": 5,
+   "vitaminaA": 1,
+   "vitaminaC": null,
+   "grasaSaturada": 0.706
+  }
+ },
+ {
+  "id": "usda-174266",
+  "nombre": "Peanut butter, smooth style, with salt (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 22.21,
+   "grasa": 51.36,
+   "carbohidratos": 22.31,
+   "kcal": 598,
+   "fibra": 5,
+   "calcio": 49,
+   "hierro": 1.74,
+   "potasio": 558,
+   "sodio": 426,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 10.325
+  }
+ },
+ {
+  "id": "usda-171304",
+  "nombre": "Yogurt, Greek, plain, whole milk",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 9,
+   "grasa": 5,
+   "carbohidratos": 3.98,
+   "kcal": 97,
+   "fibra": 0,
+   "calcio": 100,
+   "hierro": 0,
+   "potasio": 141,
+   "sodio": 35,
+   "vitaminaA": 2,
+   "vitaminaC": 0,
+   "grasaSaturada": 2.395
+  }
+ },
+ {
+  "id": "usda-170894",
+  "nombre": "Yogurt, Greek, plain, nonfat (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.19,
+   "grasa": 0.39,
+   "carbohidratos": 3.6,
+   "kcal": 59,
+   "fibra": 0,
+   "calcio": 110,
+   "hierro": 0.07,
+   "potasio": 141,
+   "sodio": 36,
+   "vitaminaA": 1,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.117
+  }
+ },
+ {
+  "id": "usda-168922",
+  "nombre": "Cornmeal, degermed, enriched, white",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 7.11,
+   "grasa": 1.75,
+   "carbohidratos": 79.45,
+   "kcal": 370,
+   "fibra": 3.9,
+   "calcio": 3,
+   "hierro": 4.36,
+   "potasio": 142,
+   "sodio": 7,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.22
+  }
+ },
+ {
+  "id": "usda-169593",
+  "nombre": "Cocoa, dry powder, unsweetened",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 19.6,
+   "grasa": 13.7,
+   "carbohidratos": 57.9,
+   "kcal": 228,
+   "fibra": 37,
+   "calcio": 128,
+   "hierro": 13.86,
+   "potasio": 1524,
+   "sodio": 21,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 8.07
+  }
+ },
+ {
+  "id": "usda-171320",
+  "nombre": "Spices, cinnamon, ground",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.99,
+   "grasa": 1.24,
+   "carbohidratos": 80.59,
+   "kcal": 247,
+   "fibra": 53.1,
+   "calcio": 1002,
+   "hierro": 8.32,
+   "potasio": 431,
+   "sodio": 10,
+   "vitaminaA": 15,
+   "vitaminaC": 3.8,
+   "grasaSaturada": 0.345
+  }
+ },
+ {
+  "id": "usda-174832",
+  "nombre": "Beverages, almond milk, unsweetened, shelf stable",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.4,
+   "grasa": 0.96,
+   "carbohidratos": 1.31,
+   "kcal": 15,
+   "fibra": 0.2,
+   "calcio": 184,
+   "hierro": 0.28,
+   "potasio": 67,
+   "sodio": 72,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.08
+  }
+ },
+ {
+  "id": "usda-172182",
+  "nombre": "Cheese, cottage, lowfat, 2% milkfat",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.45,
+   "grasa": 2.27,
+   "carbohidratos": 4.76,
+   "kcal": 81,
+   "fibra": 0,
+   "calcio": 111,
+   "hierro": 0.13,
+   "potasio": 125,
+   "sodio": 308,
+   "vitaminaA": 68,
+   "vitaminaC": 0,
+   "grasaSaturada": 1.235
+  }
+ },
+ {
+  "id": "usda-173757",
+  "nombre": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.86,
+   "grasa": 2.59,
+   "carbohidratos": 27.42,
+   "kcal": 164,
+   "fibra": 7.6,
+   "calcio": 49,
+   "hierro": 2.89,
+   "potasio": 291,
+   "sodio": 7,
+   "vitaminaA": 1,
+   "vitaminaC": 1.3,
+   "grasaSaturada": 0.269
+  }
+ },
+ {
+  "id": "usda-175036",
+  "nombre": "Tortillas, ready-to-bake or -fry, corn",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.7,
+   "grasa": 2.85,
+   "carbohidratos": 44.64,
+   "kcal": 218,
+   "fibra": 6.3,
+   "calcio": 81,
+   "hierro": 1.23,
+   "potasio": 186,
+   "sodio": 45,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.453
+  }
+ },
+ {
+  "id": "usda-170562",
+  "nombre": "Seeds, sunflower seed kernels, dried",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 20.78,
+   "grasa": 51.46,
+   "carbohidratos": 20,
+   "kcal": 584,
+   "fibra": 8.6,
+   "calcio": 78,
+   "hierro": 5.25,
+   "potasio": 645,
+   "sodio": 9,
+   "vitaminaA": 3,
+   "vitaminaC": 1.4,
+   "grasaSaturada": 4.455
+  }
+ },
+ {
+  "id": "usda-170556",
+  "nombre": "Seeds, pumpkin and squash seed kernels, dried",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 30.23,
+   "grasa": 49.05,
+   "carbohidratos": 10.71,
+   "kcal": 559,
+   "fibra": 6,
+   "calcio": 46,
+   "hierro": 8.82,
+   "potasio": 809,
+   "sodio": 7,
+   "vitaminaA": 1,
+   "vitaminaC": 1.9,
+   "grasaSaturada": 8.659
+  }
+ },
+ {
+  "id": "usda-168411",
+  "nombre": "Edamame, frozen, prepared",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 11.91,
+   "grasa": 5.2,
+   "carbohidratos": 8.91,
+   "kcal": 121,
+   "fibra": 5.2,
+   "calcio": 63,
+   "hierro": 2.27,
+   "potasio": 436,
+   "sodio": 6,
+   "vitaminaA": 15,
+   "vitaminaC": 6.1,
+   "grasaSaturada": 0.62
+  }
+ },
+ {
+  "id": "usda-171711",
+  "nombre": "Blueberries, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.74,
+   "grasa": 0.33,
+   "carbohidratos": 14.49,
+   "kcal": 57,
+   "fibra": 2.4,
+   "calcio": 6,
+   "hierro": 0.28,
+   "potasio": 77,
+   "sodio": 1,
+   "vitaminaA": 3,
+   "vitaminaC": 9.7,
+   "grasaSaturada": 0.028
+  }
+ },
+ {
+  "id": "usda-171412",
+  "nombre": "Oil, coconut",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 99.06,
+   "carbohidratos": 0,
+   "kcal": 892,
+   "fibra": 0,
+   "calcio": 1,
+   "hierro": 0.05,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 82.475
+  }
+ },
+ {
+  "id": "usda-168910",
+  "nombre": "Pasta, whole-wheat, cooked (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.99,
+   "grasa": 1.71,
+   "carbohidratos": 30.07,
+   "kcal": 149,
+   "fibra": 3.9,
+   "calcio": 13,
+   "hierro": 1.72,
+   "potasio": 96,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.243
+  }
+ },
+ {
+  "id": "usda-174289",
+  "nombre": "Hummus, commercial",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 7.78,
+   "grasa": 17.82,
+   "carbohidratos": 15,
+   "kcal": 237,
+   "fibra": 5.5,
+   "calcio": 47,
+   "hierro": 2.54,
+   "potasio": 312,
+   "sodio": 426,
+   "vitaminaA": 1,
+   "vitaminaC": 0,
+   "grasaSaturada": 2.562
+  }
+ }
+]
