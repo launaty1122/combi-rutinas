@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { BotonDictado } from '../../componentes/Dictado'
 import { Icono } from '../../componentes/Icono'
 import { SelectorCantidad, useSelectorCantidad } from '../../componentes/SelectorCantidad'
 import { nombreVisible } from '../../datos/alimentos'
@@ -362,8 +363,9 @@ function Escribir({
           className="rounded-[20px] bg-pista px-4 py-3 outline-none placeholder:text-tinta-suave focus-visible:ring-3 focus-visible:ring-limon"
         />
       </label>
+      <BotonDictado alTexto={(t) => setTexto(t)} />
       <p className="text-xs text-tinta-suave">
-        Escribe cantidades si las sabes ("200 g de arroz", "1 scoop de whey", "medio aguacate"). Separa con comas o "y".
+        Escribe o dicta cantidades si las sabes ("200 g de arroz", "1 scoop de whey", "medio aguacate"). Separa con comas o "y".
       </p>
       <button type="submit" disabled={!texto.trim()} className={botonPrincipal}>
         Entender

@@ -83,12 +83,14 @@
 .fondo-receta { --fondo: #F2923B; --fondo-tinta: #2A1606; }
 .fondo-alacena { --fondo: #AED140; --fondo-tinta: #10251E; }
 .fondo-mas { --fondo: #C9C2F7; --fondo-tinta: #10251E; }
+.fondo-progreso { --fondo: #9BD0EC; --fondo-tinta: #10251E; }
 
 [data-tema="oscuro"] .fondo-hoy { --fondo: #0F3D2F; --fondo-tinta: #F0F2DC; }
 [data-tema="oscuro"] .fondo-recetas { --fondo: #5E2236; --fondo-tinta: #FBE3EA; }
 [data-tema="oscuro"] .fondo-receta { --fondo: #5A3014; --fondo-tinta: #FCE6D2; }
 [data-tema="oscuro"] .fondo-alacena { --fondo: #34421A; --fondo-tinta: #EEF5D6; }
 [data-tema="oscuro"] .fondo-mas { --fondo: #3A3360; --fondo-tinta: #EDEAFE; }
+[data-tema="oscuro"] .fondo-progreso { --fondo: #1D4B63; --fondo-tinta: #E4F3FB; }
 
 html,
 body,

@@ -4,7 +4,7 @@ App personal para organizar la alimentación: alacena, recetario y (más adelant
 
 **La app:** https://launaty1122.github.io/combi-rutinas/
 
-> Estado: **Fase 2 publicada**: diario de comidas (buscar, recetas, guardadas o escribiendo), agua y resumen del día, además de todo lo de la Fase 1 (alacena, mercado, recetario, importar recetas, alimentos propios, backup). Lo siguiente es la Fase 3: progreso, medidas y extras.
+> Estado: **Fase 3 publicada** (progreso con medidas, peso y gráficas; buscador por nutriente; dictado por voz; escáner de código de barras con Open Food Facts). Falta de la Fase 3: leer la tabla nutricional con foto (OCR).
 
 ## Qué necesitas en el computador
 

@@ -9,7 +9,7 @@ import { Alacena } from './pantallas/alacena/Alacena'
 import { Mercado } from './pantallas/alacena/Mercado'
 import { Hoy } from './pantallas/hoy/Hoy'
 import { Mas } from './pantallas/Mas'
-import { Proximamente } from './pantallas/Proximamente'
+import { Progreso } from './pantallas/progreso/Progreso'
 import { Receta } from './pantallas/recetas/Receta'
 import { Recetas } from './pantallas/recetas/Recetas'
 import { useUbicacion } from './rutas'
@@ -69,7 +69,7 @@ export default function App() {
   else if (ruta === 'alacena') pantalla = <Alacena abrirAgregar={abrir === 'alacena'} alCerrarAgregar={cerrarAbrir} />
   else if (ruta === 'recetas') pantalla = param ? <Receta id={param} /> : <Recetas alAgregar={alAgregar} />
   else if (ruta === 'mas') pantalla = <Mas tema={tema} setTema={setTema} alAgregar={alAgregar} />
-  else pantalla = <Proximamente ruta={ruta} alAgregar={alAgregar} />
+  else pantalla = <Progreso alAgregar={alAgregar} />
 
   return (
     <>

@@ -28,21 +28,25 @@ const CAMPOS: { k: Nutriente; nombre: string; unidad: string; principal?: boolea
 export function CrearAlimento({
   nombreInicial = '',
   inicial,
+  plantilla,
   alGuardar,
 }: {
   nombreInicial?: string
   /** Para editar un alimento propio que ya existe. */
   inicial?: Alimento
+  /** Datos para empezar (por ejemplo, de un código de barras); los valores son por 100 g. */
+  plantilla?: { nombre: string; n: Alimento['n']; porcion?: { nombre: string; gramos: number } }
   alGuardar: (a: Alimento) => void
 }) {
-  const [nombre, setNombre] = useState(inicial?.nombre ?? nombreInicial)
+  const base0 = inicial ?? (plantilla ? { nombre: plantilla.nombre, n: plantilla.n, porciones: plantilla.porcion ? [plantilla.porcion] : [] } : undefined)
+  const [nombre, setNombre] = useState(base0?.nombre ?? nombreInicial)
   const [categoria, setCategoria] = useState<CategoriaAlimento>(inicial?.categoria ?? 'otros')
   const [base, setBase] = useState<'100' | 'porcion'>('100')
-  const [gramosPorcion, setGramosPorcion] = useState(inicial?.porciones[0] ? String(inicial.porciones[0].gramos) : '')
-  const [nombrePorcion, setNombrePorcion] = useState(inicial?.porciones[0]?.nombre ?? '')
+  const [gramosPorcion, setGramosPorcion] = useState(base0?.porciones[0] ? String(base0.porciones[0].gramos) : '')
+  const [nombrePorcion, setNombrePorcion] = useState(base0?.porciones[0]?.nombre ?? '')
   const [liquido, setLiquido] = useState(!!inicial?.liquido)
   const [valores, setValores] = useState<Partial<Record<Nutriente, string>>>(() =>
-    inicial ? Object.fromEntries(CAMPOS.map((c) => [c.k, inicial.n[c.k] === null ? '' : String(inicial.n[c.k])])) : {},
+    base0 ? Object.fromEntries(CAMPOS.map((c) => [c.k, base0.n[c.k] === null ? '' : String(base0.n[c.k])])) : {},
   )
   const [verMas, setVerMas] = useState(false)
 

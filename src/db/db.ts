@@ -5,6 +5,7 @@ import type {
   Compra,
   ItemAlacena,
   ItemMercado,
+  Medida,
   PrecioGuardado,
   Receta,
   RegistroAgua,
@@ -32,6 +33,7 @@ export class BaseCombi extends Dexie {
   diario!: EntityTable<RegistroComida, 'id'>
   agua!: EntityTable<RegistroAgua, 'id'>
   comidasGuardadas!: EntityTable<ComidaGuardada, 'id'>
+  medidas!: EntityTable<Medida, 'id'>
 
   constructor(nombre = 'combi-rutinas') {
     super(nombre)
@@ -53,6 +55,10 @@ export class BaseCombi extends Dexie {
       diario: 'id, fecha',
       agua: 'id, fecha',
       comidasGuardadas: 'id',
+    })
+    // Versión 4 (Fase 3): peso y medidas corporales.
+    this.version(4).stores({
+      medidas: 'id, fecha, tipo',
     })
   }
 }

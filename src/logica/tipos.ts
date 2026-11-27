@@ -155,6 +155,16 @@ export interface ComidaGuardada {
   items: ItemComida[]
 }
 
+export type TipoMedida = 'cintura' | 'cadera' | 'brazo' | 'muslo' | 'peso'
+
+/** Una medida corporal (en cm) o el peso (en kg), en una fecha. */
+export interface Medida {
+  id: string
+  fecha: string
+  tipo: TipoMedida
+  valor: number
+}
+
 export interface IngredienteReceta {
   alimentoId: string
   /** Cantidad para la receta completa (todas sus porciones), en g o ml. */

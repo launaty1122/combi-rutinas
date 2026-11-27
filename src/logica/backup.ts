@@ -1,7 +1,7 @@
-import type { Alimento, ComidaGuardada, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta, RegistroAgua, RegistroComida } from './tipos'
+import type { Alimento, ComidaGuardada, Medida, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta, RegistroAgua, RegistroComida } from './tipos'
 
 export const APP_BACKUP = 'combi-rutinas'
-export const VERSION_BACKUP = 3
+export const VERSION_BACKUP = 4
 
 export interface DatosBackup {
   alacena: ItemAlacena[]
@@ -16,6 +16,8 @@ export interface DatosBackup {
   diario: RegistroComida[]
   agua: RegistroAgua[]
   comidasGuardadas: ComidaGuardada[]
+  /** Desde la versión 4 (peso y medidas). */
+  medidas: Medida[]
 }
 
 export interface Backup {
@@ -63,6 +65,7 @@ export function leerBackup(texto: string): LecturaBackup {
     diario: Array.isArray(d.diario) ? d.diario : [],
     agua: Array.isArray(d.agua) ? d.agua : [],
     comidasGuardadas: Array.isArray(d.comidasGuardadas) ? d.comidasGuardadas : [],
+    medidas: Array.isArray(d.medidas) ? d.medidas : [],
   }
   const malos =
     datos.alacena.some((i) => typeof i?.id !== 'string' || typeof i?.alimentoId !== 'string' || typeof i?.gramos !== 'number') ||
@@ -71,7 +74,8 @@ export function leerBackup(texto: string): LecturaBackup {
     datos.ajustes.some((a) => typeof a?.clave !== 'string') ||
     datos.mercado.some((m) => typeof m?.id !== 'string' || (m?.tipo !== 'alimento' && m?.tipo !== 'otro')) ||
     datos.diario.some((r) => typeof r?.id !== 'string' || typeof r?.fecha !== 'string' || typeof r?.n !== 'object') ||
-    datos.agua.some((a) => typeof a?.id !== 'string' || typeof a?.ml !== 'number')
+    datos.agua.some((a) => typeof a?.id !== 'string' || typeof a?.ml !== 'number') ||
+    datos.medidas.some((m) => typeof m?.id !== 'string' || typeof m?.valor !== 'number')
   if (malos) return { ok: false, error: 'El backup tiene datos dañados. No se importó nada.' }
 
   const resumen = `${datos.recetas.length} recetas, ${datos.alacena.length} cosas en la alacena, ${datos.mercado.length} en la lista del mercado, ${datos.alimentosPersonales.length} alimentos propios y ${datos.diario.length} registros del diario`
