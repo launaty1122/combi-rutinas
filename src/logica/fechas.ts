@@ -24,6 +24,22 @@ export function textoVencimiento(dias: number): string {
   return `en ${dias} días`
 }
 
+/** Suma (o resta) días a una fecha AAAA-MM-DD. */
+export function sumarDias(fechaISO: string, dias: number): string {
+  const [a, m, d] = fechaISO.split('-').map(Number)
+  return hoyISO(new Date(a, m - 1, d + dias))
+}
+
+/** "Hoy", "Ayer", "Mañana" o "jueves 20 nov". */
+export function nombreDia(fechaISO: string, hoy: string = hoyISO()): string {
+  const dif = diasHasta(fechaISO, hoy)
+  if (dif === 0) return 'Hoy'
+  if (dif === -1) return 'Ayer'
+  if (dif === 1) return 'Mañana'
+  const [a, m, d] = fechaISO.split('-').map(Number)
+  return new Date(a, m - 1, d).toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'short' }).replace('.', '')
+}
+
 /** "25 nov" a partir de AAAA-MM-DD. */
 export function fechaCorta(fechaISO: string): string {
   const [a, m, d] = fechaISO.split('-').map(Number)

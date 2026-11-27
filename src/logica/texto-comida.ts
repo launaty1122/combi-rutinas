@@ -68,7 +68,10 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
     .filter((x) => x.length > 1)
 
   const partes: ParteInterpretada[] = trozos.map((trozo) => {
-    const palabras = trozo.split(' ')
+    // Cantidad al final: "quinoa cocida 150 g" → "150 g de quinoa cocida".
+    const alFinal = trozo.match(/^(.*?)\s+(\d+(?:[.,]\d+)?)\s*(g|gr|gramos|ml|kg)$/)
+    const ordenado = alFinal ? `${alFinal[2]} ${alFinal[3]} de ${alFinal[1]}` : trozo
+    const palabras = ordenado.split(' ')
     // 1. Cantidad: número ("2", "1,5", "200g") o palabra ("dos", "media").
     let cantidad = 1
     let i = 0
@@ -97,7 +100,12 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
     } else if (unidad && palabras[i] === 'de') {
       i += 1
     }
-    const nombre = palabras.slice(i).join(' ').replace(/^(de|del|la|el|los|las)\s+/, '')
+    // Palabras de "recipiente" que no son el alimento: "bowl de quinoa" → "quinoa".
+    const nombre = palabras
+      .slice(i)
+      .join(' ')
+      .replace(/^(de|del|la|el|los|las)\s+/, '')
+      .replace(/^(bowl|plato|porcion|poco|poquito)\s+(de\s+)?/, '')
 
     // 3. Alimento: entre los resultados, se prefiere uno que tenga esa unidad como porción.
     const candidatos = nombre ? buscar(nombre, 8) : []

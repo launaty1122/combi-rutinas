@@ -71,7 +71,7 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
   ]
 
   return (
-    <div className="fondo-receta relative min-h-dvh overflow-x-hidden bg-fondo">
+    <div className="fondo-receta relative min-h-dvh overflow-x-clip bg-fondo">
       <div className="relative h-52 text-fondo-tinta">
         <span className="pointer-events-none absolute -top-16 left-1/2 w-72 -translate-x-1/2 text-limon/70 dark:text-white/10">
           <Mancha className="w-72" />

@@ -86,6 +86,13 @@ describe('registrar por texto', () => {
     expect(r.partes[1].gramos).toBe(150)
   })
 
+  it('entiende la cantidad al final y quita "bowl de"', () => {
+    const r = interpretarTexto('bowl de quinoa cocida 150 g', buscar)
+    expect(r.partes[0].alimento?.id).toBe('usda-168917')
+    expect(r.partes[0].gramos).toBe(150)
+    expect(r.partes[0].seguro).toBe(true)
+  })
+
   it('entiende porciones con nombre: "1 scoop de whey"', () => {
     const r = interpretarTexto('1 scoop de whey', buscar)
     expect(r.partes[0].alimento?.id).toBe('usda-173180')

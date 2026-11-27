@@ -4,7 +4,7 @@ App personal para organizar la alimentación: alacena, recetario y (más adelant
 
 **La app:** https://launaty1122.github.io/combi-rutinas/
 
-> Estado: **Fase 1 terminada y publicada** (alacena, mercado, recetario, importar recetas, alimentos propios, backup). Lo siguiente es la Fase 2: diario de comidas, agua y metas.
+> Estado: **Fase 2 publicada**: diario de comidas (buscar, recetas, guardadas o escribiendo), agua y resumen del día, además de todo lo de la Fase 1 (alacena, mercado, recetario, importar recetas, alimentos propios, backup). Lo siguiente es la Fase 3: progreso, medidas y extras.
 
 ## Qué necesitas en el computador
 
@@ -87,6 +87,19 @@ En **Recetas → Importar** está el botón **"Copiar instrucciones para IA"**. 
 ## Backup (¡importante!)
 
 Tus datos viven **solo en el celular**. En **Más → Backup → Exportar** se descarga un archivo `.json` con todo: alacena, recetas, alimentos propios y ajustes. Guárdalo en Drive o mándatelo por correo. Para recuperarlo: **Más → Backup → Importar** (reemplaza lo que haya en la app).
+
+## Recordatorios de agua: qué se puede y qué no
+
+Combi Rutinas es una web app sin servidor (todo vive en el celular). Siendo honestos, así quedan las opciones en Android:
+
+| Opción | ¿Funciona con la app cerrada? | Estado |
+| --- | --- | --- |
+| **Aviso dentro de la app**: si es de día, vas por debajo de lo esperado a esa hora y llevas más de 2 horas sin anotar agua, Hoy te lo recuerda con un mensaje suave. | No: solo cuando abres la app. | ✅ Hecho |
+| Notificaciones programadas desde el celular (Notification Triggers). | Sí, en teoría | ❌ Chrome nunca la lanzó: no existe. |
+| Periodic Background Sync. | A veces | ❌ Chrome decide cuándo correrlo (como mucho cada ~12 h y según cuánto uses la app). No sirve para "cada 2 horas". |
+| Notificaciones push (como WhatsApp). | Sí | ⏸️ Necesitan un servidor que las envíe. Hay opciones gratuitas (por ejemplo Cloudflare Workers con un horario, o la app **ntfy**), pero agregan un servicio externo. Lo dejamos para después. |
+
+**Mientras tanto, lo más confiable y gratis:** una alarma o recordatorio repetido en el reloj del celular o en Google Calendar ("Toma agua 💧", cada 2 horas de 9 a 21). Al tocarla, abres Combi Rutinas y anotas el vaso con el botón **+**.
 
 ## De dónde salen los valores nutricionales
 

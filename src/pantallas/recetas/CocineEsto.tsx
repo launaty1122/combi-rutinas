@@ -7,6 +7,10 @@ import { descontarDeAlacena } from '../../logica/alacena'
 import { escalarIngredientes } from '../../logica/escalar'
 import type { ItemAlacena, Receta } from '../../logica/tipos'
 import { formatearGramos } from '../../logica/unidades'
+import { registrar } from '../../db/diario'
+import { MOMENTOS } from '../../logica/diario'
+import { hoyISO } from '../../logica/fechas'
+import type { MomentoComida } from '../../logica/tipos'
 
 interface Props {
   receta: Receta
@@ -32,25 +36,7 @@ export function CocineEsto({ receta, porcionesIniciales, alacena, basicos, catal
   const liquido = (id: string) => catalogo.porId.get(id)?.liquido
 
   if (paso === 'listo') {
-    return (
-      <div className="flex flex-col items-center gap-4 pt-2 text-center">
-        <div className="flex size-28 items-center justify-center rounded-[46%_54%_58%_42%/52%_44%_56%_48%] bg-limon-verde text-noche">
-          <Icono nombre="check" tam={44} />
-        </div>
-        <p className="font-titulo text-2xl font-semibold">¡Que lo disfrutes!</p>
-        <p className="max-w-xs text-tinta-suave">
-          Ya descontamos los ingredientes de tu alacena. Cuando llegue el diario (Fase 2), aquí anotarás cuántas
-          porciones comiste.
-        </p>
-        <button
-          type="button"
-          onClick={alTerminar}
-          className="h-14 w-full rounded-full bg-limon-verde font-titulo text-lg font-semibold text-noche"
-        >
-          Listo
-        </button>
-      </div>
-    )
+    return <AnotarComido receta={receta} catalogo={catalogo} alTerminar={alTerminar} />
   }
 
   return (
@@ -134,6 +120,61 @@ export function Contador({
         className="flex size-12 items-center justify-center"
       >
         <Icono nombre="agregar" tam={18} />
+      </button>
+    </div>
+  )
+}
+
+/** Después de cocinar: ¿cuánto comiste y en qué comida? Se anota en el diario de hoy. */
+function AnotarComido({ receta, catalogo, alTerminar }: { receta: Receta; catalogo: Catalogo; alTerminar: () => void }) {
+  const h = new Date().getHours()
+  const [porciones, setPorciones] = useState(1)
+  const [momento, setMomento] = useState<MomentoComida>(h < 11 ? 'desayuno' : h < 16 ? 'almuerzo' : h < 19 ? 'merienda' : 'cena')
+  const [anotado, setAnotado] = useState(false)
+  return (
+    <div className="flex flex-col items-center gap-4 pt-2 text-center">
+      <div className="flex size-24 items-center justify-center rounded-[46%_54%_58%_42%/52%_44%_56%_48%] bg-limon-verde text-noche">
+        <Icono nombre="check" tam={40} />
+      </div>
+      <p className="font-titulo text-2xl font-semibold">¡Que lo disfrutes!</p>
+      <p className="max-w-xs text-tinta-suave">Ya descontamos los ingredientes de tu alacena.</p>
+      {anotado ? (
+        <p className="font-bold">Anotado en tu diario de hoy.</p>
+      ) : (
+        <div className="flex w-full flex-col gap-3 text-left">
+          <div className="flex items-center justify-between gap-3 rounded-[24px] bg-pista p-2 pl-5">
+            <span className="font-bold">¿Cuánto comiste?</span>
+            <Contador valor={porciones} alCambiar={setPorciones} />
+          </div>
+          <div className="-mx-5 flex gap-2 overflow-x-auto px-5 [scrollbar-width:none]" role="radiogroup" aria-label="¿En qué comida?">
+            {MOMENTOS.filter((m) => m.id !== 'otro').map((m) => (
+              <button
+                key={m.id}
+                type="button"
+                role="radio"
+                aria-checked={momento === m.id}
+                onClick={() => setMomento(m.id)}
+                className={`h-10 shrink-0 rounded-full px-4 text-sm font-bold ${momento === m.id ? 'text-noche' : 'bg-pista'}`}
+                style={momento === m.id ? { background: m.color } : undefined}
+              >
+                {m.nombre}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={async () => {
+              await registrar(hoyISO(), momento, { tipo: 'receta', recetaId: receta.id, porciones }, { alimentos: catalogo.porId, recetas: new Map([[receta.id, receta]]) })
+              setAnotado(true)
+            }}
+            className="h-14 rounded-full bg-limon-verde font-titulo text-lg font-semibold text-noche"
+          >
+            Anotar en mi diario
+          </button>
+        </div>
+      )}
+      <button type="button" onClick={alTerminar} className="h-12 w-full rounded-full bg-pista font-bold">
+        {anotado ? 'Listo' : 'Ahora no'}
       </button>
     </div>
   )

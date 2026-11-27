@@ -28,7 +28,7 @@ interface Props {
  */
 export function Pantalla({ ruta, titulo, subtitulo, accion, cabecera, alAgregar, children }: Props) {
   return (
-    <div className={`fondo-${ruta} relative flex min-h-dvh flex-col overflow-x-hidden bg-fondo`}>
+    <div className={`fondo-${ruta} relative flex min-h-dvh flex-col overflow-x-clip bg-fondo`}>
       <Mancha className="pointer-events-none absolute -top-24 -right-20 w-64 text-white/15" />
       <header className="relative px-5 pt-7 pb-6 text-fondo-tinta">
         <div className="flex items-end justify-between gap-3">
