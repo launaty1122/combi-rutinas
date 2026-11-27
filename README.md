@@ -2,7 +2,9 @@
 
 App personal para organizar la alimentación: alacena, recetario y (más adelante) diario de comidas y agua. Funciona en el celular como una app instalada, sin internet y sin cuentas: todo se guarda en el propio celular.
 
-> Estado: **Fase 1 en construcción.** Por ahora solo está la base (colores, letras, modo claro/oscuro y modo sin internet).
+**La app:** https://launaty1122.github.io/combi-rutinas/
+
+> Estado: **Fase 1 terminada y publicada** (alacena, mercado, recetario, importar recetas, alimentos propios, backup). Lo siguiente es la Fase 2: diario de comidas, agua y metas.
 
 ## Qué necesitas en el computador
 
@@ -37,7 +39,19 @@ Abre una terminal en la carpeta del proyecto (`COMIDA APP`) y escribe:
 
 ## Publicar e instalar en el celular
 
-*Se completa al final de la Fase 1.* El plan es publicarla gratis en **GitHub Pages** (con HTTPS, que es necesario para instalarla). Después, en el celular: abrir el enlace en Chrome → menú ⋮ → **Agregar a la pantalla principal**.
+La app está publicada gratis en **GitHub Pages**: https://launaty1122.github.io/combi-rutinas/
+
+**Cómo se publica un cambio:** al subir el código a GitHub (`git push`), GitHub corre solo las pruebas y, si todas pasan, publica la nueva versión en 1–2 minutos (ver `.github/workflows/publicar.yml`). Si una prueba falla, no se publica nada. El avance se ve en la pestaña **Actions** del repositorio.
+
+**Instalarla en el celular (Android):**
+
+1. Abre el enlace en **Chrome**.
+2. Toca el menú **⋮** → **Agregar a la pantalla principal** (o **Instalar app**).
+3. Ya aparece con su ícono, como cualquier app, y funciona sin internet.
+
+Cuando hay una versión nueva, la app se actualiza sola la próxima vez que la abres con internet. Tus datos **no** se borran al actualizar: viven en el celular, aparte del código.
+
+**Repositorio público:** cualquiera puede ver el código, pero **no tus datos** (alacena, recetas, comidas), que nunca salen del celular.
 
 ## Cómo está organizado el proyecto
 
