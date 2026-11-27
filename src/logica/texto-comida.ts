@@ -40,6 +40,8 @@ export interface ParteInterpretada {
   seguro: boolean
   /** true si no encontró el nombre completo y usó solo una parte ("pollo teriyaki" → pollo). */
   aproximado: boolean
+  /** Si la cantidad se dio con la mano (palma, puño, puñado, pulgar). */
+  mano: MedidaMano | null
 }
 
 export interface Interpretacion {
@@ -76,6 +78,52 @@ function buscarConRespaldo(nombre: string, buscar: (q: string, limite?: number) 
 
 const singular = (p: string) => p.replace(/(es|s)$/, '')
 
+/** Unidades caseras conocidas (para "taza de arroz" sin número delante). */
+const UNIDADES = new Set(['taza', 'cucharada', 'cucharadita', 'tajada', 'vaso', 'scoop', 'pote', 'lata', 'porcion', 'pedazo', 'trozo', 'presa', 'filete', 'plato', 'bowl', 'copo', 'colher', 'fatia', 'xicara'])
+
+/**
+ * Medidas con la mano (método de porciones con la mano, muy usado en nutrición):
+ *   palma  → una porción de proteína (carne, pollo, pescado) ≈ 100 g cocidos
+ *   puño   → ≈ 1 taza (arroz, pasta, legumbres, fruta)
+ *   puñado → ≈ 30 g (frutos secos, semillas) o la porción "puñado" del alimento
+ *   pulgar → ≈ 1 cucharada (grasas: aceite, mantequilla, mantequilla de maní) ≈ 13 g
+ * Son aproximadas: cada mano es distinta.
+ */
+export type MedidaMano = 'palma' | 'puno' | 'punado' | 'pulgar'
+
+const MANO: [RegExp, MedidaMano][] = [
+  [/(del?\s+)?tamano\s+de\s+(mi\s+|la\s+|una\s+)?(palma|mano)(\s+de\s+(mi\s+|la\s+)?mano)?/, 'palma'],
+  [/(del?\s+)?tamano\s+de\s+(mi\s+|un\s+)?puno/, 'puno'],
+  [/\b(una?\s+|dos\s+|media\s+)?palmas?(\s+de\s+(mi\s+|la\s+)?mano)?(\s+de)?\b/, 'palma'],
+  [/\bpunados?(\s+de)?\b/, 'punado'],
+  [/\bpunos?(\s+de)?\b/, 'puno'],
+  [/\bpulgar(es)?(\s+de)?\b/, 'pulgar'],
+]
+
+/** Gramos de una medida con la mano para un alimento (por cada mano/puño/puñado/pulgar). */
+export function gramosMano(m: MedidaMano, a: Alimento): number {
+  const porcionCon = (palabra: string) => a.porciones.find((p) => normalizar(p.nombre).includes(palabra))
+  if (m === 'palma') return 100
+  if (m === 'pulgar') return 13
+  if (m === 'punado') return porcionCon('punado')?.gramos ?? 30
+  // puño ≈ 1 taza
+  const taza = porcionCon('taza')
+  if (taza) return normalizar(taza.nombre).startsWith('½') ? taza.gramos * 2 : taza.gramos
+  if (a.categoria === 'verduras') return 80
+  if (a.categoria === 'frutas') return 120
+  return 150
+}
+
+/** Unidades "de a ojo" que no son medidas exactas: se estiman y se marcan para revisar. */
+const GENERICAS = new Set(['pedazo', 'trozo', 'presa', 'porcion', 'pieza', 'unidad', 'pedaco', 'fatia'])
+
+/** ¿Comparten alguna palabra de 4+ letras? Para no sugerir cosas sin relación ("ensalada" ↔ "leche condensada"). */
+function relacionado(a: Alimento, consulta: string) {
+  const palabras = (s: string) => new Set(normalizar(s).split(/[^a-z]+/).filter((w) => w.length >= 4).map(singular))
+  const q = palabras(consulta)
+  return [...a.alias, a.nombre].some((n) => [...palabras(n)].some((w) => q.has(w)))
+}
+
 /** Busca entre las porciones del alimento una que coincida con la unidad ("tajada" ↔ "1 tajada"). */
 function porcionDeUnidad(a: Alimento, unidad: string) {
   const u = singular(normalizar(unidad))
@@ -103,7 +151,20 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
     .map((x) => x.replace(/\s+/g, ' ').trim())
     .filter((x) => x.length > 1)
 
-  const partes: ParteInterpretada[] = trozos.map((trozo) => {
+  const partes: ParteInterpretada[] = trozos.map((trozoOriginal) => {
+    // Medidas con la mano: "del tamaño de mi mano", "un puño de", "un puñado", "un pulgar".
+    let mano: MedidaMano | null = null
+    let cantidadMano = 1
+    let trozo = trozoOriginal
+    for (const [re, tipo] of MANO) {
+      const m = trozo.match(re)
+      if (m) {
+        mano = tipo
+        cantidadMano = /^\s*dos\b/.test(m[0]) ? 2 : /^\s*media\b/.test(m[0]) ? 0.5 : 1
+        trozo = trozo.replace(re, ' ').replace(/\s+/g, ' ').replace(/\bde\s*$/, '').trim()
+        break
+      }
+    }
     // Cantidad al final: "quinoa cocida 150 g" → "150 g de quinoa cocida".
     const alFinal = trozo.match(/^(.*?)\s+(\d+(?:[.,]\d+)?)\s*(g|gr|gramos|ml|kg)$/)
     const ordenado = alFinal ? `${alFinal[2]} ${alFinal[3]} de ${alFinal[1]}` : trozo
@@ -125,8 +186,9 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
         i = 2
       }
     }
-    // 2. Unidad: "g", "tajada", "taza"… seguida de "de".
-    if (!unidad && palabras[i + 1] === 'de' && palabras[i]) {
+    // 2. Unidad: "g", "tajada", "taza"… seguida de "de". Sin número antes, solo si es una
+    // unidad conocida ("carne de cerdo" es un alimento, no "carne" como unidad).
+    if (!unidad && palabras[i + 1] === 'de' && palabras[i] && (i > 0 || UNIDADES.has(singular(palabras[i])))) {
       unidad = palabras[i]
       i += 2
     } else if (!unidad && palabras[i] && GRAMOS[palabras[i]] !== undefined) {
@@ -163,6 +225,11 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
           const fraccion = p.nombre.startsWith('½') ? 0.5 : p.nombre.startsWith('¼') ? 0.25 : 1
           gramos = (cantidad * p.gramos) / fraccion
           seguro = true
+        } else if (GENERICAS.has(singular(normalizar(unidad)))) {
+          // "2 pedazos de…" y el alimento no tiene porción "pedazo": se estima con su
+          // primera porción, o 100 g por pedazo, y se marca para revisar.
+          const p0 = alimento.porciones[0]
+          gramos = cantidad * (p0 ? p0.gramos : 100)
         }
       } else if (alimento.porciones[0]) {
         const p = alimento.porciones[0]
@@ -173,12 +240,19 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
         gramos = cantidad * 100
       }
     }
+    // Medida con la mano: manda sobre lo demás ("2 puños de arroz" = 2 × 1 taza).
+    if (mano && alimento) {
+      const veces = cantidad !== 1 ? cantidad : cantidadMano
+      gramos = veces * gramosMano(mano, alimento)
+      seguro = true
+    }
     return {
-      texto: trozo,
+      mano,
+      texto: trozoOriginal,
       cantidad,
       unidad,
       alimento,
-      alternativas: candidatos.filter((a) => a !== alimento).slice(0, 4),
+      alternativas: candidatos.filter((a) => a !== alimento && relacionado(a, nombre)).slice(0, 4),
       gramos: Math.round(gramos * 10) / 10,
       seguro,
       aproximado,

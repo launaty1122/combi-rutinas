@@ -135,6 +135,44 @@ describe('registrar por texto', () => {
     expect(r.partes[1].aproximado).toBe(true)
   })
 
+  it('la frase de Lau: "3 cucharadas de arroz, ensalada, 2 pedazos de carne de cerdo."', () => {
+    const r = interpretarTexto('3 cucharadas de arroz, ensalada, 2 pedazos de carne de cerdo.', buscar)
+    expect(r.partes).toHaveLength(3)
+    expect(r.partes[0].alimento?.id).toBe('taco-3')
+    expect(r.partes[0].gramos).toBe(75)
+    expect(r.partes[1].alimento?.id).toBe('taco-161')
+    expect(r.partes[1].gramos).toBe(100)
+    expect(r.partes[1].seguro).toBe(true)
+    expect(r.partes[2].alimento?.alias[0]).toMatch(/cerdo/i) // cerdo, no res
+    expect(r.partes[2].gramos).toBe(160) // 2 pedazos × 80 g
+    expect(r.partes[2].seguro).toBe(true)
+    // Sin sugerencias absurdas: todas comparten alguna palabra con lo que escribiste.
+    expect(r.partes[1].alternativas.every((a) => /ensalada|salada/i.test(a.alias.join(' ') + a.nombre))).toBe(true)
+  })
+
+  it('medidas con la mano: "carne de cerdo del tamaño de mi mano"', () => {
+    const r = interpretarTexto('carne de cerdo del tamaño de mi mano', buscar)
+    expect(r.partes[0].alimento?.alias[0]).toMatch(/cerdo/i)
+    expect(r.partes[0].mano).toBe('palma')
+    expect(r.partes[0].gramos).toBe(100)
+  })
+
+  it('"un puño de arroz" ≈ 1 taza; "dos palmas de pollo"; "un puñado de maní"; "un pulgar de mantequilla"', () => {
+    const r = interpretarTexto('un puño de arroz, dos palmas de pollo, un puñado de maní y un pulgar de mantequilla', buscar)
+    expect(r.partes.map((p) => [p.mano, p.gramos])).toEqual([
+      ['puno', 160],
+      ['palma', 200],
+      ['punado', 30],
+      ['pulgar', 13],
+    ])
+  })
+
+  it('"2 trozos de yuca" sin porción "trozo": estima y lo marca para revisar', () => {
+    const r = interpretarTexto('2 trozos de lentejas', buscar)
+    expect(r.partes[0].seguro).toBe(false)
+    expect(r.partes[0].gramos).toBeGreaterThan(0)
+  })
+
   it('"feijão" es el carioca (el de todos los días en Brasil)', () => {
     expect(interpretarTexto('feijão', buscar).partes[0].alimento?.id).toBe('taco-561')
   })

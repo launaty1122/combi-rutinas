@@ -16,6 +16,8 @@ import { Contador } from '../recetas/CocineEsto'
 
 type Pestana = 'buscar' | 'recetas' | 'guardadas' | 'escribir'
 
+const NOMBRE_MANO = { palma: 'una palma', puno: 'un puño', punado: 'un puñado', pulgar: 'un pulgar' } as const
+
 interface Props {
   fecha: string
   momentoInicial: MomentoComida
@@ -355,7 +357,12 @@ function Escribir({
               {p.aproximado && p.alimento && (
                 <p className="mt-1 text-xs font-bold">No tengo "{p.texto}" tal cual: puse lo más parecido. Revísalo.</p>
               )}
-              {!p.seguro && p.alimento && <p className="mt-1 text-xs font-bold">Revisa la cantidad: puse 100 g porque no la dijiste.</p>}
+              {p.mano && p.alimento && (
+                <p className="mt-1 text-xs">
+                  Medida con la mano ({NOMBRE_MANO[p.mano]}): unos {Math.round(p.gramos)} {p.alimento.liquido ? 'ml' : 'g'}. Cada mano es distinta: ajústalo si quieres.
+                </p>
+              )}
+              {!p.seguro && p.alimento && <p className="mt-1 text-xs font-bold">Revisa la cantidad: es un cálculo aproximado.</p>}
               <button
                 type="button"
                 onClick={() => setBuscandoParte(i)}
@@ -421,7 +428,7 @@ function Escribir({
       </label>
       <BotonDictado alTexto={(t) => setTexto(t)} />
       <p className="text-xs text-tinta-suave">
-        Escribe o dicta cantidades si las sabes ("200 g de arroz", "1 scoop de whey", "medio aguacate"). Separa con comas o "y".
+        Escríbelo todo junto, como lo dirías: "3 cucharadas de arroz, ensalada y 2 pedazos de cerdo". Si no sabes cuánto, usa tu mano: <strong>palma</strong> (carne), <strong>puño</strong> (≈ 1 taza), <strong>puñado</strong> o <strong>pulgar</strong> (grasas).
       </p>
       <button type="submit" disabled={!texto.trim()} className={botonPrincipal}>
         Entender
