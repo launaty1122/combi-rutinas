@@ -72,7 +72,7 @@ En **Recetas → Importar** está el botón **"Copiar instrucciones para IA"**. 
 
 ## Backup (¡importante!)
 
-Tus datos viven **solo en el celular**. En **Más → Backup → Exportar** se descarga un archivo  con todo: alacena, recetas, alimentos propios y ajustes. Guárdalo en Drive o mándatelo por correo. Para recuperarlo: **Más → Backup → Importar** (reemplaza lo que haya en la app).
+Tus datos viven **solo en el celular**. En **Más → Backup → Exportar** se descarga un archivo `.json` con todo: alacena, recetas, alimentos propios y ajustes. Guárdalo en Drive o mándatelo por correo. Para recuperarlo: **Más → Backup → Importar** (reemplaza lo que haya en la app).
 
 ## De dónde salen los valores nutricionales
 
