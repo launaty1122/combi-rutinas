@@ -6,8 +6,19 @@ import type { Catalogo } from '../../datos/catalogo'
 import type { Alimento } from '../../logica/tipos'
 
 /** Buscador de alimentos (TACO, USDA y personales) para elegir uno. */
-export function BuscarAlimento({ catalogo, alElegir }: { catalogo: Catalogo; alElegir: (a: Alimento) => void }) {
-  const [q, setQ] = useState('')
+export function BuscarAlimento({
+  catalogo,
+  alElegir,
+  consultaInicial = '',
+  alCrear,
+}: {
+  catalogo: Catalogo
+  alElegir: (a: Alimento) => void
+  consultaInicial?: string
+  /** Si se pasa, aparece "Crear alimento" para lo que no está en la base. */
+  alCrear?: (nombre: string) => void
+}) {
+  const [q, setQ] = useState(consultaInicial)
   const resultados = catalogo.buscar(q, 25)
 
   return (
@@ -55,6 +66,16 @@ export function BuscarAlimento({ catalogo, alElegir }: { catalogo: Catalogo; alE
           )
         })}
       </ul>
+
+      {alCrear && q.trim() !== '' && (
+        <button
+          type="button"
+          onClick={() => alCrear(q.trim())}
+          className="flex min-h-12 items-center gap-2 rounded-full bg-pista px-5 text-left text-sm font-bold"
+        >
+          <Icono nombre="agregar" tam={18} /> ¿No está? Crear "{q.trim()}" con la tabla del empaque
+        </button>
+      )}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { Hoja } from '../../componentes/Hoja'
 import { Icono, Mancha } from '../../componentes/Icono'
 import { nombreVisible } from '../../datos/alimentos'
 import { useCatalogo } from '../../datos/catalogo'
-import { NOMBRE_ETIQUETA } from '../../datos/etiquetas'
+import { guardarEtiquetasReceta, useGruposEtiquetas } from '../../db/etiquetas'
 import { useAlacena } from '../../db/alacena'
 import { useBasicos, useSinCalorias } from '../../db/ajustes'
 import { alternarFavorita, guardarNotas, guardarObjetivo, useReceta } from '../../db/recetas'
@@ -44,6 +44,7 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
   const alacena = useAlacena() ?? []
   const basicos = useBasicos()
   const sinCalorias = useSinCalorias()
+  const { grupos, nombre: nombres } = useGruposEtiquetas()
   const [porciones, setPorciones] = useState(receta.porciones)
   const [verTodo, setVerTodo] = useState(false)
   const [cocinando, setCocinando] = useState(false)
@@ -99,7 +100,7 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
           <div className="flex flex-wrap gap-1.5">
             {etiquetasVisibles.map((e) => (
               <span key={e} className="rounded-full bg-pista px-3 py-1 text-[13px] font-bold">
-                {NOMBRE_ETIQUETA.get(e) ?? e}
+                {nombres.get(e) ?? e}
               </span>
             ))}
             {datos.objetivo.map((e) => (
@@ -112,13 +113,13 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
               onClick={() => setCorrigiendo(true)}
               className="rounded-full px-2 py-1 text-[13px] font-bold text-tinta-suave underline underline-offset-2"
             >
-              corregir
+              editar etiquetas
             </button>
           </div>
           <h1 className="font-titulo text-[28px] leading-tight font-semibold">{receta.nombre}</h1>
           <p className="text-sm font-semibold text-tinta-suave">
             {receta.minutos} min · {receta.porciones} {receta.porciones === 1 ? 'porción' : 'porciones'}
-            {dificultad ? ` · ${NOMBRE_ETIQUETA.get(dificultad)}` : ''}
+            {dificultad && nombres.get(dificultad) ? ` · ${nombres.get(dificultad)}` : ''}
           </p>
         </div>
 
@@ -249,7 +250,9 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
         />
       </Hoja>
 
-      <Hoja abierta={corrigiendo} titulo="Etiquetas de objetivo" alCerrar={() => setCorrigiendo(false)}>
+      <Hoja abierta={corrigiendo} titulo="Etiquetas" alCerrar={() => setCorrigiendo(false)}>
+        <EtiquetasReceta receta={receta} grupos={grupos} />
+        <h3 className="mt-6 mb-2 font-titulo text-lg font-semibold">Objetivo</h3>
         <CorregirObjetivo receta={receta} sugeridas={sugerirEtiquetas(porPorcion).map((e) => `objetivo:${e}`)} actuales={datos.objetivo} />
       </Hoja>
     </div>
@@ -321,6 +324,39 @@ function CorregirObjetivo({ receta, sugeridas, actuales }: { receta: TReceta; su
           Volver a las sugeridas
         </button>
       )}
+    </div>
+  )
+}
+
+function EtiquetasReceta({ receta, grupos }: { receta: TReceta; grupos: { id: string; nombre: string; opciones: { id: string; nombre: string }[] }[] }) {
+  const alternar = (id: string) =>
+    guardarEtiquetasReceta(
+      receta.id,
+      receta.etiquetas.includes(id) ? receta.etiquetas.filter((e) => e !== id) : [...receta.etiquetas, id],
+    )
+  return (
+    <div className="flex flex-col gap-4">
+      {grupos.map((g) => (
+        <fieldset key={g.id}>
+          <legend className="mb-2 font-titulo text-lg font-semibold">{g.nombre}</legend>
+          <div className="flex flex-wrap gap-2">
+            {g.opciones.map((o) => {
+              const on = receta.etiquetas.includes(o.id)
+              return (
+                <button
+                  key={o.id}
+                  type="button"
+                  aria-pressed={on}
+                  onClick={() => alternar(o.id)}
+                  className={`min-h-10 rounded-full px-4 text-sm font-bold ${on ? 'bg-limon-verde text-noche' : 'bg-pista'}`}
+                >
+                  {o.nombre}
+                </button>
+              )
+            })}
+          </div>
+        </fieldset>
+      ))}
     </div>
   )
 }

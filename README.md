@@ -66,6 +66,14 @@ COMIDA APP/
 - **Fuse.js**: búsqueda tolerante a errores ("platano" encuentra "plátano").
 - Letras **Fredoka** y **Figtree**, incluidas en la app para que funcionen sin internet.
 
+## Importar recetas (de TikTok, por ejemplo)
+
+En **Recetas → Importar** está el botón **"Copiar instrucciones para IA"**. Pégalas en tu chat de IA junto con la receta, copia el JSON que te devuelva y pégalo en la app. Los detalles y un ejemplo están en [docs/formato-receta.md](docs/formato-receta.md).
+
+## Backup (¡importante!)
+
+Tus datos viven **solo en el celular**. En **Más → Backup → Exportar** se descarga un archivo  con todo: alacena, recetas, alimentos propios y ajustes. Guárdalo en Drive o mándatelo por correo. Para recuperarlo: **Más → Backup → Importar** (reemplaza lo que haya en la app).
+
 ## De dónde salen los valores nutricionales
 
 De la **tabla TACO** (Tabela Brasileira de Composição de Alimentos, 4ª ed., NEPA/UNICAMP, 2011), que permite reproducirla citando la fuente. Son 597 alimentos con valores por cada 100 g. Los detalles están en [datos-fuente/taco/FUENTE.md](datos-fuente/taco/FUENTE.md).

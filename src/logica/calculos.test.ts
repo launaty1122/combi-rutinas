@@ -10,6 +10,7 @@ import { normalizar } from './texto'
 import type { IngredienteReceta, ItemAlacena, Nutrientes } from './tipos'
 import { aGramos, describirCantidad, enPorciones, formatearGramos, nombrePorcion } from './unidades'
 import { diasHasta, textoVencimiento } from './fechas'
+import { metaAgua, PERFIL_POR_DEFECTO } from '../db/perfil'
 
 const porId = new Map(ALIMENTOS_TACO.map((a) => [a.id, a]))
 const HUEVO = 'taco-489'
@@ -279,6 +280,13 @@ describe('descuento de la alacena al cocinar', () => {
     const original: ItemAlacena[] = [{ id: '1', alimentoId: ARROZ, gramos: 100 }]
     descontarDeAlacena(original, [{ alimentoId: ARROZ, gramos: 50, texto: '' }], basicos)
     expect(original[0].gramos).toBe(100)
+  })
+})
+
+describe('metas', () => {
+  it('meta de agua automática: 35 ml por kg', () => {
+    expect(metaAgua(PERFIL_POR_DEFECTO)).toBe(2275)
+    expect(metaAgua({ ...PERFIL_POR_DEFECTO, metaAguaMl: 2000 })).toBe(2000)
   })
 })
 

@@ -12,6 +12,7 @@ import { normalizar } from '../../logica/texto'
 import type { Alimento, ItemAlacena } from '../../logica/tipos'
 import { describirCantidad } from '../../logica/unidades'
 import { BuscarAlimento } from './BuscarAlimento'
+import { CrearAlimento } from './CrearAlimento'
 import { FormularioItem, type DatosItem } from './FormularioItem'
 
 type Orden = 'nombre' | 'categoria' | 'vencimiento'
@@ -33,6 +34,7 @@ export function Alacena({ abrirAgregar, alCerrarAgregar }: { abrirAgregar: boole
   const [filtro, setFiltro] = useState('')
   const [agregando, setAgregando] = useState<Alimento | null>(null)
   const [hojaAgregar, setHojaAgregar] = useState(false)
+  const [creando, setCreando] = useState<string | null>(null)
   const [editando, setEditando] = useState<Fila | null>(null)
   const [aviso, setAviso] = useState<{ texto: string; deshacer?: ItemAlacena } | null>(null)
 
@@ -81,6 +83,7 @@ export function Alacena({ abrirAgregar, alCerrarAgregar }: { abrirAgregar: boole
   const cerrarAgregar = () => {
     setHojaAgregar(false)
     setAgregando(null)
+    setCreando(null)
   }
 
   async function guardarNuevo(a: Alimento, d: DatosItem) {
@@ -211,7 +214,7 @@ export function Alacena({ abrirAgregar, alCerrarAgregar }: { abrirAgregar: boole
 
       <Hoja
         abierta={hojaAgregar}
-        titulo={agregando ? '¿Cuánto compraste?' : 'Agregar a la alacena'}
+        titulo={agregando ? '¿Cuánto compraste?' : creando !== null ? 'Nuevo alimento' : 'Agregar a la alacena'}
         alCerrar={cerrarAgregar}
       >
         {agregando ? (
@@ -227,8 +230,16 @@ export function Alacena({ abrirAgregar, alCerrarAgregar }: { abrirAgregar: boole
               </button>
             }
           />
+        ) : creando !== null ? (
+          <CrearAlimento
+            nombreInicial={creando}
+            alGuardar={(a) => {
+              setCreando(null)
+              setAgregando(a)
+            }}
+          />
         ) : (
-          <BuscarAlimento catalogo={catalogo} alElegir={setAgregando} />
+          <BuscarAlimento catalogo={catalogo} alElegir={setAgregando} alCrear={setCreando} />
         )}
       </Hoja>
 

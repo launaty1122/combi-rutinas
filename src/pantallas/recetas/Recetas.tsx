@@ -2,20 +2,22 @@ import { useMemo, useState } from 'react'
 import { Hoja } from '../../componentes/Hoja'
 import { Icono, Mancha } from '../../componentes/Icono'
 import { Pantalla } from '../../componentes/Pantalla'
-import { GRUPOS_ETIQUETAS, NOMBRE_ETIQUETA } from '../../datos/etiquetas'
+import { useGruposEtiquetas } from '../../db/etiquetas'
 import { NOMBRE_ETIQUETA as NOMBRE_OBJETIVO } from '../../logica/etiquetas'
 import { filtrarRecetas, TIEMPOS, type Modo } from '../../logica/filtros'
 import { formatearNumero } from '../../logica/texto'
 import { href } from '../../rutas'
+import { useCatalogo } from '../../datos/catalogo'
 import { Barrita } from './Barrita'
+import { ImportarReceta } from './ImportarReceta'
 import { colorDeReceta, useRecetasCompletas, type RecetaCompleta } from './datos'
 
 const OBJETIVOS = Object.entries(NOMBRE_OBJETIVO).map(([id, nombre]) => ({ id: `objetivo:${id}`, nombre }))
 
-function nombreFiltro(id: string): string {
+function nombreFiltro(id: string, nombres: Map<string, string>): string {
   if (id === 'favoritas') return 'Favoritas'
   return (
-    NOMBRE_ETIQUETA.get(id) ??
+    nombres.get(id) ??
     TIEMPOS.find((t) => t.id === id)?.nombre ??
     OBJETIVOS.find((o) => o.id === id)?.nombre ??
     id
@@ -26,6 +28,9 @@ function nombreFiltro(id: string): string {
 const ATAJOS = ['favoritas', 'tiempo:20', 'objetivo:alta-en-proteina', 'tipo:batido', 'cocina:brasileña', 'cocina:colombiana']
 
 export function Recetas({ alAgregar }: { alAgregar: () => void }) {
+  const { grupos, nombre: nombres } = useGruposEtiquetas()
+  const [importando, setImportando] = useState(false)
+  const catalogo = useCatalogo()
   const recetas = useRecetasCompletas()
   const [texto, setTexto] = useState('')
   const [modo, setModo] = useState<Modo>('todas')
@@ -48,6 +53,15 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
       titulo="Recetas"
       subtitulo={recetas ? `${recetas.length} recetas · puedes cocinar ${cuantasPuedo} ya` : ' '}
       alAgregar={alAgregar}
+      accion={
+        <button
+          type="button"
+          onClick={() => setImportando(true)}
+          className="flex h-12 shrink-0 items-center gap-2 rounded-full bg-hoja px-5 font-bold text-tinta transition-transform duration-150 ease-out active:scale-[0.97]"
+        >
+          <Icono nombre="agregar" tam={20} /> Importar
+        </button>
+      }
       cabecera={
         <label className="flex h-13 items-center gap-3 rounded-full bg-hoja px-5 text-tinta">
           <Icono nombre="buscar" className="text-tinta-suave" />
@@ -106,7 +120,7 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
                   on ? 'bg-limon-verde text-noche' : 'bg-pista'
                 }`}
               >
-                {nombreFiltro(id)}
+                {nombreFiltro(id, nombres)}
               </button>
             )
           })}
@@ -133,7 +147,7 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
         <ul className="flex flex-col gap-3">
           {visibles.map((r) => (
             <li key={r.receta.id}>
-              <TarjetaReceta r={r} />
+              <TarjetaReceta r={r} nombres={nombres} />
             </li>
           ))}
         </ul>
@@ -144,7 +158,7 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
           <GrupoFiltro titulo="Favoritas" opciones={[{ id: 'favoritas', nombre: 'Solo favoritas' }]} elegidas={etiquetas} alternar={alternar} />
           <GrupoFiltro titulo="Tiempo" opciones={TIEMPOS} elegidas={etiquetas} alternar={alternar} />
           <GrupoFiltro titulo="Objetivo" opciones={OBJETIVOS} elegidas={etiquetas} alternar={alternar} />
-          {GRUPOS_ETIQUETAS.map((g) => (
+          {grupos.map((g) => (
             <GrupoFiltro key={g.id} titulo={g.nombre} opciones={g.opciones} elegidas={etiquetas} alternar={alternar} />
           ))}
           <div className="sticky bottom-0 -mx-5 flex gap-2 bg-hoja px-5 pt-2 pb-1">
@@ -160,6 +174,9 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
             </button>
           </div>
         </div>
+      </Hoja>
+      <Hoja abierta={importando} titulo="Importar receta" alCerrar={() => setImportando(false)}>
+        <ImportarReceta catalogo={catalogo} alTerminar={() => setImportando(false)} />
       </Hoja>
     </Pantalla>
   )
@@ -201,7 +218,7 @@ function GrupoFiltro({
   )
 }
 
-function TarjetaReceta({ r }: { r: RecetaCompleta }) {
+function TarjetaReceta({ r, nombres }: { r: RecetaCompleta; nombres: Map<string, string> }) {
   const color = colorDeReceta(r.receta.id)
   const cocina = r.receta.etiquetas.find((e) => e.startsWith('cocina:'))
   const prot = r.nutricion.porPorcion.proteina
@@ -222,7 +239,7 @@ function TarjetaReceta({ r }: { r: RecetaCompleta }) {
         <Mancha className="w-32" />
       </span>
       <span className="relative text-[13px] font-bold">
-        {[cocina && NOMBRE_ETIQUETA.get(cocina), `${r.receta.minutos} min`, destacado].filter(Boolean).join(' · ')}
+        {[cocina && nombres.get(cocina), `${r.receta.minutos} min`, destacado].filter(Boolean).join(' · ')}
       </span>
       <span className="relative flex items-start gap-2 pr-14 font-titulo text-[21px] leading-tight font-semibold">
         {r.receta.nombre}
