@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { sembrarRecetas } from './db/recetas'
 import { Alacena } from './pantallas/alacena/Alacena'
+import { Mercado } from './pantallas/alacena/Mercado'
 import { Mas } from './pantallas/Mas'
 import { Proximamente } from './pantallas/Proximamente'
 import { Receta } from './pantallas/recetas/Receta'
@@ -26,6 +27,7 @@ export default function App() {
   }, [])
   const cerrarAgregar = useCallback(() => setAbrirAgregar(false), [])
 
+  if (ruta === 'alacena' && param === 'mercado') return <Mercado alAgregar={alAgregar} />
   if (ruta === 'alacena') return <Alacena abrirAgregar={abrirAgregar} alCerrarAgregar={cerrarAgregar} />
   if (ruta === 'recetas') return param ? <Receta id={param} /> : <Recetas alAgregar={alAgregar} />
   if (ruta === 'mas') return <Mas tema={tema} setTema={setTema} alAgregar={alAgregar} />

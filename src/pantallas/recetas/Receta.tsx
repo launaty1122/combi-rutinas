@@ -15,6 +15,7 @@ import type { Nutriente, Receta as TReceta } from '../../logica/tipos'
 import { describirCantidad, formatearGramos } from '../../logica/unidades'
 import { href } from '../../rutas'
 import { CocineEsto, Contador } from './CocineEsto'
+import { planearReceta, quitarPlaneada, usePlaneadas } from '../../db/mercado'
 import { completarReceta, NUTRIENTES_INFO } from './datos'
 
 export function Receta({ id }: { id: string }) {
@@ -45,6 +46,7 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
   const basicos = useBasicos()
   const sinCalorias = useSinCalorias()
   const { grupos, nombre: nombres } = useGruposEtiquetas()
+  const planeada = usePlaneadas().find((p) => p.recetaId === receta.id)
   const [porciones, setPorciones] = useState(receta.porciones)
   const [verTodo, setVerTodo] = useState(false)
   const [cocinando, setCocinando] = useState(false)
@@ -196,6 +198,23 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
             })}
           </ul>
         </section>
+
+        {datos.disponibilidad.faltantes > 0 || planeada ? (
+          <div className="flex flex-wrap items-center gap-2 rounded-[22px] bg-tarjeta px-4 py-3">
+            <p className="min-w-0 flex-1 text-sm">
+              {planeada
+                ? `En tu semana (${planeada.porciones} porc.): lo que falta aparece en el Mercado.`
+                : 'Agrégala a tu semana y te digo en el Mercado qué te falta comprar.'}
+            </p>
+            <button
+              type="button"
+              onClick={() => (planeada && planeada.porciones === porciones ? quitarPlaneada(receta.id) : planearReceta(receta.id, porciones))}
+              className={`h-11 shrink-0 rounded-full px-4 text-sm font-bold ${planeada && planeada.porciones === porciones ? 'bg-pista' : 'bg-noche text-crema dark:bg-limon-verde dark:text-noche'}`}
+            >
+              {planeada ? (planeada.porciones === porciones ? 'Quitar' : `Cambiar a ${porciones} porc.`) : 'Planear para el mercado'}
+            </button>
+          </div>
+        ) : null}
 
         <section className="flex flex-col gap-3">
           <h2 className="font-titulo text-xl font-semibold">Preparación</h2>

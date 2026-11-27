@@ -86,6 +86,9 @@ describe('conversión de unidades', () => {
     expect(nombrePorcion('1 banano mediano', 5)).toBe('5 bananos medianos')
     expect(nombrePorcion('1 huevo de codorniz', 3)).toBe('3 huevos de codorniz')
     expect(nombrePorcion('1 taza', 0.5)).toBe('½ taza')
+    expect(nombrePorcion('½ taza', 10)).toBe('5 tazas')
+    expect(nombrePorcion('½ taza', 1)).toBe('½ taza')
+    expect(nombrePorcion('¼ taza', 2)).toBe('½ taza')
     expect(nombrePorcion('1 lata escurrida', 1)).toBe('1 lata escurrida')
   })
 

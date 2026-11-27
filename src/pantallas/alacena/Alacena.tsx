@@ -13,6 +13,7 @@ import type { Alimento, ItemAlacena } from '../../logica/tipos'
 import { describirCantidad } from '../../logica/unidades'
 import { BuscarAlimento } from './BuscarAlimento'
 import { CrearAlimento } from './CrearAlimento'
+import { PestanasAlacena } from './Pestanas'
 import { FormularioItem, type DatosItem } from './FormularioItem'
 
 type Orden = 'nombre' | 'categoria' | 'vencimiento'
@@ -119,6 +120,7 @@ export function Alacena({ abrirAgregar, alCerrarAgregar }: { abrirAgregar: boole
       titulo="Alacena"
       subtitulo={cargando ? ' ' : filas.length === 1 ? '1 cosa en casa' : `${filas.length} cosas en casa`}
       alAgregar={() => setHojaAgregar(true)}
+      cabecera={<PestanasAlacena activa="casa" />}
       accion={
         <button
           type="button"

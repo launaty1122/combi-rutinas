@@ -77,6 +77,47 @@ export interface ItemAlacena {
   venceEl?: string // fecha ISO, opcional
 }
 
+/** Secciones del mercado para lo que no es comida. */
+export type SeccionOtros = 'aseo' | 'limpieza' | 'utensilios' | 'otros'
+
+export type MotivoMercado = 'manual' | 'receta' | 'minimo' | 'acabado'
+
+/** Una línea de la lista del mercado. */
+export interface ItemMercado {
+  id: string
+  tipo: 'alimento' | 'otro'
+  /** Si es comida: el alimento y cuánto comprar (g o ml). Al comprarlo, pasa a la alacena. */
+  alimentoId?: string
+  gramos?: number
+  /** Si no es comida: nombre libre, sección y cantidad en texto ("2 unidades"). */
+  nombre?: string
+  seccion?: SeccionOtros
+  cantidadTexto?: string
+  /** Precio de esta línea (lo que vas a pagar por esa cantidad). Opcional. */
+  precio?: number
+  comprado: boolean
+  motivo: MotivoMercado
+  creado: string
+}
+
+/** Último precio pagado, para sugerirlo la próxima vez. */
+export interface PrecioGuardado {
+  /** alimentoId, o "otro:<nombre normalizado>". */
+  clave: string
+  precio: number
+  /** Para comida: gramos a los que corresponde ese precio. */
+  gramos?: number
+  fecha: string
+}
+
+/** Una compra terminada (para ver cuánto gastas en mercado). */
+export interface Compra {
+  id: string
+  fecha: string
+  total: number
+  items: number
+}
+
 export interface IngredienteReceta {
   alimentoId: string
   /** Cantidad para la receta completa (todas sus porciones), en g o ml. */

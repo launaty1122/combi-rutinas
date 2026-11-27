@@ -12,6 +12,9 @@ export async function exportarBackup(): Promise<string> {
       alimentosPersonales: await db.alimentosPersonales.toArray(),
       recetas: await db.recetas.toArray(),
       ajustes: await db.ajustes.toArray(),
+      mercado: await db.mercado.toArray(),
+      precios: await db.precios.toArray(),
+      compras: await db.compras.toArray(),
     },
     ahora,
   )
@@ -30,8 +33,12 @@ export async function exportarBackup(): Promise<string> {
 
 /** Reemplaza TODOS los datos por los del backup. Todo o nada. */
 export async function restaurarBackup(b: Backup): Promise<void> {
-  await db.transaction('rw', [db.alacena, db.alimentosPersonales, db.recetas, db.ajustes], async () => {
-    await Promise.all([db.alacena.clear(), db.alimentosPersonales.clear(), db.recetas.clear(), db.ajustes.clear()])
+  const tablas = [db.alacena, db.alimentosPersonales, db.recetas, db.ajustes, db.mercado, db.precios, db.compras]
+  await db.transaction('rw', tablas, async () => {
+    await Promise.all(tablas.map((t) => t.clear()))
+    await db.mercado.bulkPut(b.datos.mercado)
+    await db.precios.bulkPut(b.datos.precios)
+    await db.compras.bulkPut(b.datos.compras)
     await db.alacena.bulkPut(b.datos.alacena)
     await db.alimentosPersonales.bulkPut(b.datos.alimentosPersonales)
     await db.recetas.bulkPut(b.datos.recetas)

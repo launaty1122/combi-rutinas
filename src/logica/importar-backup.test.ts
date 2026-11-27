@@ -87,6 +87,9 @@ describe('backup', () => {
     alimentosPersonales: [],
     recetas: [{ id: 'r1', nombre: 'X', porciones: 1, minutos: 5, ingredientes: [], pasos: [], ficha: '', etiquetas: [] }],
     ajustes: [{ clave: 'sinCalorias', valor: true }],
+    mercado: [{ id: 'm1', tipo: 'otro' as const, nombre: 'Jabón', seccion: 'aseo' as const, precio: 4.5, comprado: false, motivo: 'manual' as const, creado: '2026-11-27' }],
+    precios: [{ clave: 'taco-489', precio: 18, gramos: 600, fecha: '2026-11-27' }],
+    compras: [{ id: 'c1', fecha: '2026-11-27', total: 22.5, items: 2 }],
   }
 
   it('exporta y vuelve a leer lo mismo', () => {
@@ -95,8 +98,15 @@ describe('backup', () => {
     expect(l.ok).toBe(true)
     if (l.ok) {
       expect(l.backup.datos).toEqual(datos)
-      expect(l.resumen).toMatch(/1 recetas, 1 cosas/)
+      expect(l.resumen).toMatch(/1 recetas, 1 cosas en la alacena, 1 en la lista/)
     }
+  })
+
+  it('lee backups viejos (versión 1, sin mercado)', () => {
+    const { mercado: _m, precios: _p, compras: _c, ...v1 } = datos
+    const l = leerBackup(JSON.stringify({ app: 'combi-rutinas', version: 1, creado: '', datos: v1 }))
+    expect(l.ok).toBe(true)
+    if (l.ok) expect(l.backup.datos.mercado).toEqual([])
   })
 
   it('rechaza archivos que no son backups o están dañados, con mensaje claro', () => {

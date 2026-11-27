@@ -29,8 +29,11 @@ export function formatearGramos(gramos: number, liquido = false): string {
  * Pluraliza solo la primera palabra, de forma sencilla.
  */
 export function nombrePorcion(nombre: string, cantidad: number): string {
+  // "½ taza" × 10 son 5 tazas: se multiplica por la fracción del nombre.
+  const fraccion = nombre.startsWith('½ ') ? 0.5 : nombre.startsWith('¼ ') ? 0.25 : 1
+  cantidad = cantidad * fraccion
   const palabras = nombre.replace(/^(1|½|¼)\s+/, '').split(' ')
-  const numero = cantidad === 0.5 ? '½' : formatearNumero(cantidad, 1)
+  const numero = cantidad === 0.5 ? '½' : cantidad === 0.25 ? '¼' : formatearNumero(cantidad, 2)
   if (cantidad <= 1) return [numero, ...palabras].join(' ')
   // Pluraliza hasta encontrar "de", "con"…: "huevo de codorniz" → "huevos de codorniz".
   const PARADA = new Set(['de', 'del', 'con', 'sin', 'en', 'para', 'a'])

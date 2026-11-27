@@ -1,13 +1,17 @@
-import type { Alimento, ItemAlacena, Receta } from './tipos'
+import type { Alimento, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta } from './tipos'
 
 export const APP_BACKUP = 'combi-rutinas'
-export const VERSION_BACKUP = 1
+export const VERSION_BACKUP = 2
 
 export interface DatosBackup {
   alacena: ItemAlacena[]
   alimentosPersonales: Alimento[]
   recetas: Receta[]
   ajustes: { clave: string; valor: unknown }[]
+  /** Desde la versión 2 (lista del mercado). En backups de la versión 1 vienen vacías. */
+  mercado: ItemMercado[]
+  precios: PrecioGuardado[]
+  compras: Compra[]
 }
 
 export interface Backup {
@@ -47,14 +51,20 @@ export function leerBackup(texto: string): LecturaBackup {
   if (!d || !listas.every((k) => Array.isArray(d[k]))) {
     return { ok: false, error: 'El backup está incompleto o dañado.' }
   }
-  const datos = d as DatosBackup
+  const datos: DatosBackup = {
+    ...(d as DatosBackup),
+    mercado: Array.isArray(d.mercado) ? d.mercado : [],
+    precios: Array.isArray(d.precios) ? d.precios : [],
+    compras: Array.isArray(d.compras) ? d.compras : [],
+  }
   const malos =
     datos.alacena.some((i) => typeof i?.id !== 'string' || typeof i?.alimentoId !== 'string' || typeof i?.gramos !== 'number') ||
     datos.recetas.some((r) => typeof r?.id !== 'string' || typeof r?.nombre !== 'string' || !Array.isArray(r?.ingredientes)) ||
     datos.alimentosPersonales.some((a) => typeof a?.id !== 'string' || typeof a?.n !== 'object') ||
-    datos.ajustes.some((a) => typeof a?.clave !== 'string')
+    datos.ajustes.some((a) => typeof a?.clave !== 'string') ||
+    datos.mercado.some((m) => typeof m?.id !== 'string' || (m?.tipo !== 'alimento' && m?.tipo !== 'otro'))
   if (malos) return { ok: false, error: 'El backup tiene datos dañados. No se importó nada.' }
 
-  const resumen = `${datos.recetas.length} recetas, ${datos.alacena.length} cosas en la alacena y ${datos.alimentosPersonales.length} alimentos propios`
-  return { ok: true, backup: b as Backup, resumen }
+  const resumen = `${datos.recetas.length} recetas, ${datos.alacena.length} cosas en la alacena, ${datos.mercado.length} en la lista del mercado y ${datos.alimentosPersonales.length} alimentos propios`
+  return { ok: true, backup: { ...(b as Backup), datos }, resumen }
 }
