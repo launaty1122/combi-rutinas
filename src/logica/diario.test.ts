@@ -73,7 +73,8 @@ describe('registrar por texto', () => {
     const r = interpretarTexto('Dos huevos y una tajada de pan en el desayuno', buscar)
     expect(r.momento).toBe('desayuno')
     expect(r.partes).toHaveLength(2)
-    expect(r.partes[0].alimento?.id).toBe('taco-489')
+    // En el diario se prefiere el huevo cocido (no el crudo): es lo que uno se come.
+    expect(r.partes[0].alimento?.id).toBe('taco-488')
     expect(r.partes[0].gramos).toBe(100)
     expect(r.partes[1].alimento?.porciones.some((p) => p.nombre === '1 tajada')).toBe(true)
     expect(r.partes[1].gramos).toBe(25)
@@ -108,6 +109,34 @@ describe('registrar por texto', () => {
   it('si no sabe la cantidad, propone 100 g y lo marca para revisar', () => {
     const r = interpretarTexto('rúcula', buscar)
     expect(r.partes[0].seguro).toBe(false)
+  })
+
+  it('frases naturales: "hoy almorcé arroz con pollo y ensalada"', () => {
+    const r = interpretarTexto('Hoy almorcé arroz con pollo y ensalada', buscar)
+    expect(r.momento).toBe('almuerzo')
+    expect(r.partes.map((p) => p.alimento?.id)).toEqual([
+      'taco-3', // arroz blanco cocido (no el crudo)
+      expect.stringMatching(/^taco-/),
+      'taco-161', // ensalada de tomate
+    ])
+    // El pollo se busca cocido/asado, no crudo.
+    expect(r.partes[1].alimento?.alias[0]).not.toMatch(/crud/i)
+  })
+
+  it('el poke: "me comí un bowl de quinoa con pollo teriyaki, rúcula y piña"', () => {
+    const r = interpretarTexto('Me comí un bowl de quinoa con pollo teriyaki, rúcula y piña', buscar)
+    expect(r.partes.map((p) => p.alimento?.alias[0] ?? null)).toEqual([
+      'Quinoa cocida',
+      expect.stringMatching(/pollo/i),
+      'Rúgula cruda',
+      'Piña',
+    ])
+    // "pollo teriyaki" no existe: usó "pollo" y lo marca para revisar.
+    expect(r.partes[1].aproximado).toBe(true)
+  })
+
+  it('"feijão" es el carioca (el de todos los días en Brasil)', () => {
+    expect(interpretarTexto('feijão', buscar).partes[0].alimento?.id).toBe('taco-561')
   })
 
   it('texto vacío o sin sentido: no rompe', () => {

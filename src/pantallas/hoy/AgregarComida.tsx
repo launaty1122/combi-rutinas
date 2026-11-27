@@ -278,6 +278,50 @@ function Escribir({
 }) {
   const [texto, setTexto] = useState('')
   const [partes, setPartes] = useState<ParteInterpretada[] | null>(null)
+  // Índice de la parte que se está buscando a mano (cuando no la encontró o no era).
+  const [buscandoParte, setBuscandoParte] = useState<number | null>(null)
+
+  if (partes && buscandoParte !== null) {
+    const p = partes[buscandoParte]
+    return (
+      <div className="flex flex-col gap-3">
+        <p className="text-sm">
+          Busca el alimento para <strong>"{p.texto}"</strong>
+        </p>
+        <BuscarAlimento
+          catalogo={catalogo}
+          consultaInicial={
+            // La primera palabra con sentido: "pollo teriyaki" → "pollo"; "un bowl de quinoa" → "quinoa".
+            p.texto
+              .split(' ')
+              .find((w) => w.length > 2 && !/^\d/.test(w) && !['una', 'uno', 'bowl', 'plato', 'porcion', 'del', 'con'].includes(w)) ?? ''
+          }
+          alElegir={(a) => {
+            const porcion = a.porciones[0]
+            const fraccion = porcion?.nombre.startsWith('½') ? 0.5 : porcion?.nombre.startsWith('¼') ? 0.25 : 1
+            setPartes(
+              partes.map((x, k) =>
+                k === buscandoParte
+                  ? {
+                      ...x,
+                      alimento: a,
+                      aproximado: false,
+                      // Si dijiste cuánto en gramos se respeta; si no, una porción del alimento elegido.
+                      gramos: x.seguro && x.alimento ? x.gramos : porcion ? (x.cantidad * porcion.gramos) / fraccion : x.gramos,
+                      seguro: x.seguro && !!x.alimento ? true : !!porcion,
+                    }
+                  : x,
+              ),
+            )
+            setBuscandoParte(null)
+          }}
+        />
+        <button type="button" onClick={() => setBuscandoParte(null)} className="h-11 font-bold text-tinta-suave">
+          Volver
+        </button>
+      </div>
+    )
+  }
 
   if (partes) {
     const validas = partes.filter((p) => p.alimento && p.gramos > 0)
@@ -308,7 +352,19 @@ function Escribir({
               ) : (
                 <p className="mt-1 text-sm font-bold">No encontré este alimento.</p>
               )}
+              {p.aproximado && p.alimento && (
+                <p className="mt-1 text-xs font-bold">No tengo "{p.texto}" tal cual: puse lo más parecido. Revísalo.</p>
+              )}
               {!p.seguro && p.alimento && <p className="mt-1 text-xs font-bold">Revisa la cantidad: puse 100 g porque no la dijiste.</p>}
+              <button
+                type="button"
+                onClick={() => setBuscandoParte(i)}
+                className={`mt-2 flex min-h-9 items-center gap-1.5 rounded-full px-3 text-xs font-bold ${
+                  p.alimento ? 'bg-pista' : 'bg-noche text-crema dark:bg-limon-verde dark:text-noche'
+                }`}
+              >
+                <Icono nombre="buscar" tam={14} /> {p.alimento ? 'Buscar otro' : 'Buscarlo'}
+              </button>
               {p.alternativas.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   <span className="self-center text-xs text-tinta-suave">¿O era…?</span>

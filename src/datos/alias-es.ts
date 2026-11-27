@@ -88,6 +88,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   158: ['Pasta de tomate concentrada', 'extracto de tomate'],
   159: ['Salsa de tomate industrializada', 'salsa de tomate'],
   160: ['Puré de tomate'],
+  161: ['Ensalada de tomate', 'ensalada', 'salada', 'ensalada verde'],
   162: ['Habichuela cruda', 'judía verde', 'vainita'],
 
   // Frutas
@@ -171,7 +172,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   327: ['Carne molida cruda', 'carne molida', 'carne picada'],
   329: ['Carne de res magra cruda', 'carne de res'],
   338: ['Carne seca (charque) cocida'],
-  346: ['Lomo ancho sin grasa a la plancha'],
+  346: ['Lomo ancho sin grasa a la plancha', 'bife', 'bistec', 'carne asada', 'carne a la plancha'],
   345: ['Lomo ancho sin grasa crudo', 'contra-filé', 'solomillo'],
   351: ['Carne de res (coxão mole) cocida'],
   352: ['Carne de res (coxão mole) cruda', 'bola de pierna'],
@@ -275,7 +276,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   558: ['Maní tostado con sal'],
   559: ['Arveja en vaina', 'guisante'],
   560: ['Arveja enlatada', 'arvejas'],
-  561: ['Frijol carioca cocido', 'feijão carioca', 'frijol', 'fríjoles'],
+  561: ['Frijol carioca cocido', 'feijão', 'feijão carioca', 'frijol', 'fríjoles', 'frijoles'],
   562: ['Frijol carioca crudo'],
   563: ['Frijol caupí cocido', 'feijão fradinho'],
   567: ['Frijol negro cocido', 'feijão preto', 'caraotas'],

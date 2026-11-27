@@ -14,6 +14,11 @@ const NUMEROS: Record<string, number> = {
 }
 
 const MOMENTOS: [RegExp, MomentoComida][] = [
+  // Verbos, en español y portugués: "almorcé", "desayuné", "jantei"…
+  [/\b(desayune|desayunamos|cafe da manha)\b/, 'desayuno'],
+  [/\b(almorce|almorzamos|almocei)\b/, 'almuerzo'],
+  [/\b(cene|cenamos|jantei)\b/, 'cena'],
+  [/\b(merende|lanchei)\b/, 'merienda'],
   [/\b(en el |de |para el |al )?desayuno\b/, 'desayuno'],
   [/\b(en el |de |para el |al )?almuerzo\b/, 'almuerzo'],
   [/\b(en la |de |para la |a la )?(cena|comida de la noche)\b/, 'cena'],
@@ -33,11 +38,40 @@ export interface ParteInterpretada {
   gramos: number
   /** false si la cantidad en gramos es una suposición (conviene revisarla). */
   seguro: boolean
+  /** true si no encontró el nombre completo y usó solo una parte ("pollo teriyaki" → pollo). */
+  aproximado: boolean
 }
 
 export interface Interpretacion {
   partes: ParteInterpretada[]
   momento: MomentoComida | null
+}
+
+/** Palabras de la frase que no son comida: "hoy me comí…", "eu comi…". */
+const RELLENO =
+  /\b(hoy|ayer|anoche|hoje|ontem|me|yo|eu|comi|comimos|tome|tomei|bebi|desayune|almorce|almocei|cene|jantei|merende|lanchei|tambien|ademas|tambem)\b/g
+
+/** En un diario casi nada se come crudo (salvo frutas y verduras): se prefiere lo cocido. */
+function esCrudo(a: Alimento) {
+  const n = normalizar(`${a.alias[0] ?? ''} ${a.nombre}`)
+  return /\bcrud[oa]s?\b|, cru(a|s)?\b/.test(n) && !['frutas', 'verduras'].includes(a.categoria)
+}
+
+/**
+ * Busca el alimento; si no aparece ("pollo teriyaki"), prueba quitando palabras del final ("pollo").
+ * aproximado = true cuando tuvo que recortar.
+ */
+function buscarConRespaldo(nombre: string, buscar: (q: string, limite?: number) => Alimento[]) {
+  const pideCrudo = /\bcrud|\bcru\b/.test(nombre)
+  const palabras = nombre.split(' ')
+  for (let n = palabras.length; n >= 1; n--) {
+    const r = buscar(palabras.slice(0, n).join(' '), 8)
+    if (r.length) {
+      const ordenados = pideCrudo ? r : [...r.filter((a) => !esCrudo(a)), ...r.filter(esCrudo)]
+      return { candidatos: ordenados, aproximado: n < palabras.length }
+    }
+  }
+  return { candidatos: [] as Alimento[], aproximado: false }
 }
 
 const singular = (p: string) => p.replace(/(es|s)$/, '')
@@ -52,7 +86,7 @@ function porcionDeUnidad(a: Alimento, unidad: string) {
 }
 
 export function interpretarTexto(texto: string, buscar: (q: string, limite?: number) => Alimento[]): Interpretacion {
-  let t = normalizar(texto).replace(/[.;!?]/g, ' ')
+  let t = normalizar(texto).replace(/[.;:!?()¿¡"]/g, ' ')
   let momento: MomentoComida | null = null
   for (const [re, m] of MOMENTOS) {
     if (re.test(t)) {
@@ -61,6 +95,8 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
       break
     }
   }
+
+  t = t.replace(RELLENO, ' ')
 
   const trozos = t
     .split(/,|\+|\by\b|\bcon\b|\be\b/)
@@ -108,7 +144,9 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
       .replace(/^(bowl|plato|porcion|poco|poquito)\s+(de\s+)?/, '')
 
     // 3. Alimento: entre los resultados, se prefiere uno que tenga esa unidad como porción.
-    const candidatos = nombre ? buscar(nombre, 8) : []
+    const { candidatos, aproximado } = nombre
+      ? buscarConRespaldo(nombre, buscar)
+      : { candidatos: [] as Alimento[], aproximado: false }
     const conUnidad = unidad && GRAMOS[unidad] === undefined ? candidatos.find((a) => porcionDeUnidad(a, unidad as string)) : undefined
     const alimento = conUnidad ?? candidatos[0] ?? null
 
@@ -143,6 +181,7 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
       alternativas: candidatos.filter((a) => a !== alimento).slice(0, 4),
       gramos: Math.round(gramos * 10) / 10,
       seguro,
+      aproximado,
     }
   })
 
