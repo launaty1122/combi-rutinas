@@ -1,7 +1,7 @@
-import type { Alimento, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta } from './tipos'
+import type { Alimento, ComidaGuardada, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta, RegistroAgua, RegistroComida } from './tipos'
 
 export const APP_BACKUP = 'combi-rutinas'
-export const VERSION_BACKUP = 2
+export const VERSION_BACKUP = 3
 
 export interface DatosBackup {
   alacena: ItemAlacena[]
@@ -12,6 +12,10 @@ export interface DatosBackup {
   mercado: ItemMercado[]
   precios: PrecioGuardado[]
   compras: Compra[]
+  /** Desde la versión 3 (diario y agua). */
+  diario: RegistroComida[]
+  agua: RegistroAgua[]
+  comidasGuardadas: ComidaGuardada[]
 }
 
 export interface Backup {
@@ -56,15 +60,20 @@ export function leerBackup(texto: string): LecturaBackup {
     mercado: Array.isArray(d.mercado) ? d.mercado : [],
     precios: Array.isArray(d.precios) ? d.precios : [],
     compras: Array.isArray(d.compras) ? d.compras : [],
+    diario: Array.isArray(d.diario) ? d.diario : [],
+    agua: Array.isArray(d.agua) ? d.agua : [],
+    comidasGuardadas: Array.isArray(d.comidasGuardadas) ? d.comidasGuardadas : [],
   }
   const malos =
     datos.alacena.some((i) => typeof i?.id !== 'string' || typeof i?.alimentoId !== 'string' || typeof i?.gramos !== 'number') ||
     datos.recetas.some((r) => typeof r?.id !== 'string' || typeof r?.nombre !== 'string' || !Array.isArray(r?.ingredientes)) ||
     datos.alimentosPersonales.some((a) => typeof a?.id !== 'string' || typeof a?.n !== 'object') ||
     datos.ajustes.some((a) => typeof a?.clave !== 'string') ||
-    datos.mercado.some((m) => typeof m?.id !== 'string' || (m?.tipo !== 'alimento' && m?.tipo !== 'otro'))
+    datos.mercado.some((m) => typeof m?.id !== 'string' || (m?.tipo !== 'alimento' && m?.tipo !== 'otro')) ||
+    datos.diario.some((r) => typeof r?.id !== 'string' || typeof r?.fecha !== 'string' || typeof r?.n !== 'object') ||
+    datos.agua.some((a) => typeof a?.id !== 'string' || typeof a?.ml !== 'number')
   if (malos) return { ok: false, error: 'El backup tiene datos dañados. No se importó nada.' }
 
-  const resumen = `${datos.recetas.length} recetas, ${datos.alacena.length} cosas en la alacena, ${datos.mercado.length} en la lista del mercado y ${datos.alimentosPersonales.length} alimentos propios`
+  const resumen = `${datos.recetas.length} recetas, ${datos.alacena.length} cosas en la alacena, ${datos.mercado.length} en la lista del mercado, ${datos.alimentosPersonales.length} alimentos propios y ${datos.diario.length} registros del diario`
   return { ok: true, backup: { ...(b as Backup), datos }, resumen }
 }

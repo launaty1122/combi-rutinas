@@ -90,6 +90,9 @@ describe('backup', () => {
     mercado: [{ id: 'm1', tipo: 'otro' as const, nombre: 'Jabón', seccion: 'aseo' as const, precio: 4.5, comprado: false, motivo: 'manual' as const, creado: '2026-11-27' }],
     precios: [{ clave: 'taco-489', precio: 18, gramos: 600, fecha: '2026-11-27' }],
     compras: [{ id: 'c1', fecha: '2026-11-27', total: 22.5, items: 2 }],
+    diario: [],
+    agua: [{ id: 'w1', fecha: '2026-11-27', ml: 250, creado: '' }],
+    comidasGuardadas: [],
   }
 
   it('exporta y vuelve a leer lo mismo', () => {
@@ -103,7 +106,7 @@ describe('backup', () => {
   })
 
   it('lee backups viejos (versión 1, sin mercado)', () => {
-    const { mercado: _m, precios: _p, compras: _c, ...v1 } = datos
+    const { mercado: _m, precios: _p, compras: _c, diario: _d, agua: _a, comidasGuardadas: _g, ...v1 } = datos
     const l = leerBackup(JSON.stringify({ app: 'combi-rutinas', version: 1, creado: '', datos: v1 }))
     expect(l.ok).toBe(true)
     if (l.ok) expect(l.backup.datos.mercado).toEqual([])

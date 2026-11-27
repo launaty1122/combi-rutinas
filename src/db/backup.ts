@@ -15,6 +15,9 @@ export async function exportarBackup(): Promise<string> {
       mercado: await db.mercado.toArray(),
       precios: await db.precios.toArray(),
       compras: await db.compras.toArray(),
+      diario: await db.diario.toArray(),
+      agua: await db.agua.toArray(),
+      comidasGuardadas: await db.comidasGuardadas.toArray(),
     },
     ahora,
   )
@@ -33,12 +36,15 @@ export async function exportarBackup(): Promise<string> {
 
 /** Reemplaza TODOS los datos por los del backup. Todo o nada. */
 export async function restaurarBackup(b: Backup): Promise<void> {
-  const tablas = [db.alacena, db.alimentosPersonales, db.recetas, db.ajustes, db.mercado, db.precios, db.compras]
+  const tablas = [db.alacena, db.alimentosPersonales, db.recetas, db.ajustes, db.mercado, db.precios, db.compras, db.diario, db.agua, db.comidasGuardadas]
   await db.transaction('rw', tablas, async () => {
     await Promise.all(tablas.map((t) => t.clear()))
     await db.mercado.bulkPut(b.datos.mercado)
     await db.precios.bulkPut(b.datos.precios)
     await db.compras.bulkPut(b.datos.compras)
+    await db.diario.bulkPut(b.datos.diario)
+    await db.agua.bulkPut(b.datos.agua)
+    await db.comidasGuardadas.bulkPut(b.datos.comidasGuardadas)
     await db.alacena.bulkPut(b.datos.alacena)
     await db.alimentosPersonales.bulkPut(b.datos.alimentosPersonales)
     await db.recetas.bulkPut(b.datos.recetas)

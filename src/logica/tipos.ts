@@ -118,6 +118,43 @@ export interface Compra {
   items: number
 }
 
+export type MomentoComida = 'desayuno' | 'almuerzo' | 'cena' | 'merienda' | 'otro'
+
+/** Lo que se registra en el diario: un alimento (en gramos) o porciones de una receta. */
+export type ItemComida =
+  | { tipo: 'alimento'; alimentoId: string; gramos: number }
+  | { tipo: 'receta'; recetaId: string; porciones: number }
+
+/** Una entrada del diario de comidas. */
+export interface RegistroComida {
+  id: string
+  /** Día AAAA-MM-DD. */
+  fecha: string
+  momento: MomentoComida
+  item: ItemComida
+  /** Nombre en el momento de registrar (por si luego se borra la receta o el alimento). */
+  nombre: string
+  /** Nutrientes ya calculados para esta cantidad (foto del momento). */
+  n: Nutrientes
+  incompletos: Nutriente[]
+  creado: string
+}
+
+/** Un vaso (o cantidad) de agua. */
+export interface RegistroAgua {
+  id: string
+  fecha: string
+  ml: number
+  creado: string
+}
+
+/** Combinación frecuente, por ejemplo "mi desayuno de siempre". */
+export interface ComidaGuardada {
+  id: string
+  nombre: string
+  items: ItemComida[]
+}
+
 export interface IngredienteReceta {
   alimentoId: string
   /** Cantidad para la receta completa (todas sus porciones), en g o ml. */

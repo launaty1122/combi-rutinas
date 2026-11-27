@@ -1,5 +1,15 @@
 import Dexie, { type EntityTable } from 'dexie'
-import type { Alimento, Compra, ItemAlacena, ItemMercado, PrecioGuardado, Receta } from '../logica/tipos'
+import type {
+  Alimento,
+  ComidaGuardada,
+  Compra,
+  ItemAlacena,
+  ItemMercado,
+  PrecioGuardado,
+  Receta,
+  RegistroAgua,
+  RegistroComida,
+} from '../logica/tipos'
 
 /** Un ajuste guardado: { clave: 'basicos', valor: [...] }. */
 export interface Ajuste {
@@ -19,6 +29,9 @@ export class BaseCombi extends Dexie {
   mercado!: EntityTable<ItemMercado, 'id'>
   precios!: EntityTable<PrecioGuardado, 'clave'>
   compras!: EntityTable<Compra, 'id'>
+  diario!: EntityTable<RegistroComida, 'id'>
+  agua!: EntityTable<RegistroAgua, 'id'>
+  comidasGuardadas!: EntityTable<ComidaGuardada, 'id'>
 
   constructor(nombre = 'combi-rutinas') {
     super(nombre)
@@ -34,6 +47,12 @@ export class BaseCombi extends Dexie {
       mercado: 'id, alimentoId, comprado',
       precios: 'clave',
       compras: 'id, fecha',
+    })
+    // Versión 3 (Fase 2): diario de comidas, agua y comidas guardadas.
+    this.version(3).stores({
+      diario: 'id, fecha',
+      agua: 'id, fecha',
+      comidasGuardadas: 'id',
     })
   }
 }
