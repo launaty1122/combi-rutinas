@@ -4,6 +4,7 @@ import { CATEGORIAS } from '../../datos/categorias'
 import { guardarAlimentoPersonal } from '../../db/alimentos'
 import { nuevoId } from '../../db/db'
 import { crearAlimentoPersonal, leerNumero } from '../../logica/personales'
+import { LeerTablaFoto } from './LeerTablaFoto'
 import type { Alimento, CategoriaAlimento, Nutriente } from '../../logica/tipos'
 
 const CAMPOS: { k: Nutriente; nombre: string; unidad: string; principal?: boolean }[] = [
@@ -102,6 +103,17 @@ export function CrearAlimento({
         <input type="checkbox" checked={liquido} onChange={(e) => setLiquido(e.target.checked)} className="size-5 accent-finca" />
         Es líquido (se mide en ml)
       </label>
+
+      <LeerTablaFoto
+        alLeer={(t) => {
+          setValores((v) => ({ ...v, ...t.valores }))
+          setBase(t.base === 'por100' ? '100' : 'porcion')
+          if (t.gramosPorcion) {
+            setGramosPorcion(String(t.gramosPorcion))
+            setNombrePorcion((n) => n || '1 porción')
+          }
+        }}
+      />
 
       <fieldset className="flex flex-col gap-2">
         <legend className="mb-1 text-sm font-bold">Porción (como dice el empaque)</legend>

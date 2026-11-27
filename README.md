@@ -4,7 +4,7 @@ App personal para organizar la alimentación: alacena, recetario y (más adelant
 
 **La app:** https://launaty1122.github.io/combi-rutinas/
 
-> Estado: **Fase 3 publicada** (progreso con medidas, peso y gráficas; buscador por nutriente; dictado por voz; escáner de código de barras con Open Food Facts). Falta de la Fase 3: leer la tabla nutricional con foto (OCR).
+> Estado: **Fase 3 publicada** (progreso con medidas, peso y gráficas; buscador por nutriente; dictado por voz; escáner de código de barras con Open Food Facts). También lee la tabla nutricional con una foto (OCR con Tesseract.js, en el celular; se descarga la primera vez que se usa).
 
 ## Qué necesitas en el computador
 
