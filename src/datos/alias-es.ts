@@ -5,7 +5,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   // Granos y cereales
   1: ['Arroz integral cocido'],
   2: ['Arroz integral crudo'],
-  3: ['Arroz blanco cocido', 'arroz'],
+  3: ['Arroz blanco cocido', 'arroz', 'arroz blanco', 'arroz branco'],
   4: ['Arroz blanco crudo'],
   7: ['Avena en hojuelas', 'avena', 'copos de avena'],
   13: ['Galletas de soda', 'galletas saladas', 'crackers'],
@@ -41,7 +41,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   87: ['Arracacha cruda', 'mandioquinha', 'batata baroa'],
   88: ['Batata dulce cocida', 'camote cocido', 'boniato cocido'],
   89: ['Batata dulce cruda', 'camote', 'boniato'],
-  91: ['Papa cocida', 'patata cocida'],
+  91: ['Papa cocida', 'patata cocida', 'papa sancochada', 'papa hervida'],
   92: ['Papa cruda', 'papa', 'patata'],
   93: ['Papa frita', 'papas a la francesa'],
   95: ['Berenjena cocida'],
@@ -68,7 +68,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   124: ['Almidón de yuca (goma de tapioca)', 'goma de tapioca', 'almidón de yuca', 'fécula de mandioca'],
   125: ['Germinado de frijol', 'brotes de soya'],
   126: ['Ñame crudo', 'ñame'],
-  129: ['Yuca cocida', 'mandioca cocida'],
+  129: ['Yuca cocida', 'mandioca cocida', 'yuca sancochada', 'aipim cozido'],
   130: ['Yuca cruda', 'yuca', 'mandioca'],
   132: ['Yuca frita'],
   133: ['Albahaca cruda', 'albahaca'],
@@ -199,7 +199,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   405: ['Pollo entero sin piel crudo', 'pollo'],
   408: ['Pechuga de pollo cocida', 'pollo desmechado'],
   409: ['Pechuga de pollo cruda', 'pechuga', 'pechuga de pollo'],
-  410: ['Pechuga de pollo a la plancha'],
+  410: ['Pechuga de pollo a la plancha', 'pollo a la plancha', 'pollo asado', 'frango grelhado'],
   414: ['Contramuslo de pollo sin piel crudo', 'sobrecoxa'],
   413: ['Contramuslo de pollo sin piel asado'],
   415: ['Hamburguesa de res cruda'],
@@ -239,13 +239,13 @@ export const ALIAS_ES: Record<number, string[]> = {
   478: ['Agua de coco'],
 
   // Huevos
-  484: ['Omelet de queso'],
+  484: ['Omelet de queso', 'tortilla de huevo', 'omelette', 'omelete'],
   485: ['Huevo de codorniz'],
   486: ['Clara de huevo cocida', 'clara de huevo'],
   487: ['Yema de huevo cocida', 'yema'],
-  488: ['Huevo cocido', 'huevo duro'],
+  488: ['Huevo cocido', 'huevo duro', 'huevos cocidos', 'huevo tibio', 'huevo pochado', 'ovo cozido'],
   489: ['Huevo crudo', 'huevo', 'huevos'],
-  490: ['Huevo frito'],
+  490: ['Huevo frito', 'huevo revuelto', 'huevos revueltos', 'huevo frito o revuelto', 'huevos fritos', 'huevo en sartén', 'ovo mexido', 'ovo frito', 'huevo perico'],
 
   // Dulces y otros
   491: ['Chocolate en polvo (achocolatado)'],

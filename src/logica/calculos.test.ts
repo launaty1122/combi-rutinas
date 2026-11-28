@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { ALIMENTOS_BASE, ALIMENTOS_TACO, ALIMENTOS_USDA } from '../datos/alimentos'
 import { descontarDeAlacena } from './alacena'
-import { crearBuscador } from './buscar'
+import { buscarParecidos, crearBuscador } from './buscar'
 import { calcularDisponibilidad } from './disponibilidad'
 import { escalarIngredientes, factorPorciones } from './escalar'
 import { sugerirEtiquetas } from './etiquetas'
@@ -310,6 +310,23 @@ describe('fechas de vencimiento', () => {
 
 describe('búsqueda de alimentos', () => {
   const buscar = crearBuscador(ALIMENTOS_BASE)
+
+  it('encuentra preparaciones comunes: "huevo revuelto", "pollo a la plancha"', () => {
+    expect(buscar('Huevo revuelto')[0].id).toBe('taco-490')
+    expect(buscar('pollo a la plancha')[0].id).toBe('taco-410')
+  })
+
+  it('encuentra palabras en cualquier orden: "pollo plancha"', () => {
+    expect(buscar('pollo plancha').map((a) => a.id)).toContain('taco-410')
+  })
+
+  it('si no hay nada, propone lo más parecido con menos palabras', () => {
+    const r = buscarParecidos(buscar, 'huevo con salsa inventada xyz')
+    expect(r?.consulta).toMatch(/^huevo/)
+    expect(r?.resultados.length).toBeGreaterThan(0)
+    const r2 = buscarParecidos(buscar, 'arepa de chócolo rellena')
+    expect(r2?.resultados.length).toBeGreaterThan(0)
+  })
 
   it('pone primero el nombre más simple', () => {
     expect(buscar('huevo')[0].id).toBe(HUEVO)

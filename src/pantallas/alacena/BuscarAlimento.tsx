@@ -3,6 +3,7 @@ import { Icono } from '../../componentes/Icono'
 import { nombreVisible } from '../../datos/alimentos'
 import { CATEGORIA_POR_ID } from '../../datos/categorias'
 import type { Catalogo } from '../../datos/catalogo'
+import { buscarParecidos } from '../../logica/buscar'
 import type { ProductoOFF } from '../../logica/openfoodfacts'
 import type { Alimento } from '../../logica/tipos'
 import { CrearAlimento } from './CrearAlimento'
@@ -47,7 +48,10 @@ export function BuscarAlimento({
       </div>
     )
   }
-  const resultados = catalogo.buscar(q, 25)
+  const exactos = catalogo.buscar(q, 25)
+  // Si no hay nada con la frase completa, se muestra lo más parecido con menos palabras.
+  const parecidos = q.trim() && exactos.length === 0 ? buscarParecidos(catalogo.buscar, q, 25) : null
+  const resultados = exactos.length ? exactos : (parecidos?.resultados ?? [])
 
   return (
     <div className="flex flex-col gap-3">
@@ -77,6 +81,11 @@ export function BuscarAlimento({
       )}
       {q.trim() !== '' && resultados.length === 0 && (
         <p className="px-1 text-sm text-tinta-suave">No encontré "{q}". Prueba con otra palabra.</p>
+      )}
+      {parecidos && (
+        <p className="px-1 text-sm text-tinta-suave">
+          No tengo "{q}" tal cual. Esto es lo más parecido a <strong className="text-tinta">"{parecidos.consulta}"</strong>:
+        </p>
       )}
 
       <ul className="flex flex-col">
