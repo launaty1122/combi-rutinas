@@ -21,6 +21,7 @@ const RUTAS = {
   carrito: 'M3 4h2l2.4 11h10.2L20 8H6.2 M9 20h.01 M17 20h.01',
   corazon:'M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z',
   alerta: 'M12 6v7 M12 18h.01',
+  lapiz: 'M4 20h4L19 9l-4-4L4 16z M13 7l4 4',
   olla: 'M3 11h18a9 9 0 0 1-18 0z M8 7c0-2 2-2 2-4 M13 7c0-2 2-2 2-4',
   sal:'M8 3h8l1 4H7z M7 7h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z M10 12h.01 M14 12h.01 M12 15h.01',
 } as const

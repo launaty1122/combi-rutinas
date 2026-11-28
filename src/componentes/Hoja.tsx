@@ -15,6 +15,10 @@ interface Props {
 export function Hoja({ abierta, titulo, alCerrar, children }: Props) {
   const ref = useRef<HTMLDialogElement>(null)
   const toqueEnFondo = useRef(false)
+  // El evento "close" también llega cuando la app la cierra (por ejemplo, para abrir otra hoja).
+  // Solo se avisa si la cerró la persona (Esc / atrás) mientras seguía abierta.
+  const abiertaRef = useRef(abierta)
+  abiertaRef.current = abierta
 
   useEffect(() => {
     const d = ref.current
@@ -30,7 +34,9 @@ export function Hoja({ abierta, titulo, alCerrar, children }: Props) {
   return (
     <dialog
       ref={ref}
-      onClose={alCerrar}
+      onClose={() => {
+        if (abiertaRef.current) alCerrar()
+      }}
       onPointerDown={(e) => {
         toqueEnFondo.current = e.target === ref.current
       }}

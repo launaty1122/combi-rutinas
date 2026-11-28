@@ -9,6 +9,7 @@ import { formatearNumero } from '../../logica/texto'
 import { href } from '../../rutas'
 import { useCatalogo } from '../../datos/catalogo'
 import { Barrita } from './Barrita'
+import { EditorReceta } from './EditorReceta'
 import { ImportarReceta } from './ImportarReceta'
 import { colorDeReceta, useRecetasCompletas, type RecetaCompleta } from './datos'
 
@@ -29,7 +30,8 @@ const ATAJOS = ['favoritas', 'tiempo:20', 'objetivo:alta-en-proteina', 'tipo:bat
 
 export function Recetas({ alAgregar }: { alAgregar: () => void }) {
   const { grupos, nombre: nombres } = useGruposEtiquetas()
-  const [importando, setImportando] = useState(false)
+  // Nueva receta: primero se elige cómo (a mano o importada con IA).
+  const [nueva, setNueva] = useState<null | 'elegir' | 'mano' | 'importar'>(null)
   const catalogo = useCatalogo()
   const recetas = useRecetasCompletas()
   const [texto, setTexto] = useState('')
@@ -56,10 +58,10 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
       accion={
         <button
           type="button"
-          onClick={() => setImportando(true)}
+          onClick={() => setNueva('elegir')}
           className="flex h-12 shrink-0 items-center gap-2 rounded-full bg-hoja px-5 font-bold text-tinta transition-transform duration-150 ease-out active:scale-[0.97]"
         >
-          <Icono nombre="agregar" tam={20} /> Importar
+          <Icono nombre="agregar" tam={20} /> Nueva
         </button>
       }
       cabecera={
@@ -175,8 +177,49 @@ export function Recetas({ alAgregar }: { alAgregar: () => void }) {
           </div>
         </div>
       </Hoja>
-      <Hoja abierta={importando} titulo="Importar receta" alCerrar={() => setImportando(false)}>
-        <ImportarReceta catalogo={catalogo} alTerminar={() => setImportando(false)} />
+      <Hoja abierta={nueva === 'elegir'} titulo="Nueva receta" alCerrar={() => setNueva(null)}>
+        <div className="flex flex-col gap-3">
+          <button
+            type="button"
+            onClick={() => setNueva('mano')}
+            className="flex items-center gap-4 rounded-[22px] bg-limon-verde p-4 text-left text-noche transition-transform duration-150 ease-out active:scale-[0.98]"
+          >
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-crema">
+              <Icono nombre="lapiz" />
+            </span>
+            <span>
+              <span className="block font-titulo text-lg font-semibold">Crearla a mano</span>
+              <span className="block text-sm">Escribes el nombre, buscas los ingredientes y pones los pasos. Sin IA.</span>
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setNueva('importar')}
+            className="flex items-center gap-4 rounded-[22px] bg-pista p-4 text-left transition-transform duration-150 ease-out active:scale-[0.98]"
+          >
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-hoja">
+              <Icono nombre="recetas" />
+            </span>
+            <span>
+              <span className="block font-titulo text-lg font-semibold">Importarla con ayuda de una IA</span>
+              <span className="block text-sm text-tinta-suave">Para recetas de un video o una página: la IA te da el texto y lo pegas aquí.</span>
+            </span>
+          </button>
+        </div>
+      </Hoja>
+      <Hoja abierta={nueva === 'mano'} titulo="Crear receta" alCerrar={() => setNueva(null)}>
+        {nueva === 'mano' && (
+          <EditorReceta
+            catalogo={catalogo}
+            alTerminar={(r) => {
+              setNueva(null)
+              if (r) window.location.hash = href('recetas', r.id)
+            }}
+          />
+        )}
+      </Hoja>
+      <Hoja abierta={nueva === 'importar'} titulo="Importar receta" alCerrar={() => setNueva(null)}>
+        <ImportarReceta catalogo={catalogo} alTerminar={() => setNueva(null)} />
       </Hoja>
     </Pantalla>
   )
@@ -239,7 +282,7 @@ function TarjetaReceta({ r, nombres }: { r: RecetaCompleta; nombres: Map<string,
         <Mancha className="w-32" />
       </span>
       <span className="relative text-[13px] font-bold">
-        {[cocina && nombres.get(cocina), `${r.receta.minutos} min`, destacado].filter(Boolean).join(' · ')}
+        {[cocina && nombres.get(cocina), r.receta.minutos > 0 && `${r.receta.minutos} min`, destacado].filter(Boolean).join(' · ')}
       </span>
       <span className="relative flex items-start gap-2 pr-14 font-titulo text-[21px] leading-tight font-semibold">
         {r.receta.nombre}

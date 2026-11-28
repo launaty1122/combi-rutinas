@@ -38,6 +38,18 @@ export async function guardarNotas(id: string, notas: string): Promise<void> {
   await db.recetas.update(id, { notas })
 }
 
+/** Crea o actualiza una receta (hecha a mano o editada). */
+export async function guardarReceta(r: Receta): Promise<void> {
+  await db.recetas.put(r)
+}
+
+/** Borra una receta y la quita de la semana del mercado si estaba planeada. */
+export async function borrarReceta(id: string): Promise<void> {
+  await db.recetas.delete(id)
+  const planeadas = await leerAjuste<{ recetaId: string; porciones: number }[]>('recetasPlaneadas', [])
+  await guardarAjuste('recetasPlaneadas', planeadas.filter((p) => p.recetaId !== id))
+}
+
 export async function guardarObjetivo(id: string, objetivo: string[] | undefined): Promise<void> {
   await db.recetas.update(id, { objetivo })
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Hoja } from '../../componentes/Hoja'
+import { SelectorEtiquetas } from '../../componentes/SelectorEtiquetas'
+import type { GrupoEtiquetas } from '../../datos/etiquetas'
 import { Icono, Mancha } from '../../componentes/Icono'
 import { nombreVisible } from '../../datos/alimentos'
 import { useCatalogo } from '../../datos/catalogo'
@@ -15,6 +17,7 @@ import type { Nutriente, Receta as TReceta } from '../../logica/tipos'
 import { describirCantidad, formatearGramos } from '../../logica/unidades'
 import { href } from '../../rutas'
 import { CocineEsto, Contador } from './CocineEsto'
+import { EditorReceta } from './EditorReceta'
 import { planearReceta, quitarPlaneada, usePlaneadas } from '../../db/mercado'
 import { completarReceta, NUTRIENTES_INFO } from './datos'
 
@@ -31,7 +34,7 @@ export function Receta({ id }: { id: string }) {
       </div>
     )
   }
-  return <DetalleReceta key={receta.id} receta={receta} />
+  return <DetalleReceta key={`${receta.id}-${receta.porciones}`} receta={receta} />
 }
 
 function valor(n: number | null, unidad: string, incompleto: boolean): string {
@@ -51,6 +54,7 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
   const [verTodo, setVerTodo] = useState(false)
   const [cocinando, setCocinando] = useState(false)
   const [corrigiendo, setCorrigiendo] = useState(false)
+  const [editando, setEditando] = useState(false)
   const [notas, setNotas] = useState(receta.notas ?? '')
 
   const ingredientes = escalarIngredientes(receta, porciones)
@@ -86,15 +90,25 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
         >
           <Icono nombre="atras" />
         </a>
-        <button
-          type="button"
-          onClick={() => alternarFavorita(receta.id)}
-          aria-pressed={!!receta.favorita}
-          aria-label={receta.favorita ? 'Quitar de favoritas' : 'Marcar como favorita'}
-          className="absolute top-5 right-4 flex size-12 items-center justify-center rounded-full bg-hoja text-chili dark:text-rosa"
-        >
-          <Icono nombre="corazon" relleno={!!receta.favorita} />
-        </button>
+        <div className="absolute top-5 right-4 flex gap-2">
+          <button
+            type="button"
+            onClick={() => setEditando(true)}
+            aria-label="Editar receta"
+            className="flex size-12 items-center justify-center rounded-full bg-hoja text-tinta"
+          >
+            <Icono nombre="lapiz" />
+          </button>
+          <button
+            type="button"
+            onClick={() => alternarFavorita(receta.id)}
+            aria-pressed={!!receta.favorita}
+            aria-label={receta.favorita ? 'Quitar de favoritas' : 'Marcar como favorita'}
+            className="flex size-12 items-center justify-center rounded-full bg-hoja text-chili dark:text-rosa"
+          >
+            <Icono nombre="corazon" relleno={!!receta.favorita} />
+          </button>
+        </div>
       </div>
 
       <main className="relative flex flex-col gap-5 rounded-t-hoja bg-hoja px-5 pt-6 pb-36 text-tinta">
@@ -120,14 +134,17 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
           </div>
           <h1 className="font-titulo text-[28px] leading-tight font-semibold">{receta.nombre}</h1>
           <p className="text-sm font-semibold text-tinta-suave">
-            {receta.minutos} min · {receta.porciones} {receta.porciones === 1 ? 'porción' : 'porciones'}
+            {receta.minutos > 0 ? `${receta.minutos} min · ` : ''}
+            {receta.porciones} {receta.porciones === 1 ? 'porción' : 'porciones'}
             {dificultad && nombres.get(dificultad) ? ` · ${nombres.get(dificultad)}` : ''}
           </p>
         </div>
 
-        <div className="rounded-[26px_26px_26px_8px] bg-verde-claro px-4 py-3.5 text-noche">
-          <p className="text-[15px] leading-relaxed">{receta.ficha}</p>
-        </div>
+        {receta.ficha && (
+          <div className="rounded-[26px_26px_26px_8px] bg-verde-claro px-4 py-3.5 text-noche">
+            <p className="text-[15px] leading-relaxed">{receta.ficha}</p>
+          </div>
+        )}
 
         <section className="flex flex-col gap-2">
           <div className="flex items-baseline justify-between">
@@ -269,6 +286,20 @@ function DetalleReceta({ receta }: { receta: TReceta }) {
         />
       </Hoja>
 
+      <Hoja abierta={editando} titulo="Editar receta" alCerrar={() => setEditando(false)}>
+        {editando && (
+          <EditorReceta
+            catalogo={catalogo}
+            inicial={receta}
+            alTerminar={(r) => {
+              setEditando(false)
+              // Si se borró, se vuelve al recetario.
+              if (!r) window.location.hash = href('recetas')
+            }}
+          />
+        )}
+      </Hoja>
+
       <Hoja abierta={corrigiendo} titulo="Etiquetas" alCerrar={() => setCorrigiendo(false)}>
         <EtiquetasReceta receta={receta} grupos={grupos} />
         <h3 className="mt-6 mb-2 font-titulo text-lg font-semibold">Objetivo</h3>
@@ -347,35 +378,17 @@ function CorregirObjetivo({ receta, sugeridas, actuales }: { receta: TReceta; su
   )
 }
 
-function EtiquetasReceta({ receta, grupos }: { receta: TReceta; grupos: { id: string; nombre: string; opciones: { id: string; nombre: string }[] }[] }) {
-  const alternar = (id: string) =>
-    guardarEtiquetasReceta(
-      receta.id,
-      receta.etiquetas.includes(id) ? receta.etiquetas.filter((e) => e !== id) : [...receta.etiquetas, id],
-    )
+function EtiquetasReceta({ receta, grupos }: { receta: TReceta; grupos: GrupoEtiquetas[] }) {
   return (
-    <div className="flex flex-col gap-4">
-      {grupos.map((g) => (
-        <fieldset key={g.id}>
-          <legend className="mb-2 font-titulo text-lg font-semibold">{g.nombre}</legend>
-          <div className="flex flex-wrap gap-2">
-            {g.opciones.map((o) => {
-              const on = receta.etiquetas.includes(o.id)
-              return (
-                <button
-                  key={o.id}
-                  type="button"
-                  aria-pressed={on}
-                  onClick={() => alternar(o.id)}
-                  className={`min-h-10 rounded-full px-4 text-sm font-bold ${on ? 'bg-limon-verde text-noche' : 'bg-pista'}`}
-                >
-                  {o.nombre}
-                </button>
-              )
-            })}
-          </div>
-        </fieldset>
-      ))}
-    </div>
+    <SelectorEtiquetas
+      grupos={grupos}
+      elegidas={receta.etiquetas}
+      alAlternar={(id) =>
+        guardarEtiquetasReceta(
+          receta.id,
+          receta.etiquetas.includes(id) ? receta.etiquetas.filter((e) => e !== id) : [...receta.etiquetas, id],
+        )
+      }
+    />
   )
 }
