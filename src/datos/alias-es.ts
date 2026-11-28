@@ -21,10 +21,10 @@ export const ALIAS_ES: Record<number, string[]> = {
   45: ['Maíz tierno enlatado', 'maíz dulce'],
   48: ['Pan de avena'],
   52: ['Pan integral de molde', 'pan integral', 'pan tajado integral'],
-  53: ['Pan francés', 'pan blanco', 'pan'],
+  53: ['Pan francés', 'pan', 'pancito', 'pan pequeño', 'pan de sal', 'pão francês'],
   61: ['Palomitas de maíz', 'crispetas', 'pipoca'],
   62: ['Polenta precocida'],
-  63: ['Tostada de pan francés'],
+  63: ['Tostada de pan francés', 'tostadas', 'tostada', 'pan tostado', 'torrada'],
 
   // Verduras y hortalizas
   64: ['Ahuyama cabotiá cocida', 'calabaza cocida'],
@@ -206,7 +206,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   417: ['Hamburguesa de res a la plancha'],
   418: ['Chorizo de pollo crudo'],
   421: ['Chorizo de cerdo crudo', 'chorizo', 'linguiça'],
-  423: ['Chorizo de cerdo a la plancha'],
+  423: ['Chorizo de cerdo a la plancha', 'chorizo', 'chorizos', 'chorizo frito', 'linguiça frita'],
   424: ['Mortadela'],
   426: ['Pavo crudo'],
   427: ['Chuleta de cerdo cruda', 'chuleta'],
@@ -214,13 +214,14 @@ export const ALIAS_ES: Record<number, string[]> = {
   433: ['Lomo de cerdo crudo', 'lomo de cerdo'],
   432: ['Lomo de cerdo asado', 'carne de cerdo', 'cerdo', 'carne de porco', 'porco', 'cerdo asado'],
   436: ['Pernil de cerdo crudo'],
-  439: ['Jamón sin grasa', 'jamón'],
+  439: ['Jamón sin grasa', 'jamón magro'],
   444: ['Tocino crudo', 'tocineta'],
 
   // Lácteos
   447: ['Crema de leche'],
   448: ['Yogur natural', 'iogurte natural', 'yogurt'],
   449: ['Yogur natural descremado'],
+  451: ['Yogur de fresa', 'yogur con fruta', 'yogur de sabores', 'iogurte de morango'],
   453: ['Leche condensada'],
   457: ['Leche descremada', 'leche deslactosada descremada'],
   458: ['Leche entera', 'leche'],

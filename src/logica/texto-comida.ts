@@ -186,6 +186,7 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
         i = 2
       }
     }
+    const conCantidad = i > 0
     // 2. Unidad: "g", "tajada", "taza"… seguida de "de". Sin número antes, solo si es una
     // unidad conocida ("carne de cerdo" es un alimento, no "carne" como unidad).
     if (!unidad && palabras[i + 1] === 'de' && palabras[i] && (i > 0 || UNIDADES.has(singular(palabras[i])))) {
@@ -211,6 +212,18 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
       : { candidatos: [] as Alimento[], aproximado: false }
     const conUnidad = unidad && GRAMOS[unidad] === undefined ? candidatos.find((a) => porcionDeUnidad(a, unidad as string)) : undefined
     const alimento = conUnidad ?? candidatos[0] ?? null
+
+    // Plural sin número ("huevos revueltos", "chorizos"): se suponen 2 y se marca para revisar.
+    let pluralSupuesto = false
+    const primera = nombre.split(' ')[0] ?? ''
+    const p0 = alimento?.porciones[0]
+    if (!conCantidad && !unidad && !mano && p0 && /s$/.test(primera)) {
+      const palabraPorcion = normalizar(p0.nombre).replace(/^(1|½|¼)\s+/, '').split(' ')[0]
+      if (singular(palabraPorcion) === singular(primera)) {
+        cantidad = 2
+        pluralSupuesto = true
+      }
+    }
 
     // 4. Gramos.
     let gramos = 100
@@ -240,6 +253,7 @@ export function interpretarTexto(texto: string, buscar: (q: string, limite?: num
         gramos = cantidad * 100
       }
     }
+    if (pluralSupuesto) seguro = false
     // Medida con la mano: manda sobre lo demás ("2 puños de arroz" = 2 × 1 taza).
     if (mano && alimento) {
       const veces = cantidad !== 1 ? cantidad : cantidadMano

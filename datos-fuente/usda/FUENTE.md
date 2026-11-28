@@ -42,3 +42,10 @@ node scripts/extraer-usda.mjs "<carpeta descomprimida>"
 \* El USDA no tiene "harina precocida para arepas"; se usa la harina de maíz blanca desgerminada, que es la más parecida. Los valores son aproximados.
 
 Nota: los datos de "whey" son de un polvo de proteína genérico. Cada marca es distinta: si quieres exactitud, crea tu whey como alimento personalizado con la tabla de su empaque.
+
+## Agregados después (comidas de todos los días)
+
+Leches y aceites (TACO no trae sus macros): 171265, 171269, 171411, 171413, 172336, 171025 y sal 173468.
+Pan blanco de molde 174924, pasta cocida 169737, salchicha 172968, salchicha de pollo 171624,
+plátano maduro frito 168200, patacones 168199, plátano maduro asado 169131, tortilla de trigo 167535,
+granola 171646, atún en agua 173709, jamón tajado 173864.

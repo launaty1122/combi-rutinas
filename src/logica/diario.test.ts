@@ -167,6 +167,32 @@ describe('registrar por texto', () => {
     ])
   })
 
+  it('el desayuno de Lau: "desayuné huevos revueltos con chirizo y un pan"', () => {
+    const r = interpretarTexto('desayuné huevos revueltos con chirizo y un pan', buscar)
+    expect(r.momento).toBe('desayuno')
+    expect(r.partes.map((p) => p.alimento?.alias[0])).toEqual(['Huevo frito', 'Chorizo de cerdo a la plancha', 'Pan francés'])
+    expect(r.partes[0].gramos).toBe(100) // "huevos" en plural sin número → 2, para revisar
+    expect(r.partes[0].seguro).toBe(false)
+    expect(r.partes[1].gramos).toBe(55) // 1 chorizo
+  })
+
+  it('comidas de todos los días que antes fallaban', () => {
+    const uno = (t: string) => interpretarTexto(t, buscar).partes[0]
+    expect(uno('2 tajadas de pan de molde').alimento?.alias[0]).toBe('Pan blanco de molde')
+    expect(uno('2 tajadas de pan de molde').gramos).toBe(50)
+    expect(uno('1 tajada de pan forma').alimento?.alias[0]).toBe('Pan blanco de molde')
+    expect(uno('pasta').alimento?.alias[0]).toBe('Pasta cocida')
+    expect(uno('salchicha').alimento?.alias[0]).toBe('Salchicha')
+    expect(uno('tostadas').alimento?.alias[0]).toBe('Tostada de pan francés')
+    expect(uno('patacones').alimento?.alias[0]).toBe('Patacones')
+    expect(uno('plátano maduro frito').alimento?.alias[0]).toBe('Plátano maduro frito')
+    expect(uno('una arepa').alimento?.alias[0]).toBe('Arepa (de harina precocida)')
+    expect(uno('una arepa').gramos).toBe(40)
+    expect(uno('granola').alimento?.alias[0]).toBe('Granola')
+    expect(uno('atún en agua').alimento?.alias[0]).toBe('Atún en agua (lata)')
+    expect(uno('un pancito').alimento?.alias[0]).toBe('Pan francés')
+  })
+
   it('"2 trozos de yuca" sin porción "trozo": estima y lo marca para revisar', () => {
     const r = interpretarTexto('2 trozos de lentejas', buscar)
     expect(r.partes[0].seguro).toBe(false)

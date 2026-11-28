@@ -44,6 +44,8 @@ export const PORCIONES: Record<number, Porcion[]> = {
   316: [u('1 filete', 150)],
   277: [u('1 lata escurrida', 120)],
   319: [u('1 lata escurrida', 85)],
+  421: [u('1 chorizo', 60)],
+  423: [u('1 chorizo', 55)],
   // Carnes cocidas: "1 pedazo" o "1 presa" (lo que uno sirve en el plato).
   432: [u('1 pedazo', 80), u('1 porción', 120)],
   429: [u('1 chuleta', 110), u('1 pedazo', 80)],

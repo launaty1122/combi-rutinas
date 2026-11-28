@@ -530,5 +530,214 @@
    "vitaminaC": 0,
    "grasaSaturada": 0
   }
+ },
+ {
+  "id": "usda-174924",
+  "nombre": "Bread, white, commercially prepared (includes soft bread crumbs)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.85,
+   "grasa": 3.33,
+   "carbohidratos": 49.42,
+   "kcal": 266,
+   "fibra": 2.7,
+   "calcio": 144,
+   "hierro": 3.61,
+   "potasio": 126,
+   "sodio": 490,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.698
+  }
+ },
+ {
+  "id": "usda-169737",
+  "nombre": "Pasta, cooked, enriched, without added salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.8,
+   "grasa": 0.93,
+   "carbohidratos": 30.86,
+   "kcal": 158,
+   "fibra": 1.8,
+   "calcio": 7,
+   "hierro": 1.28,
+   "potasio": 44,
+   "sodio": 1,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.176
+  }
+ },
+ {
+  "id": "usda-172968",
+  "nombre": "Frankfurter, meat",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.26,
+   "grasa": 25.76,
+   "carbohidratos": 4.17,
+   "kcal": 290,
+   "fibra": 0,
+   "calcio": 99,
+   "hierro": 1.09,
+   "potasio": 152,
+   "sodio": 1090,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 7.666
+  }
+ },
+ {
+  "id": "usda-171624",
+  "nombre": "Frankfurter, chicken",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 15.51,
+   "grasa": 16.19,
+   "carbohidratos": 2.74,
+   "kcal": 223,
+   "fibra": 0,
+   "calcio": 74,
+   "hierro": 1.17,
+   "potasio": 202,
+   "sodio": 1027,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 3.856
+  }
+ },
+ {
+  "id": "usda-168200",
+  "nombre": "Plantains, yellow, fried, Latino restaurant",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.42,
+   "grasa": 7.51,
+   "carbohidratos": 40.77,
+   "kcal": 236,
+   "fibra": 3.2,
+   "calcio": 6,
+   "hierro": 0.62,
+   "potasio": 507,
+   "sodio": 6,
+   "vitaminaA": 66,
+   "vitaminaC": null,
+   "grasaSaturada": 1.816
+  }
+ },
+ {
+  "id": "usda-168199",
+  "nombre": "Plantains, green, fried",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.5,
+   "grasa": 11.81,
+   "carbohidratos": 49.17,
+   "kcal": 309,
+   "fibra": 3.5,
+   "calcio": 4,
+   "hierro": 0.67,
+   "potasio": 482,
+   "sodio": 2,
+   "vitaminaA": 60,
+   "vitaminaC": 3.4,
+   "grasaSaturada": 3.69
+  }
+ },
+ {
+  "id": "usda-169131",
+  "nombre": "Plantains, yellow, baked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.52,
+   "grasa": 0.16,
+   "carbohidratos": 41.37,
+   "kcal": 155,
+   "fibra": 2.2,
+   "calcio": 3,
+   "hierro": 0.28,
+   "potasio": 477,
+   "sodio": 2,
+   "vitaminaA": 45,
+   "vitaminaC": 16.4,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-167535",
+  "nombre": "Tortillas, ready-to-bake or -fry, flour, shelf stable",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.01,
+   "grasa": 7.58,
+   "carbohidratos": 49.27,
+   "kcal": 297,
+   "fibra": 2.4,
+   "calcio": 163,
+   "hierro": 3.32,
+   "potasio": 133,
+   "sodio": 742,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 1.225
+  }
+ },
+ {
+  "id": "usda-171646",
+  "nombre": "Cereals ready-to-eat, granola, homemade",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 13.67,
+   "grasa": 24.31,
+   "carbohidratos": 53.88,
+   "kcal": 489,
+   "fibra": 8.9,
+   "calcio": 76,
+   "hierro": 3.95,
+   "potasio": 539,
+   "sodio": 26,
+   "vitaminaA": 1,
+   "vitaminaC": 1.2,
+   "grasaSaturada": 3.957
+  }
+ },
+ {
+  "id": "usda-173709",
+  "nombre": "Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 19.44,
+   "grasa": 0.96,
+   "carbohidratos": 0,
+   "kcal": 86,
+   "fibra": 0,
+   "calcio": 17,
+   "hierro": 1.63,
+   "potasio": 179,
+   "sodio": 247,
+   "vitaminaA": 17,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.211
+  }
+ },
+ {
+  "id": "usda-173864",
+  "nombre": "Ham, sliced, regular (approximately 11% fat)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 16.6,
+   "grasa": 8.8,
+   "carbohidratos": 3.63,
+   "kcal": 164,
+   "fibra": 1.3,
+   "calcio": 24,
+   "hierro": 1.02,
+   "potasio": 287,
+   "sodio": 814,
+   "vitaminaA": 0,
+   "vitaminaC": 4,
+   "grasaSaturada": 0.5
+  }
  }
 ]

@@ -24,6 +24,8 @@ const IDS = new Set([
   '174289',
   // Leches y aceites: TACO no trae sus macronutrientes (los marca como no analizados). Sal: kcal 0.
   '171265', '171269', '171411', '171413', '172336', '171025', '173468',
+  // Comidas de todos los días que faltaban (pan de molde, pasta cocida, salchicha, plátano frito…).
+  '174924', '169737', '172968', '171624', '168200', '168199', '169131', '167535', '171646', '173709', '173864',
 ])
 
 // Número de nutriente USDA → campo de la app.

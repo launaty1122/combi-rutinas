@@ -37,8 +37,8 @@ describe('base de alimentos TACO', () => {
 })
 
 describe('alimentos extra del USDA', () => {
-  it('trae los 28 alimentos que faltan o están incompletos en TACO, con nombre en español y porciones', () => {
-    expect(ALIMENTOS_USDA).toHaveLength(28)
+  it('trae los 39 alimentos que faltan o están incompletos en TACO, con nombre en español y porciones', () => {
+    expect(ALIMENTOS_USDA).toHaveLength(39)
     for (const a of ALIMENTOS_USDA) {
       expect(a.alias.length).toBeGreaterThan(0)
       expect(a.porciones.length).toBeGreaterThan(0)
