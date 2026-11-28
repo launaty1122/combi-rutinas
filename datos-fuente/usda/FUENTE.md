@@ -8,7 +8,7 @@ https://fdc.nal.usda.gov/ — **dominio público**.
 Archivo descargado: `FoodData_Central_sr_legacy_food_csv_2018-04.zip` (6 MB), desde
 https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip
 
-El zip **no** se guarda en el proyecto (es grande y solo se usan 21 alimentos). Para regenerar
+El zip **no** se guarda en el proyecto (es grande y solo se usan unos 130 alimentos). Para regenerar
 `src/datos/alimentos-usda.json`: descarga y descomprime el zip, y corre
 
 ```bash
@@ -49,3 +49,16 @@ Leches y aceites (TACO no trae sus macros): 171265, 171269, 171411, 171413, 1723
 Pan blanco de molde 174924, pasta cocida 169737, salchicha 172968, salchicha de pollo 171624,
 plátano maduro frito 168200, patacones 168199, plátano maduro asado 169131, tortilla de trigo 167535,
 granola 171646, atún en agua 173709, jamón tajado 173864.
+
+## Ampliación (129 en total)
+
+Unos 90 alimentos más de uso diario: proteína de soja (texturizada* y aislada), huevo revuelto, clara, tocineta,
+pavo tajado, tilapia, pancakes, waffles, avena cocida, pan de hamburguesa, croissant, galletas de arroz, totopos,
+pizza, hamburguesa, papas fritas, nuggets, pollo frito, burrito, taco, empanada, tamal, puré, kétchup, mostaza,
+mermelada, crema de avellanas, helado, brownie, donas, vino, licores, energizantes, champiñones, mazorca,
+espinaca, kale, mora, uchuva, frambuesa, pasas, pistachos, queso crema, cheddar, feta y más.
+
+La lista completa, con su código fdc_id, nombre en español y porciones, está en `src/datos/extras-usda.ts`:
+el script lee los códigos de ahí, así que para agregar uno basta con sumarlo a ese archivo y volver a correr el script.
+
+* El USDA no trae "proteína de soja texturizada"; se usa el concentrado de soja (172447), que tiene casi los mismos valores.

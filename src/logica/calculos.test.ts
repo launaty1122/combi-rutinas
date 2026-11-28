@@ -37,8 +37,8 @@ describe('base de alimentos TACO', () => {
 })
 
 describe('alimentos extra del USDA', () => {
-  it('trae los 39 alimentos que faltan o están incompletos en TACO, con nombre en español y porciones', () => {
-    expect(ALIMENTOS_USDA).toHaveLength(39)
+  it('trae los 129 alimentos que faltan o están incompletos en TACO, con nombre en español y porciones', () => {
+    expect(ALIMENTOS_USDA).toHaveLength(129)
     for (const a of ALIMENTOS_USDA) {
       expect(a.alias.length).toBeGreaterThan(0)
       expect(a.porciones.length).toBeGreaterThan(0)
@@ -312,8 +312,27 @@ describe('búsqueda de alimentos', () => {
   const buscar = crearBuscador(ALIMENTOS_BASE)
 
   it('encuentra preparaciones comunes: "huevo revuelto", "pollo a la plancha"', () => {
-    expect(buscar('Huevo revuelto')[0].id).toBe('taco-490')
+    expect(buscar('Huevo revuelto')[0].id).toBe('usda-172187')
+    expect(buscar('huevo frito')[0].id).toBe('taco-490')
     expect(buscar('pollo a la plancha')[0].id).toBe('taco-410')
+  })
+
+  it('encuentra lo que antes faltaba en la base', () => {
+    const primero = (t: string) => buscar(t)[0]?.alias[0]
+    expect(primero('proteína de soja')).toBe('Proteína de soja texturizada (seca)')
+    expect(primero('proteina de soya')).toBe('Proteína de soja texturizada (seca)')
+    expect(primero('zucaritas')).toBe('Cereal de maíz azucarado (tipo Zucaritas)')
+    expect(primero('cornflakes azucarados')).toBe('Cereal de maíz azucarado (tipo Zucaritas)')
+    expect(primero('cornflakes')).toBe('Cereal de maíz (corn flakes)')
+    expect(primero('helado')).toBe('Helado de vainilla')
+    expect(primero('champiñones')).toBe('Champiñones crudos')
+    expect(primero('mora')).toBe('Mora')
+    expect(primero('uchuva')).toBe('Uchuva')
+    expect(primero('pizza')).toBe('Pizza de queso')
+    expect(primero('hamburguesa')).toBe('Hamburguesa sencilla')
+    expect(primero('galletas de arroz')).toBe('Galletas de arroz')
+    expect(primero('vino tinto')).toBe('Vino tinto')
+    expect(primero('pandebono')).toBe('Pan de queso horneado')
   })
 
   it('encuentra palabras en cualquier orden: "pollo plancha"', () => {

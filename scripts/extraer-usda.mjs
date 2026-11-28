@@ -17,16 +17,9 @@ if (!carpeta) {
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
 const salida = join(raiz, 'src', 'datos', 'alimentos-usda.json')
 
-// fdc_id elegidos (ver src/datos/extras-usda.ts para nombres en español y porciones).
-const IDS = new Set([
-  '170554', '173180', '168917', '168874', '174266', '171304', '170894', '168922', '169593', '171320',
-  '174832', '172182', '173757', '175036', '170562', '170556', '168411', '171711', '171412', '168910',
-  '174289',
-  // Leches y aceites: TACO no trae sus macronutrientes (los marca como no analizados). Sal: kcal 0.
-  '171265', '171269', '171411', '171413', '172336', '171025', '173468',
-  // Comidas de todos los días que faltaban (pan de molde, pasta cocida, salchicha, plátano frito…).
-  '174924', '169737', '172968', '171624', '168200', '168199', '169131', '167535', '171646', '173709', '173864',
-])
+// fdc_id elegidos: se leen de src/datos/extras-usda.ts (ahí están los nombres en español y las porciones),
+// así la lista vive en un solo lugar.
+const IDS = new Set([...readFileSync(join(raiz, 'src', 'datos', 'extras-usda.ts'), 'utf8').matchAll(/^ {2}'(\d+)': \{/gm)].map((m) => m[1]))
 
 // Número de nutriente USDA → campo de la app.
 const NUTRIENTES = {

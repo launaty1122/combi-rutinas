@@ -170,8 +170,8 @@ describe('registrar por texto', () => {
   it('el desayuno de Lau: "desayuné huevos revueltos con chirizo y un pan"', () => {
     const r = interpretarTexto('desayuné huevos revueltos con chirizo y un pan', buscar)
     expect(r.momento).toBe('desayuno')
-    expect(r.partes.map((p) => p.alimento?.alias[0])).toEqual(['Huevo frito', 'Chorizo de cerdo a la plancha', 'Pan francés'])
-    expect(r.partes[0].gramos).toBe(100) // "huevos" en plural sin número → 2, para revisar
+    expect(r.partes.map((p) => p.alimento?.alias[0])).toEqual(['Huevo revuelto', 'Chorizo de cerdo a la plancha', 'Pan francés'])
+    expect(r.partes[0].gramos).toBe(110) // "huevos" en plural sin número → 2, para revisar
     expect(r.partes[0].seguro).toBe(false)
     expect(r.partes[1].gramos).toBe(55) // 1 chorizo
   })

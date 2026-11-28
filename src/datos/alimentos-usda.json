@@ -399,139 +399,6 @@
   }
  },
  {
-  "id": "usda-171265",
-  "nombre": "Milk, whole, 3.25% milkfat, with added vitamin D",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 3.15,
-   "grasa": 3.25,
-   "carbohidratos": 4.8,
-   "kcal": 61,
-   "fibra": 0,
-   "calcio": 113,
-   "hierro": 0.03,
-   "potasio": 132,
-   "sodio": 43,
-   "vitaminaA": 46,
-   "vitaminaC": 0,
-   "grasaSaturada": 1.865
-  }
- },
- {
-  "id": "usda-171269",
-  "nombre": "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 3.37,
-   "grasa": 0.08,
-   "carbohidratos": 4.96,
-   "kcal": 34,
-   "fibra": 0,
-   "calcio": 122,
-   "hierro": 0.03,
-   "potasio": 156,
-   "sodio": 42,
-   "vitaminaA": 61,
-   "vitaminaC": 0,
-   "grasaSaturada": 0.056
-  }
- },
- {
-  "id": "usda-171411",
-  "nombre": "Oil, soybean, salad or cooking",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 0,
-   "grasa": 100,
-   "carbohidratos": 0,
-   "kcal": 884,
-   "fibra": 0,
-   "calcio": 0,
-   "hierro": 0.05,
-   "potasio": 0,
-   "sodio": 0,
-   "vitaminaA": 0,
-   "vitaminaC": 0,
-   "grasaSaturada": 15.65
-  }
- },
- {
-  "id": "usda-171413",
-  "nombre": "Oil, olive, salad or cooking",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 0,
-   "grasa": 100,
-   "carbohidratos": 0,
-   "kcal": 884,
-   "fibra": 0,
-   "calcio": 1,
-   "hierro": 0.56,
-   "potasio": 1,
-   "sodio": 2,
-   "vitaminaA": 0,
-   "vitaminaC": 0,
-   "grasaSaturada": 13.808
-  }
- },
- {
-  "id": "usda-172336",
-  "nombre": "Oil, canola",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 0,
-   "grasa": 100,
-   "carbohidratos": 0,
-   "kcal": 884,
-   "fibra": 0,
-   "calcio": 0,
-   "hierro": 0,
-   "potasio": 0,
-   "sodio": 0,
-   "vitaminaA": 0,
-   "vitaminaC": 0,
-   "grasaSaturada": 7.365
-  }
- },
- {
-  "id": "usda-171025",
-  "nombre": "Oil, sunflower, linoleic, (approx. 65%)",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 0,
-   "grasa": 100,
-   "carbohidratos": 0,
-   "kcal": 884,
-   "fibra": 0,
-   "calcio": 0,
-   "hierro": 0,
-   "potasio": 0,
-   "sodio": 0,
-   "vitaminaA": 0,
-   "vitaminaC": 0,
-   "grasaSaturada": 10.3
-  }
- },
- {
-  "id": "usda-173468",
-  "nombre": "Salt, table",
-  "fuente": "USDA",
-  "n": {
-   "proteina": 0,
-   "grasa": 0,
-   "carbohidratos": 0,
-   "kcal": 0,
-   "fibra": 0,
-   "calcio": 24,
-   "hierro": 0.33,
-   "potasio": 8,
-   "sodio": 38758,
-   "vitaminaA": 0,
-   "vitaminaC": 0,
-   "grasaSaturada": 0
-  }
- },
- {
   "id": "usda-174924",
   "nombre": "Bread, white, commercially prepared (includes soft bread crumbs)",
   "fuente": "USDA",
@@ -738,6 +605,1849 @@
    "vitaminaA": 0,
    "vitaminaC": 4,
    "grasaSaturada": 0.5
+  }
+ },
+ {
+  "id": "usda-172447",
+  "nombre": "Soy protein concentrate, produced by alcohol extraction",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 63.63,
+   "grasa": 0.46,
+   "carbohidratos": 25.41,
+   "kcal": 328,
+   "fibra": 5.5,
+   "calcio": 363,
+   "hierro": 10.78,
+   "potasio": 2202,
+   "sodio": 3,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.052
+  }
+ },
+ {
+  "id": "usda-174276",
+  "nombre": "Soy protein isolate",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 88.32,
+   "grasa": 3.39,
+   "carbohidratos": 0,
+   "kcal": 335,
+   "fibra": 0,
+   "calcio": 178,
+   "hierro": 14.5,
+   "potasio": 81,
+   "sodio": 1005,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.422
+  }
+ },
+ {
+  "id": "usda-172187",
+  "nombre": "Egg, whole, cooked, scrambled",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 9.99,
+   "grasa": 10.98,
+   "carbohidratos": 1.61,
+   "kcal": 149,
+   "fibra": 0,
+   "calcio": 66,
+   "hierro": 1.31,
+   "potasio": 132,
+   "sodio": 145,
+   "vitaminaA": 161,
+   "vitaminaC": 0,
+   "grasaSaturada": 3.331
+  }
+ },
+ {
+  "id": "usda-172183",
+  "nombre": "Egg, white, raw, fresh",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.9,
+   "grasa": 0.17,
+   "carbohidratos": 0.73,
+   "kcal": 52,
+   "fibra": 0,
+   "calcio": 7,
+   "hierro": 0.08,
+   "potasio": 163,
+   "sodio": 166,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-167914",
+  "nombre": "Pork, cured, bacon, cooked, baked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 35.73,
+   "grasa": 43.27,
+   "carbohidratos": 1.35,
+   "kcal": 548,
+   "fibra": 0,
+   "calcio": 10,
+   "hierro": 1.49,
+   "potasio": 539,
+   "sodio": 2193,
+   "vitaminaA": 11,
+   "vitaminaC": 0,
+   "grasaSaturada": 14.187
+  }
+ },
+ {
+  "id": "usda-172941",
+  "nombre": "Turkey breast, sliced, prepackaged",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 14.81,
+   "grasa": 3.77,
+   "carbohidratos": 2.2,
+   "kcal": 106,
+   "fibra": 0,
+   "calcio": 14,
+   "hierro": 0.42,
+   "potasio": 371,
+   "sodio": 898,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.906
+  }
+ },
+ {
+  "id": "usda-175177",
+  "nombre": "Fish, tilapia, cooked, dry heat",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 26.15,
+   "grasa": 2.65,
+   "carbohidratos": 0,
+   "kcal": 128,
+   "fibra": 0,
+   "calcio": 14,
+   "hierro": 0.69,
+   "potasio": 380,
+   "sodio": 56,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.94
+  }
+ },
+ {
+  "id": "usda-175175",
+  "nombre": "Fish, salmon, pink, canned, drained solids",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 23.1,
+   "grasa": 5.02,
+   "carbohidratos": 0,
+   "kcal": 138,
+   "fibra": 0,
+   "calcio": 283,
+   "hierro": 0.77,
+   "potasio": 333,
+   "sodio": 381,
+   "vitaminaA": 20,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.895
+  }
+ },
+ {
+  "id": "usda-172480",
+  "nombre": "Lamb, composite of trimmed retail cuts, separable lean and fat, trimmed to 1/4\"\" fat, choice, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 24.52,
+   "grasa": 20.94,
+   "carbohidratos": 0,
+   "kcal": 294,
+   "fibra": 0,
+   "calcio": 17,
+   "hierro": 1.88,
+   "potasio": 310,
+   "sodio": 72,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 8.83
+  }
+ },
+ {
+  "id": "usda-172467",
+  "nombre": "Tempeh, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 19.91,
+   "grasa": 11.38,
+   "carbohidratos": 7.62,
+   "kcal": 195,
+   "fibra": null,
+   "calcio": 96,
+   "hierro": 2.13,
+   "potasio": 401,
+   "sodio": 14,
+   "vitaminaA": null,
+   "vitaminaC": null,
+   "grasaSaturada": 3.4
+  }
+ },
+ {
+  "id": "usda-172455",
+  "nombre": "Falafel, home-prepared",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 13.31,
+   "grasa": 17.8,
+   "carbohidratos": 31.84,
+   "kcal": 333,
+   "fibra": null,
+   "calcio": 54,
+   "hierro": 3.42,
+   "potasio": 585,
+   "sodio": 294,
+   "vitaminaA": 1,
+   "vitaminaC": 1.6,
+   "grasaSaturada": 2.383
+  }
+ },
+ {
+  "id": "usda-175009",
+  "nombre": "Pancakes, plain, prepared from recipe",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 6.4,
+   "grasa": 9.7,
+   "carbohidratos": 28.3,
+   "kcal": 227,
+   "fibra": null,
+   "calcio": 219,
+   "hierro": 1.8,
+   "potasio": 132,
+   "sodio": 439,
+   "vitaminaA": 54,
+   "vitaminaC": 0.3,
+   "grasaSaturada": 2.122
+  }
+ },
+ {
+  "id": "usda-175038",
+  "nombre": "Waffles, plain, frozen, ready-to-heat",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 6.47,
+   "grasa": 9.7,
+   "carbohidratos": 42.98,
+   "kcal": 285,
+   "fibra": 2.2,
+   "calcio": 308,
+   "hierro": 5.61,
+   "potasio": 125,
+   "sodio": 638,
+   "vitaminaA": 381,
+   "vitaminaC": 0,
+   "grasaSaturada": 1.531
+  }
+ },
+ {
+  "id": "usda-173905",
+  "nombre": "Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.54,
+   "grasa": 1.52,
+   "carbohidratos": 12,
+   "kcal": 71,
+   "fibra": 1.7,
+   "calcio": 9,
+   "hierro": 0.9,
+   "potasio": 70,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.31
+  }
+ },
+ {
+  "id": "usda-173884",
+  "nombre": "Cereals ready-to-eat, GENERAL MILLS, CHEERIOS",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 12.4,
+   "grasa": 6.6,
+   "carbohidratos": 73.2,
+   "kcal": 372,
+   "fibra": 10.1,
+   "calcio": 357,
+   "hierro": 28.9,
+   "potasio": 633,
+   "sodio": 497,
+   "vitaminaA": 990,
+   "vitaminaC": 21.4,
+   "grasaSaturada": 1.6
+  }
+ },
+ {
+  "id": "usda-172796",
+  "nombre": "Rolls, hamburger or hotdog, plain",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 9.77,
+   "grasa": 3.91,
+   "carbohidratos": 50.12,
+   "kcal": 279,
+   "fibra": 1.8,
+   "calcio": 144,
+   "hierro": 3.43,
+   "potasio": 122,
+   "sodio": 494,
+   "vitaminaA": 29,
+   "vitaminaC": 1.3,
+   "grasaSaturada": 0.842
+  }
+ },
+ {
+  "id": "usda-174899",
+  "nombre": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.56,
+   "grasa": 1.32,
+   "carbohidratos": 52.38,
+   "kcal": 264,
+   "fibra": 1.6,
+   "calcio": 219,
+   "hierro": 3.57,
+   "potasio": 107,
+   "sodio": 422,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.36
+  }
+ },
+ {
+  "id": "usda-174987",
+  "nombre": "Croissants, butter",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.2,
+   "grasa": 21,
+   "carbohidratos": 45.8,
+   "kcal": 406,
+   "fibra": 2.6,
+   "calcio": 37,
+   "hierro": 2.03,
+   "potasio": 118,
+   "sodio": 384,
+   "vitaminaA": 206,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 11.659
+  }
+ },
+ {
+  "id": "usda-172684",
+  "nombre": "Bread, rye",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.5,
+   "grasa": 3.3,
+   "carbohidratos": 48.3,
+   "kcal": 259,
+   "fibra": 5.8,
+   "calcio": 73,
+   "hierro": 2.83,
+   "potasio": 166,
+   "sodio": 603,
+   "vitaminaA": 0,
+   "vitaminaC": 0.4,
+   "grasaSaturada": 0.626
+  }
+ },
+ {
+  "id": "usda-170250",
+  "nombre": "Snacks, rice cakes, brown rice, plain, unsalted",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 8.2,
+   "grasa": 2.8,
+   "carbohidratos": 81.5,
+   "kcal": 387,
+   "fibra": 4.2,
+   "calcio": 11,
+   "hierro": 1.49,
+   "potasio": 290,
+   "sodio": 26,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.57
+  }
+ },
+ {
+  "id": "usda-167558",
+  "nombre": "Snacks, tortilla chips, plain, white corn, salted",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 7.1,
+   "grasa": 20.68,
+   "carbohidratos": 67.78,
+   "kcal": 472,
+   "fibra": 5.4,
+   "calcio": 106,
+   "hierro": 1.52,
+   "potasio": 182,
+   "sodio": 328,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 2.811
+  }
+ },
+ {
+  "id": "usda-167959",
+  "nombre": "Snacks, popcorn, air-popped",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 12.94,
+   "grasa": 4.54,
+   "carbohidratos": 77.78,
+   "kcal": 387,
+   "fibra": 14.5,
+   "calcio": 7,
+   "hierro": 3.19,
+   "potasio": 329,
+   "sodio": 8,
+   "vitaminaA": 10,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.637
+  }
+ },
+ {
+  "id": "usda-167542",
+  "nombre": "Snacks, granola bars, hard, plain",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.1,
+   "grasa": 19.8,
+   "carbohidratos": 64.4,
+   "kcal": 471,
+   "fibra": 5.3,
+   "calcio": 61,
+   "hierro": 2.95,
+   "potasio": 336,
+   "sodio": 294,
+   "vitaminaA": 2,
+   "vitaminaC": 0.9,
+   "grasaSaturada": 2.37
+  }
+ },
+ {
+  "id": "usda-169700",
+  "nombre": "Couscous, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.79,
+   "grasa": 0.16,
+   "carbohidratos": 23.22,
+   "kcal": 112,
+   "fibra": 1.4,
+   "calcio": 8,
+   "hierro": 0.38,
+   "potasio": 58,
+   "sodio": 5,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.029
+  }
+ },
+ {
+  "id": "usda-168919",
+  "nombre": "Noodles, egg, cooked, enriched, with added salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 4.54,
+   "grasa": 2.07,
+   "carbohidratos": 25.16,
+   "kcal": 138,
+   "fibra": 1.2,
+   "calcio": 12,
+   "hierro": 1.47,
+   "potasio": 38,
+   "sodio": 165,
+   "vitaminaA": 6,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.419
+  }
+ },
+ {
+  "id": "usda-170317",
+  "nombre": "Pizza, cheese topping, regular crust, frozen, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 10.36,
+   "grasa": 12.28,
+   "carbohidratos": 29.02,
+   "kcal": 268,
+   "fibra": 2.2,
+   "calcio": 179,
+   "hierro": 2.27,
+   "potasio": 152,
+   "sodio": 447,
+   "vitaminaA": 66,
+   "vitaminaC": 1.2,
+   "grasaSaturada": 4.272
+  }
+ },
+ {
+  "id": "usda-172095",
+  "nombre": "Pizza, meat topping, thick crust, frozen, cooked",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 11.76,
+   "grasa": 11.52,
+   "carbohidratos": 30.76,
+   "kcal": 274,
+   "fibra": 2.3,
+   "calcio": 150,
+   "hierro": 1.7,
+   "potasio": 201,
+   "sodio": 690,
+   "vitaminaA": 49,
+   "vitaminaC": 1.1,
+   "grasaSaturada": 4.283
+  }
+ },
+ {
+  "id": "usda-170694",
+  "nombre": "Fast foods, hamburger; single, regular patty; with condiments",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 13.3,
+   "grasa": 10.18,
+   "carbohidratos": 29.57,
+   "kcal": 263,
+   "fibra": 1.8,
+   "calcio": 116,
+   "hierro": 2.87,
+   "potasio": 197,
+   "sodio": 487,
+   "vitaminaA": 3,
+   "vitaminaC": 0.3,
+   "grasaSaturada": 3.567
+  }
+ },
+ {
+  "id": "usda-173317",
+  "nombre": "Fast foods, hamburger; single, large patty; with condiments, vegetables and mayonnaise",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 11.34,
+   "grasa": 12.37,
+   "carbohidratos": 17.33,
+   "kcal": 226,
+   "fibra": 1.5,
+   "calcio": 46,
+   "hierro": 2.99,
+   "potasio": 188,
+   "sodio": 342,
+   "vitaminaA": 9,
+   "vitaminaC": 0.9,
+   "grasaSaturada": 3.972
+  }
+ },
+ {
+  "id": "usda-170698",
+  "nombre": "Fast foods, potato, french fried in vegetable oil",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.43,
+   "grasa": 14.73,
+   "carbohidratos": 41.44,
+   "kcal": 312,
+   "fibra": 3.8,
+   "calcio": 18,
+   "hierro": 0.81,
+   "potasio": 579,
+   "sodio": 210,
+   "vitaminaA": 0,
+   "vitaminaC": 4.7,
+   "grasaSaturada": 2.336
+  }
+ },
+ {
+  "id": "usda-170725",
+  "nombre": "WENDY'S, Chicken Nuggets",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 16.46,
+   "grasa": 22.55,
+   "carbohidratos": 14.31,
+   "kcal": 326,
+   "fibra": null,
+   "calcio": 11,
+   "hierro": 0.62,
+   "potasio": 250,
+   "sodio": 708,
+   "vitaminaA": null,
+   "vitaminaC": 1.3,
+   "grasaSaturada": 4.787
+  }
+ },
+ {
+  "id": "usda-170346",
+  "nombre": "KFC, Fried Chicken, ORIGINAL RECIPE, Thigh, meat and skin with breading",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 18.9,
+   "grasa": 17.73,
+   "carbohidratos": 8.46,
+   "kcal": 269,
+   "fibra": 0,
+   "calcio": 64,
+   "hierro": 0.88,
+   "potasio": 237,
+   "sodio": 781,
+   "vitaminaA": 15,
+   "vitaminaC": null,
+   "grasaSaturada": 4.123
+  }
+ },
+ {
+  "id": "usda-172039",
+  "nombre": "Fast foods, burrito, with beans and cheese",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 7.35,
+   "grasa": 6.05,
+   "carbohidratos": 31.23,
+   "kcal": 205,
+   "fibra": 4.2,
+   "calcio": 124,
+   "hierro": 2.37,
+   "potasio": 261,
+   "sodio": 563,
+   "vitaminaA": 25,
+   "vitaminaC": 0.4,
+   "grasaSaturada": 2.309
+  }
+ },
+ {
+  "id": "usda-167658",
+  "nombre": "Restaurant, Mexican, soft taco with ground beef, cheese and lettuce",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 12.56,
+   "grasa": 10.81,
+   "carbohidratos": 17.92,
+   "kcal": 219,
+   "fibra": 1.5,
+   "calcio": 116,
+   "hierro": 1.85,
+   "potasio": 244,
+   "sodio": 509,
+   "vitaminaA": 49,
+   "vitaminaC": null,
+   "grasaSaturada": 4.486
+  }
+ },
+ {
+  "id": "usda-167660",
+  "nombre": "Restaurant, Latino, empanadas, beef, prepared",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 11.31,
+   "grasa": 18.37,
+   "carbohidratos": 31.19,
+   "kcal": 335,
+   "fibra": 2,
+   "calcio": 20,
+   "hierro": 2.7,
+   "potasio": 190,
+   "sodio": 440,
+   "vitaminaA": 18,
+   "vitaminaC": 0.7,
+   "grasaSaturada": 5.156
+  }
+ },
+ {
+  "id": "usda-167664",
+  "nombre": "Restaurant, Latino, tamale, corn",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.48,
+   "grasa": 7.21,
+   "carbohidratos": 26.68,
+   "kcal": 186,
+   "fibra": 3.2,
+   "calcio": 24,
+   "hierro": 0.53,
+   "potasio": 186,
+   "sodio": 277,
+   "vitaminaA": 2,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 2.629
+  }
+ },
+ {
+  "id": "usda-168555",
+  "nombre": "Potatoes, mashed, home-prepared, whole milk and butter added",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.86,
+   "grasa": 4.22,
+   "carbohidratos": 16.81,
+   "kcal": 113,
+   "fibra": 1.5,
+   "calcio": 24,
+   "hierro": 0.26,
+   "potasio": 284,
+   "sodio": 317,
+   "vitaminaA": 38,
+   "vitaminaC": 6,
+   "grasaSaturada": 2.613
+  }
+ },
+ {
+  "id": "usda-170093",
+  "nombre": "Potatoes, baked, flesh and skin, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.5,
+   "grasa": 0.13,
+   "carbohidratos": 21.15,
+   "kcal": 93,
+   "fibra": 2.2,
+   "calcio": 15,
+   "hierro": 1.08,
+   "potasio": 535,
+   "sodio": 10,
+   "vitaminaA": 1,
+   "vitaminaC": 9.6,
+   "grasaSaturada": 0.034
+  }
+ },
+ {
+  "id": "usda-168063",
+  "nombre": "Restaurant, Latino, arroz con leche (rice pudding)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.2,
+   "grasa": 3.69,
+   "carbohidratos": 24.92,
+   "kcal": 146,
+   "fibra": 0.5,
+   "calcio": 90,
+   "hierro": 0.23,
+   "potasio": 142,
+   "sodio": 106,
+   "vitaminaA": null,
+   "vitaminaC": null,
+   "grasaSaturada": 1.899
+  }
+ },
+ {
+  "id": "usda-168556",
+  "nombre": "Catsup",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.04,
+   "grasa": 0.1,
+   "carbohidratos": 27.4,
+   "kcal": 101,
+   "fibra": 0.3,
+   "calcio": 15,
+   "hierro": 0.35,
+   "potasio": 281,
+   "sodio": 907,
+   "vitaminaA": 26,
+   "vitaminaC": 4.1,
+   "grasaSaturada": 0.014
+  }
+ },
+ {
+  "id": "usda-172234",
+  "nombre": "Mustard, prepared, yellow",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.74,
+   "grasa": 3.34,
+   "carbohidratos": 5.83,
+   "kcal": 60,
+   "fibra": 4,
+   "calcio": 63,
+   "hierro": 1.61,
+   "potasio": 152,
+   "sodio": 1104,
+   "vitaminaA": 5,
+   "vitaminaC": 0.3,
+   "grasaSaturada": 0.214
+  }
+ },
+ {
+  "id": "usda-173592",
+  "nombre": "Salad dressing, ranch dressing, regular",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.32,
+   "grasa": 44.54,
+   "carbohidratos": 5.9,
+   "kcal": 430,
+   "fibra": 0,
+   "calcio": 28,
+   "hierro": 0.3,
+   "potasio": 64,
+   "sodio": 901,
+   "vitaminaA": 15,
+   "vitaminaC": 0,
+   "grasaSaturada": 6.964
+  }
+ },
+ {
+  "id": "usda-171186",
+  "nombre": "Sauce, hot chile, sriracha",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.93,
+   "grasa": 0.93,
+   "carbohidratos": 19.16,
+   "kcal": 93,
+   "fibra": 2.2,
+   "calcio": 18,
+   "hierro": 1.64,
+   "potasio": 321,
+   "sodio": 2124,
+   "vitaminaA": 129,
+   "vitaminaC": 26.9,
+   "grasaSaturada": null
+  }
+ },
+ {
+  "id": "usda-173469",
+  "nombre": "Vinegar, cider",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 0,
+   "carbohidratos": 0.93,
+   "kcal": 21,
+   "fibra": 0,
+   "calcio": 7,
+   "hierro": 0.2,
+   "potasio": 73,
+   "sodio": 5,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-171579",
+  "nombre": "Sauce, pesto, ready-to-serve, refrigerated",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 9.83,
+   "grasa": 37.6,
+   "carbohidratos": 10.09,
+   "kcal": 418,
+   "fibra": 1.8,
+   "calcio": 306,
+   "hierro": 0.57,
+   "potasio": 560,
+   "sodio": 603,
+   "vitaminaA": 77,
+   "vitaminaC": 0,
+   "grasaSaturada": 7.07
+  }
+ },
+ {
+  "id": "usda-171257",
+  "nombre": "Cream, sour, cultured",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.44,
+   "grasa": 19.35,
+   "carbohidratos": 4.63,
+   "kcal": 198,
+   "fibra": 0,
+   "calcio": 101,
+   "hierro": 0.07,
+   "potasio": 125,
+   "sodio": 31,
+   "vitaminaA": 124,
+   "vitaminaC": 0.9,
+   "grasaSaturada": 10.14
+  }
+ },
+ {
+  "id": "usda-173418",
+  "nombre": "Cheese, cream",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 6.15,
+   "grasa": 34.44,
+   "carbohidratos": 5.52,
+   "kcal": 350,
+   "fibra": 0,
+   "calcio": 97,
+   "hierro": 0.11,
+   "potasio": 132,
+   "sodio": 314,
+   "vitaminaA": 308,
+   "vitaminaC": 0,
+   "grasaSaturada": 20.213
+  }
+ },
+ {
+  "id": "usda-168000",
+  "nombre": "Chocolate-flavored hazelnut spread",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.41,
+   "grasa": 29.73,
+   "carbohidratos": 62.36,
+   "kcal": 539,
+   "fibra": 5.4,
+   "calcio": 108,
+   "hierro": 4.38,
+   "potasio": 407,
+   "sodio": 41,
+   "vitaminaA": 1,
+   "vitaminaC": 0,
+   "grasaSaturada": 28.423
+  }
+ },
+ {
+  "id": "usda-169641",
+  "nombre": "Jams and preserves",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.37,
+   "grasa": 0.07,
+   "carbohidratos": 68.86,
+   "kcal": 278,
+   "fibra": 1.1,
+   "calcio": 20,
+   "hierro": 0.49,
+   "potasio": 77,
+   "sodio": 32,
+   "vitaminaA": 0,
+   "vitaminaC": 8.8,
+   "grasaSaturada": 0.01
+  }
+ },
+ {
+  "id": "usda-169661",
+  "nombre": "Syrups, maple",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.04,
+   "grasa": 0.06,
+   "carbohidratos": 67.04,
+   "kcal": 260,
+   "fibra": 0,
+   "calcio": 102,
+   "hierro": 0.11,
+   "potasio": 212,
+   "sodio": 12,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.007
+  }
+ },
+ {
+  "id": "usda-168588",
+  "nombre": "Nuts, almond butter, plain, without salt added",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 20.96,
+   "grasa": 55.5,
+   "carbohidratos": 18.82,
+   "kcal": 614,
+   "fibra": 10.3,
+   "calcio": 347,
+   "hierro": 3.49,
+   "potasio": 748,
+   "sodio": 7,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 4.152
+  }
+ },
+ {
+  "id": "usda-167575",
+  "nombre": "Ice creams, vanilla",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.5,
+   "grasa": 11,
+   "carbohidratos": 23.6,
+   "kcal": 207,
+   "fibra": 0.7,
+   "calcio": 128,
+   "hierro": 0.09,
+   "potasio": 199,
+   "sodio": 80,
+   "vitaminaA": 118,
+   "vitaminaC": 0.6,
+   "grasaSaturada": 6.79
+  }
+ },
+ {
+  "id": "usda-168809",
+  "nombre": "Ice creams, chocolate",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.8,
+   "grasa": 11,
+   "carbohidratos": 28.2,
+   "kcal": 216,
+   "fibra": 1.2,
+   "calcio": 109,
+   "hierro": 0.93,
+   "potasio": 249,
+   "sodio": 76,
+   "vitaminaA": 118,
+   "vitaminaC": 0.7,
+   "grasaSaturada": 6.8
+  }
+ },
+ {
+  "id": "usda-172716",
+  "nombre": "Cookies, chocolate chip, commercially prepared, regular, higher fat, enriched",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.1,
+   "grasa": 24.72,
+   "carbohidratos": 65.36,
+   "kcal": 492,
+   "fibra": 2,
+   "calcio": 21,
+   "hierro": 5.58,
+   "potasio": 171,
+   "sodio": 311,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 8.091
+  }
+ },
+ {
+  "id": "usda-172713",
+  "nombre": "Cookies, brownies, commercially prepared",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 4.8,
+   "grasa": 16.3,
+   "carbohidratos": 63.9,
+   "kcal": 405,
+   "fibra": 2.1,
+   "calcio": 29,
+   "hierro": 2.25,
+   "potasio": 149,
+   "sodio": 286,
+   "vitaminaA": 20,
+   "vitaminaC": 0,
+   "grasaSaturada": 4.235
+  }
+ },
+ {
+  "id": "usda-174992",
+  "nombre": "Doughnuts, cake-type, plain, sugared or glazed",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.2,
+   "grasa": 22.9,
+   "carbohidratos": 50.8,
+   "kcal": 426,
+   "fibra": 1.5,
+   "calcio": 60,
+   "hierro": 1.06,
+   "potasio": 102,
+   "sodio": 402,
+   "vitaminaA": 3,
+   "vitaminaC": 0.1,
+   "grasaSaturada": 5.926
+  }
+ },
+ {
+  "id": "usda-172765",
+  "nombre": "Muffins, blueberry, commercially prepared (Includes mini-muffins)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 4.49,
+   "grasa": 16.07,
+   "carbohidratos": 53,
+   "kcal": 375,
+   "fibra": 1.1,
+   "calcio": 44,
+   "hierro": 1.3,
+   "potasio": 121,
+   "sodio": 336,
+   "vitaminaA": 21,
+   "vitaminaC": 0.9,
+   "grasaSaturada": 2.844
+  }
+ },
+ {
+  "id": "usda-167995",
+  "nombre": "Candies, marshmallows",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.8,
+   "grasa": 0.2,
+   "carbohidratos": 81.3,
+   "kcal": 318,
+   "fibra": 0.1,
+   "calcio": 3,
+   "hierro": 0.23,
+   "potasio": 5,
+   "sodio": 80,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.056
+  }
+ },
+ {
+  "id": "usda-171277",
+  "nombre": "Milk, chocolate beverage, hot cocoa, homemade",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.52,
+   "grasa": 2.34,
+   "carbohidratos": 10.74,
+   "kcal": 77,
+   "fibra": 1,
+   "calcio": 114,
+   "hierro": 0.42,
+   "potasio": 197,
+   "sodio": 44,
+   "vitaminaA": 51,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 1.431
+  }
+ },
+ {
+  "id": "usda-173190",
+  "nombre": "Alcoholic beverage, wine, table, red",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.07,
+   "grasa": 0,
+   "carbohidratos": 2.61,
+   "kcal": 85,
+   "fibra": 0,
+   "calcio": 8,
+   "hierro": 0.46,
+   "potasio": 127,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-174837",
+  "nombre": "Alcoholic beverage, wine, table, white",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.07,
+   "grasa": 0,
+   "carbohidratos": 2.6,
+   "kcal": 82,
+   "fibra": 0,
+   "calcio": 9,
+   "hierro": 0.27,
+   "potasio": 71,
+   "sodio": 5,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-174815",
+  "nombre": "Alcoholic beverage, distilled, all (gin, rum, vodka, whiskey) 80 proof",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 0,
+   "carbohidratos": 0,
+   "kcal": 231,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0.04,
+   "potasio": 2,
+   "sodio": 1,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-173210",
+  "nombre": "Beverages, Energy drink, RED BULL",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.46,
+   "grasa": 0,
+   "carbohidratos": 10.23,
+   "kcal": 43,
+   "fibra": 0,
+   "calcio": 6,
+   "hierro": 0.06,
+   "potasio": 3,
+   "sodio": 39,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
+  }
+ },
+ {
+  "id": "usda-171891",
+  "nombre": "Beverages, coffee, brewed, espresso, restaurant-prepared",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.12,
+   "grasa": 0.18,
+   "carbohidratos": 1.67,
+   "kcal": 9,
+   "fibra": 0,
+   "calcio": 2,
+   "hierro": 0.13,
+   "potasio": 115,
+   "sodio": 14,
+   "vitaminaA": 0,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 0.092
+  }
+ },
+ {
+  "id": "usda-170904",
+  "nombre": "Kefir, lowfat, plain, LIFEWAY",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.79,
+   "grasa": 1.02,
+   "carbohidratos": 4.77,
+   "kcal": 43,
+   "fibra": 0,
+   "calcio": 130,
+   "hierro": 0.04,
+   "potasio": 164,
+   "sodio": 40,
+   "vitaminaA": 171,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 0.658
+  }
+ },
+ {
+  "id": "usda-173217",
+  "nombre": "Lemonade, frozen concentrate, white, prepared with water",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.07,
+   "grasa": 0.04,
+   "carbohidratos": 10.42,
+   "kcal": 40,
+   "fibra": 0,
+   "calcio": 4,
+   "hierro": 0.16,
+   "potasio": 15,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 3.9,
+   "grasaSaturada": 0.006
+  }
+ },
+ {
+  "id": "usda-173933",
+  "nombre": "Apple juice, canned or bottled, unsweetened, without added ascorbic acid",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.1,
+   "grasa": 0.13,
+   "carbohidratos": 11.3,
+   "kcal": 46,
+   "fibra": 0.2,
+   "calcio": 8,
+   "hierro": 0.12,
+   "potasio": 101,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 0.9,
+   "grasaSaturada": 0.022
+  }
+ },
+ {
+  "id": "usda-168462",
+  "nombre": "Spinach, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.86,
+   "grasa": 0.39,
+   "carbohidratos": 3.63,
+   "kcal": 23,
+   "fibra": 2.2,
+   "calcio": 99,
+   "hierro": 2.71,
+   "potasio": 558,
+   "sodio": 79,
+   "vitaminaA": 469,
+   "vitaminaC": 28.1,
+   "grasaSaturada": 0.063
+  }
+ },
+ {
+  "id": "usda-168421",
+  "nombre": "Kale, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.92,
+   "grasa": 1.49,
+   "carbohidratos": 4.42,
+   "kcal": 35,
+   "fibra": 4.1,
+   "calcio": 254,
+   "hierro": 1.6,
+   "potasio": 348,
+   "sodio": 53,
+   "vitaminaA": 241,
+   "vitaminaC": 93.4,
+   "grasaSaturada": 0.178
+  }
+ },
+ {
+  "id": "usda-169251",
+  "nombre": "Mushrooms, white, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.09,
+   "grasa": 0.34,
+   "carbohidratos": 3.26,
+   "kcal": 22,
+   "fibra": 1,
+   "calcio": 3,
+   "hierro": 0.5,
+   "potasio": 318,
+   "sodio": 5,
+   "vitaminaA": 0,
+   "vitaminaC": 2.1,
+   "grasaSaturada": 0.05
+  }
+ },
+ {
+  "id": "usda-169252",
+  "nombre": "Mushrooms, white, cooked, boiled, drained, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.17,
+   "grasa": 0.47,
+   "carbohidratos": 5.29,
+   "kcal": 28,
+   "fibra": 2.2,
+   "calcio": 6,
+   "hierro": 1.74,
+   "potasio": 356,
+   "sodio": 2,
+   "vitaminaA": 0,
+   "vitaminaC": 4,
+   "grasaSaturada": 0.061
+  }
+ },
+ {
+  "id": "usda-168390",
+  "nombre": "Asparagus, cooked, boiled, drained",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.4,
+   "grasa": 0.22,
+   "carbohidratos": 4.11,
+   "kcal": 22,
+   "fibra": 2,
+   "calcio": 23,
+   "hierro": 0.91,
+   "potasio": 224,
+   "sodio": 14,
+   "vitaminaA": 50,
+   "vitaminaC": 7.7,
+   "grasaSaturada": 0.048
+  }
+ },
+ {
+  "id": "usda-169999",
+  "nombre": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.41,
+   "grasa": 1.5,
+   "carbohidratos": 20.98,
+   "kcal": 96,
+   "fibra": 2.4,
+   "calcio": 3,
+   "hierro": 0.45,
+   "potasio": 218,
+   "sodio": 1,
+   "vitaminaA": 13,
+   "vitaminaC": 5.5,
+   "grasaSaturada": 0.197
+  }
+ },
+ {
+  "id": "usda-170420",
+  "nombre": "Peas, green, cooked, boiled, drained, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 5.36,
+   "grasa": 0.22,
+   "carbohidratos": 15.63,
+   "kcal": 84,
+   "fibra": 5.5,
+   "calcio": 27,
+   "hierro": 1.54,
+   "potasio": 271,
+   "sodio": 3,
+   "vitaminaA": 40,
+   "vitaminaC": 14.2,
+   "grasaSaturada": 0.039
+  }
+ },
+ {
+  "id": "usda-169971",
+  "nombre": "Brussels sprouts, cooked, boiled, drained, without salt",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 2.55,
+   "grasa": 0.5,
+   "carbohidratos": 7.1,
+   "kcal": 36,
+   "fibra": 2.6,
+   "calcio": 36,
+   "hierro": 1.2,
+   "potasio": 317,
+   "sodio": 21,
+   "vitaminaA": 39,
+   "vitaminaC": 62,
+   "grasaSaturada": 0.102
+  }
+ },
+ {
+  "id": "usda-167755",
+  "nombre": "Raspberries, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.2,
+   "grasa": 0.65,
+   "carbohidratos": 11.94,
+   "kcal": 52,
+   "fibra": 6.5,
+   "calcio": 25,
+   "hierro": 0.69,
+   "potasio": 151,
+   "sodio": 1,
+   "vitaminaA": 2,
+   "vitaminaC": 26.2,
+   "grasaSaturada": 0.019
+  }
+ },
+ {
+  "id": "usda-173946",
+  "nombre": "Blackberries, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.39,
+   "grasa": 0.49,
+   "carbohidratos": 9.61,
+   "kcal": 43,
+   "fibra": 5.3,
+   "calcio": 29,
+   "hierro": 0.62,
+   "potasio": 162,
+   "sodio": 1,
+   "vitaminaA": 11,
+   "vitaminaC": 21,
+   "grasaSaturada": 0.014
+  }
+ },
+ {
+  "id": "usda-173043",
+  "nombre": "Groundcherries, (cape-gooseberries or poha), raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.9,
+   "grasa": 0.7,
+   "carbohidratos": 11.2,
+   "kcal": 53,
+   "fibra": null,
+   "calcio": 9,
+   "hierro": 1,
+   "potasio": null,
+   "sodio": null,
+   "vitaminaA": 36,
+   "vitaminaC": 11,
+   "grasaSaturada": null
+  }
+ },
+ {
+  "id": "usda-168165",
+  "nombre": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.3,
+   "grasa": 0.25,
+   "carbohidratos": 79.32,
+   "kcal": 299,
+   "fibra": 4.5,
+   "calcio": 62,
+   "hierro": 1.79,
+   "potasio": 744,
+   "sodio": 26,
+   "vitaminaA": 0,
+   "vitaminaC": 2.3,
+   "grasaSaturada": 0.094
+  }
+ },
+ {
+  "id": "usda-168191",
+  "nombre": "Dates, medjool",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.81,
+   "grasa": 0.15,
+   "carbohidratos": 74.97,
+   "kcal": 277,
+   "fibra": 6.7,
+   "calcio": 64,
+   "hierro": 0.9,
+   "potasio": 696,
+   "sodio": 1,
+   "vitaminaA": 7,
+   "vitaminaC": 0,
+   "grasaSaturada": null
+  }
+ },
+ {
+  "id": "usda-171723",
+  "nombre": "Cranberries, dried, sweetened (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.17,
+   "grasa": 1.09,
+   "carbohidratos": 82.8,
+   "kcal": 308,
+   "fibra": 5.3,
+   "calcio": 9,
+   "hierro": 0.39,
+   "potasio": 49,
+   "sodio": 5,
+   "vitaminaA": 2,
+   "vitaminaC": 0.2,
+   "grasaSaturada": 0.088
+  }
+ },
+ {
+  "id": "usda-171719",
+  "nombre": "Cherries, sweet, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 1.06,
+   "grasa": 0.2,
+   "carbohidratos": 16.01,
+   "kcal": 63,
+   "fibra": 2.1,
+   "calcio": 13,
+   "hierro": 0.36,
+   "potasio": 222,
+   "sodio": 0,
+   "vitaminaA": 3,
+   "vitaminaC": 7,
+   "grasaSaturada": 0.038
+  }
+ },
+ {
+  "id": "usda-173033",
+  "nombre": "Grapefruit, raw, pink and red and white, all areas",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0.63,
+   "grasa": 0.1,
+   "carbohidratos": 8.08,
+   "kcal": 32,
+   "fibra": 1.1,
+   "calcio": 12,
+   "hierro": 0.09,
+   "potasio": 139,
+   "sodio": 0,
+   "vitaminaA": 46,
+   "vitaminaC": 34.4,
+   "grasaSaturada": 0.014
+  }
+ },
+ {
+  "id": "usda-170567",
+  "nombre": "Nuts, almonds",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 21.15,
+   "grasa": 49.93,
+   "carbohidratos": 21.55,
+   "kcal": 579,
+   "fibra": 12.5,
+   "calcio": 269,
+   "hierro": 3.71,
+   "potasio": 733,
+   "sodio": 1,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 3.802
+  }
+ },
+ {
+  "id": "usda-170184",
+  "nombre": "Nuts, pistachio nuts, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 20.16,
+   "grasa": 45.32,
+   "carbohidratos": 27.17,
+   "kcal": 560,
+   "fibra": 10.6,
+   "calcio": 105,
+   "hierro": 3.92,
+   "potasio": 1025,
+   "sodio": 1,
+   "vitaminaA": 26,
+   "vitaminaC": 5.6,
+   "grasaSaturada": 5.907
+  }
+ },
+ {
+  "id": "usda-170178",
+  "nombre": "Nuts, macadamia nuts, raw",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 7.91,
+   "grasa": 75.77,
+   "carbohidratos": 13.82,
+   "kcal": 718,
+   "fibra": 8.6,
+   "calcio": 85,
+   "hierro": 3.69,
+   "potasio": 368,
+   "sodio": 5,
+   "vitaminaA": 0,
+   "vitaminaC": 1.2,
+   "grasaSaturada": 12.061
+  }
+ },
+ {
+  "id": "usda-170581",
+  "nombre": "Nuts, hazelnuts or filberts",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 14.95,
+   "grasa": 60.75,
+   "carbohidratos": 16.7,
+   "kcal": 628,
+   "fibra": 9.7,
+   "calcio": 114,
+   "hierro": 4.7,
+   "potasio": 680,
+   "sodio": 0,
+   "vitaminaA": 1,
+   "vitaminaC": 6.3,
+   "grasaSaturada": 4.464
+  }
+ },
+ {
+  "id": "usda-170585",
+  "nombre": "Nuts, mixed nuts, dry roasted, with peanuts, without salt added",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 19.5,
+   "grasa": 53.5,
+   "carbohidratos": 22.42,
+   "kcal": 607,
+   "fibra": 6.4,
+   "calcio": 87,
+   "hierro": 3.73,
+   "potasio": 643,
+   "sodio": 4,
+   "vitaminaA": 0,
+   "vitaminaC": 0.8,
+   "grasaSaturada": 8.01
+  }
+ },
+ {
+  "id": "usda-173414",
+  "nombre": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 22.87,
+   "grasa": 33.31,
+   "carbohidratos": 3.37,
+   "kcal": 403,
+   "fibra": 0,
+   "calcio": 710,
+   "hierro": 0.14,
+   "potasio": 76,
+   "sodio": 653,
+   "vitaminaA": 337,
+   "vitaminaC": 0,
+   "grasaSaturada": 18.867
+  }
+ },
+ {
+  "id": "usda-173420",
+  "nombre": "Cheese, feta",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 14.21,
+   "grasa": 21.49,
+   "carbohidratos": 3.88,
+   "kcal": 265,
+   "fibra": 0,
+   "calcio": 493,
+   "hierro": 0.65,
+   "potasio": 62,
+   "sodio": 1139,
+   "vitaminaA": 125,
+   "vitaminaC": 0,
+   "grasaSaturada": 13.3
+  }
+ },
+ {
+  "id": "usda-171265",
+  "nombre": "Milk, whole, 3.25% milkfat, with added vitamin D",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.15,
+   "grasa": 3.25,
+   "carbohidratos": 4.8,
+   "kcal": 61,
+   "fibra": 0,
+   "calcio": 113,
+   "hierro": 0.03,
+   "potasio": 132,
+   "sodio": 43,
+   "vitaminaA": 46,
+   "vitaminaC": 0,
+   "grasaSaturada": 1.865
+  }
+ },
+ {
+  "id": "usda-171269",
+  "nombre": "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 3.37,
+   "grasa": 0.08,
+   "carbohidratos": 4.96,
+   "kcal": 34,
+   "fibra": 0,
+   "calcio": 122,
+   "hierro": 0.03,
+   "potasio": 156,
+   "sodio": 42,
+   "vitaminaA": 61,
+   "vitaminaC": 0,
+   "grasaSaturada": 0.056
+  }
+ },
+ {
+  "id": "usda-171411",
+  "nombre": "Oil, soybean, salad or cooking",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0.05,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 15.65
+  }
+ },
+ {
+  "id": "usda-171413",
+  "nombre": "Oil, olive, salad or cooking",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 1,
+   "hierro": 0.56,
+   "potasio": 1,
+   "sodio": 2,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 13.808
+  }
+ },
+ {
+  "id": "usda-172336",
+  "nombre": "Oil, canola",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 7.365
+  }
+ },
+ {
+  "id": "usda-171025",
+  "nombre": "Oil, sunflower, linoleic, (approx. 65%)",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 100,
+   "carbohidratos": 0,
+   "kcal": 884,
+   "fibra": 0,
+   "calcio": 0,
+   "hierro": 0,
+   "potasio": 0,
+   "sodio": 0,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 10.3
+  }
+ },
+ {
+  "id": "usda-173468",
+  "nombre": "Salt, table",
+  "fuente": "USDA",
+  "n": {
+   "proteina": 0,
+   "grasa": 0,
+   "carbohidratos": 0,
+   "kcal": 0,
+   "fibra": 0,
+   "calcio": 24,
+   "hierro": 0.33,
+   "potasio": 8,
+   "sodio": 38758,
+   "vitaminaA": 0,
+   "vitaminaC": 0,
+   "grasaSaturada": 0
   }
  }
 ]

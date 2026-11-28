@@ -9,7 +9,9 @@ export const ALIAS_ES: Record<number, string[]> = {
   4: ['Arroz blanco crudo'],
   7: ['Avena en hojuelas', 'avena', 'copos de avena'],
   13: ['Galletas de soda', 'galletas saladas', 'crackers'],
-  25: ['Cereal de maíz (corn flakes)', 'corn flakes'],
+  21: ['Hojuelas de maíz con sal', 'hojuelas de maíz'],
+  25: ['Cereal de maíz (corn flakes)', 'corn flakes', 'cornflakes', 'cereal de maíz', 'sucrilhos naturais'],
+  26: ['Cereal de maíz azucarado (tipo Zucaritas)', 'zucaritas', 'cornflakes azucarados', 'corn flakes azucarados', 'cornflakes azucaradas', 'cereal azucarado', 'cereal con azúcar', 'sucrilhos', 'frosted flakes'],
   31: ['Harina de arroz'],
   33: ['Harina de maíz amarilla', 'harina de maíz'],
   35: ['Harina de trigo', 'harina'],
@@ -72,7 +74,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   130: ['Yuca cruda', 'yuca', 'mandioca'],
   132: ['Yuca frita'],
   133: ['Albahaca cruda', 'albahaca'],
-  140: ['Pan de queso horneado', 'pão de queijo'],
+  140: ['Pan de queso horneado', 'pão de queijo', 'pandebono', 'pandeyuca', 'almojábana'],
   142: ['Pepino crudo', 'pepino', 'cohombro'],
   143: ['Pimentón amarillo', 'pimiento amarillo'],
   144: ['Pimentón verde', 'pimiento verde'],
@@ -246,7 +248,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   487: ['Yema de huevo cocida', 'yema'],
   488: ['Huevo cocido', 'huevos', 'huevo duro', 'huevos cocidos', 'huevo tibio', 'huevo pochado', 'ovo cozido'],
   489: ['Huevo crudo', 'huevo', 'huevos'],
-  490: ['Huevo frito', 'huevo revuelto', 'huevos revueltos', 'huevo frito o revuelto', 'huevos fritos', 'huevo en sartén', 'ovo mexido', 'ovo frito', 'huevo perico'],
+  490: ['Huevo frito', 'huevos fritos', 'huevo en sartén', 'ovo frito'],
 
   // Dulces y otros
   491: ['Chocolate en polvo (achocolatado)'],
