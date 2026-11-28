@@ -66,7 +66,7 @@ describe('importar recetas en JSON', () => {
 
   it('empareja solo si es inequívoco; si no, sugiere', () => {
     expect(emparejarIngrediente({ alimento: 'huevo', gramos: 50 }, porId, buscar).elegido?.id).toBe('taco-489')
-    const dudoso = emparejarIngrediente({ alimento: 'pollo a la plancha', gramos: 100 }, porId, buscar)
+    const dudoso = emparejarIngrediente({ alimento: 'pollo al curry', gramos: 100 }, porId, buscar)
     expect(dudoso.elegido).toBeNull()
     expect(dudoso.sugerencias.length).toBeGreaterThan(0)
     expect(emparejarIngrediente({ alimento: 'x', alimentoId: 'usda-170554', gramos: 12 }, porId, buscar).elegido?.id).toBe('usda-170554')

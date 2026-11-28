@@ -243,7 +243,7 @@ export const ALIAS_ES: Record<number, string[]> = {
   485: ['Huevo de codorniz'],
   486: ['Clara de huevo cocida', 'clara de huevo'],
   487: ['Yema de huevo cocida', 'yema'],
-  488: ['Huevo cocido', 'huevo duro', 'huevos cocidos', 'huevo tibio', 'huevo pochado', 'ovo cozido'],
+  488: ['Huevo cocido', 'huevos', 'huevo duro', 'huevos cocidos', 'huevo tibio', 'huevo pochado', 'ovo cozido'],
   489: ['Huevo crudo', 'huevo', 'huevos'],
   490: ['Huevo frito', 'huevo revuelto', 'huevos revueltos', 'huevo frito o revuelto', 'huevos fritos', 'huevo en sartén', 'ovo mexido', 'ovo frito', 'huevo perico'],
 

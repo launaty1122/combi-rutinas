@@ -1,4 +1,5 @@
 import type { Alimento, IngredienteReceta, Receta } from './tipos'
+import { buscarParecidos } from './buscar'
 import { normalizar } from './texto'
 import { cantidadSegura } from './unidades'
 
@@ -149,7 +150,9 @@ export function emparejarIngrediente(
     return { elegido: porId.get(ing.alimentoId) as Alimento, sugerencias: [] }
   }
   const q = normalizar(ing.alimento)
-  const sugerencias = buscar(ing.alimento, 6)
+  // Si no hay nada con el nombre completo ("pollo al curry"), sugiere lo más parecido ("pollo").
+  const directas = buscar(ing.alimento, 6)
+  const sugerencias = directas.length ? directas : (buscarParecidos(buscar, ing.alimento, 6)?.resultados ?? [])
   const exacto = sugerencias.find((a) => a.alias.some((x) => normalizar(x) === q) || normalizar(a.nombre) === q)
   return { elegido: exacto ?? null, sugerencias }
 }
