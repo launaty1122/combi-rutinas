@@ -105,7 +105,8 @@ Combi Rutinas es una web app sin servidor (todo vive en el celular). Siendo hone
 
 De la **tabla TACO** (Tabela Brasileira de Composição de Alimentos, 4ª ed., NEPA/UNICAMP, 2011), que permite reproducirla citando la fuente. Son 597 alimentos con valores por cada 100 g. Los detalles están en [datos-fuente/taco/FUENTE.md](datos-fuente/taco/FUENTE.md).
 
-- 21 alimentos que TACO no trae (chía, whey, quinoa, yogur griego, mantequilla de maní…) vienen del **USDA FoodData Central** (dominio público). Ver [datos-fuente/usda/FUENTE.md](datos-fuente/usda/FUENTE.md).
+- 129 alimentos que TACO no trae o trae incompletos (chía, whey, proteína de soja, huevo revuelto, pizza, helado, champiñones, mora, uchuva, vino…) vienen del **USDA FoodData Central** (dominio público). Ver [datos-fuente/usda/FUENTE.md](datos-fuente/usda/FUENTE.md).
+- Productos de marca (Zucaritas, una proteína en polvo…): en el buscador, **"¿Es de marca? Buscar en internet"** busca por nombre en **Open Food Facts** (solo cuando tocas el botón). Eliges el producto, revisas los valores y queda guardado como alimento tuyo, que luego funciona sin internet.
 - Los nombres originales están en portugués (TACO) o inglés (USDA). Unos 270 alimentos comunes tienen también nombre en español (`src/datos/alias-es.ts`), y se puede buscar en cualquiera de los dos idiomas.
 - Las porciones caseras ("1 huevo = 50 g") están en `src/datos/porciones.ts`. Son aproximadas y se pueden editar.
 - Si TACO no tiene un dato, la app muestra **"sin dato"**, nunca 0.

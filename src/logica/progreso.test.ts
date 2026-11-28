@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { nutrientesVacios } from './nutricion'
-import { codigoValido, mapearOFF } from './openfoodfacts'
+import { codigoValido, mapearBusquedaOFF, mapearOFF } from './openfoodfacts'
 import { cambio, diasEntre, masRicosEn, promedios, serieDe } from './progreso'
 import type { Alimento, Medida, RegistroComida } from './tipos'
 
@@ -104,5 +104,18 @@ describe('Open Food Facts', () => {
   it('producto no encontrado → null', () => {
     expect(mapearOFF({ status: 0 })).toBeNull()
     expect(mapearOFF(null)).toBeNull()
+  })
+
+  it('búsqueda por nombre: junta las dos respuestas, quita repetidos y los que no traen calorías', () => {
+    const zuc = { code: '1', product_name: 'Zucaritas', brands: ['xx:kellogg-s'], nutriments: { 'energy-kcal_100g': 367, proteins_100g: 3.3 } }
+    const lista = mapearBusquedaOFF(
+      { hits: [zuc, { code: '2', product_name: 'Sin tabla', nutriments: {} }] },
+      { hits: [zuc, { code: '3', product_name: 'Zucaritas sabor chocolate', brands: "Kellogg's, Otra", nutriments: { 'energy-kcal_100g': 380 } }] },
+    )
+    expect(lista.map((p) => [p.nombre, p.marca, p.n.kcal, p.codigo])).toEqual([
+      ['Zucaritas', "Kellogg's", 367, '1'],
+      ['Zucaritas sabor chocolate', "Kellogg's", 380, '3'],
+    ])
+    expect(mapearBusquedaOFF(null)).toEqual([])
   })
 })
